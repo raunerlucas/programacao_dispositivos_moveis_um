@@ -61,6 +61,28 @@ Quando cria-se um novo projeto através da IDE, muitos arquivos e diretórios s�
 
 == Versões do Android
 
+Atualmente o sistema Android encontra-se na versão 13 (nível 33 em relação à API). Para mais detalhes sobre a API, acesse o link https://medium.com/androiddevelopers/now-in-android-74-886a95404e8b. Para ver mais detalhes sobre as diferenças entre as APIs 32 e 33, acesse o link: https://developer.android.com/sdk/api_diff/33/changes.
+
+Versões anteriores ao Android 13:
+
+ - Android 4.4 Kit Kat;
+ - Android 5 Lollipop;
+ - Android 6 Marshmallow;
+ - Android 7 Nougat;
+ - Android 8 Oreo;
+ - Android 9 Pie;
+ - Android 10;
+ - Android 11;
+ - Android 12.
+
+A figura 1 mostra o quantitativo das versões do Android usadas, referente ao mês de janeiro de 2023. Os dados são mantidos pela 9to5Google.
+
+Figura 1
+
+image::distribuicoes_versoes.png[]
+
+- Referência da imagem: https://androiddistribution.io/#/.
+
 
 
 
