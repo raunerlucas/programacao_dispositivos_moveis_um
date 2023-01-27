@@ -83,6 +83,18 @@ image::distribuicao_versoes.png[]
 
 - Referência da imagem: https://androiddistribution.io/#/.
 
+== Activity
+
+A activity é um componente disponível no SDK do Android responsável em apresentar a parte visual (interface gráfica) do aplicativo. A activity possui métodos que são invocados automaticamente pelo sistema. O entendimento desses métodos é fundamental para o funcionamento adequado do aplicativo. A figura 2 mostra os métodos envolvidos no ciclo de vida.
+
+Figura 2
+
+image::ciclo_de_vida.png[]
+
+- Referência da figura 2: GOOGLE DEVELOPERS. Entenda o ciclo de vida da atividade. Disponível em: https://developer.android.com/guide/components/activities/activity-lifecycle?hl=pt-br.
+
+
+
 
 
 
