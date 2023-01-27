@@ -55,7 +55,7 @@ Quando cria-se um novo projeto através da IDE, muitos arquivos e diretórios s�
 - diretório src;
 - diretório libs;
 - diretório gradle;
-e outros.
+- e outros.
 
 É importante entender esses arquivos e diretórios criados. Por exemplo, o arquivo AndroidManifest.xml contém informações relevantes para o aplicativo, neste são definidos o nome totalmente qualificado do projeto, a definição da atividade principal e as secundárias, permissões que serão usadas, definição do tema e outras configurações. Já no arquivo build.gradle são definidos a versão do Android (mínima e a alvo), adição de outros repositórios providos de terceiros e outras configurações.
 
