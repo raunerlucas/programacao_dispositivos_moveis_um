@@ -26,6 +26,18 @@ Antes de instalar a IDE, por favor, verifique se o OpenJDK foi devidamente insta
 
 Para maiores informações sobre as novidades no Android Studio, acesse: o canal Android Developers. What's new in Android Studio. Disponível em: https://www.youtube.com/watch?v=bVt14IBv4NA&list=RDCMUCVHFbqXqoYvEWM1Ddxl0QDg&index=2
 
+== Arquitetura do Sistema Android
+
+O Android é um sistema operacional criado em camadas bem definidas e com funcionalidades específicas. As camadas são denominadas em:
+1.Kernel do linux;
+2.Camada de abstração de hardware;
+3.Android Runtime;
+4.Bibliotecas C/C++ nativas:
+5.Estrutura Java API;
+6.Aplicativos do sistema.
+
+- Referência: Google Developers. Arquitetura da Plataforma. Disponível em: https://developer.android.com/guide/platform?hl=pt-br.
+
 == Uso do Emulador
 
 Após desenvolver um aplicativo, você pode testá-lo em seu próprio celular, mas caso não tenha um celular com sistema Android, você pode usar um emulador. Para criar um emulador na IDE, acesse o link disponibilizado: 
