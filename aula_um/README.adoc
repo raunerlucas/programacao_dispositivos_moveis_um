@@ -93,6 +93,11 @@ image::ciclo_de_vida.png[]
 
 - Referência da figura 2: GOOGLE DEVELOPERS. Entenda o ciclo de vida da atividade. Disponível em: https://developer.android.com/guide/components/activities/activity-lifecycle?hl=pt-br.
 
+Métodos dos ciclos de vida:
+
+- onCreate;
+
+
 
 
 
