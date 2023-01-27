@@ -89,7 +89,7 @@ A activity é um componente disponível no SDK do Android responsável em aprese
 
 Figura 2
 
-image::ciclo_de_vida.png[]
+image::ciclo_vida.png[]
 
 - Referência da figura 2: GOOGLE DEVELOPERS. Entenda o ciclo de vida da atividade. Disponível em: https://developer.android.com/guide/components/activities/activity-lifecycle?hl=pt-br.
 
