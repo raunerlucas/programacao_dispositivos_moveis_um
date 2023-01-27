@@ -44,3 +44,19 @@ O Android é um sistema operacional criado em camadas bem definidas e com funcio
 Após desenvolver um aplicativo, você pode testá-lo em seu próprio celular, mas caso não tenha um celular com sistema Android, você pode usar um emulador. Para criar um emulador na IDE, acesse o link disponibilizado: 
 
 - GOOGLE DEVELOPERS. Criar e gerenciar dispositivos virtuais. Disponível em: https://developer.android.com/studio/run/managing-avds?hl=pt-br.
+
+== Estrutura do Projeto na IDE
+
+Quando cria-se um novo projeto através da IDE, muitos arquivos e diretórios são criados. Existem arquivos como:
+
+- .java;
+- .xml;
+- de imagem;
+- diretório src;
+- diretório libs;
+- diretório gradle;
+e outros.
+
+É importante entender esses arquivos e diretórios criados. Por exemplo, o arquivo AndroidManifest.xml contém informações relevantes para o aplicativo, neste são definidos o nome totalmente qualificado do projeto, a definição da atividade principal e as secundárias, permissões que serão usadas, definição do tema e outras configurações. Já no arquivo build.gradle são definidos a versão do Android (mínima e a alvo), adição de outros repositórios providos de terceiros e outras configurações.
+
+
