@@ -19,4 +19,4 @@ Material de apoio à disciplina de Programação para Dispositivos Móveis I.
 
 == Referências
 
-- https://github.com/manoelcampos/asciidoc-github-template
+- Fonte do template: https://github.com/manoelcampos/asciidoc-github-template
