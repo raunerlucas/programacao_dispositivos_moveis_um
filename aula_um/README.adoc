@@ -79,7 +79,7 @@ A figura 1 mostra o quantitativo das versões do Android usadas, referente ao m�
 
 Figura 1
 
-image::distribuicoes_versoes.png[]
+image::distribuicao_versoes.png[]
 
 - Referência da imagem: https://androiddistribution.io/#/.
 
