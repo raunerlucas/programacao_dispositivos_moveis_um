@@ -15,16 +15,16 @@
 
 Para verificar ou instalar o OpenJDK, acesse os links disponibilizados a seguir:
 
-- OPENJDK. How to download and install prebuilt OpenJDK packages. Disponível em: https://openjdk.java.net/install/.
-- ORACLE. Como posso definir ou alterar a variável do sistema PATH? Disponível em: https://www.java.com/pt_BR/download/help/path.xml.
+- OPENJDK. How to download and install prebuilt OpenJDK packages. Disponível em: https://openjdk.java.net/install/. Acesso em:30 de jan. 2023.
+- ORACLE. Como posso definir ou alterar a variável do sistema PATH? Disponível em: https://www.java.com/pt_BR/download/help/path.xml. Acesso em:30 de jan. 2023.
 
 == Instalação da IDE
 
 Antes de instalar a IDE, por favor, verifique se o OpenJDK foi devidamente instalado, pois o Android Studio necessita do JDK para funcionar. Para a instalação do Android Studio, acesse o seguinte link:
 
-- GOOGLE DEVELOPERS. Instalar o Android Studio. Disponível em: https://developer.android.com/studio/install?hl=pt-br.
+- GOOGLE DEVELOPERS. Instalar o Android Studio. Disponível em: https://developer.android.com/studio/install?hl=pt-br. Acesso em:30 de jan. 2023.
 
-Para maiores informações sobre as novidades no Android Studio, acesse: o canal Android Developers. What's new in Android Studio. Disponível em: https://www.youtube.com/watch?v=bVt14IBv4NA&list=RDCMUCVHFbqXqoYvEWM1Ddxl0QDg&index=2
+Para maiores informações sobre as novidades no Android Studio, acesse: o canal Android Developers. What's new in Android Studio. Disponível em: https://www.youtube.com/watch?v=bVt14IBv4NA&list=RDCMUCVHFbqXqoYvEWM1Ddxl0QDg&index=2. Acesso em:30 de jan. 2023.
 
 == Arquitetura do Sistema Android
 
@@ -37,13 +37,13 @@ O Android é um sistema operacional criado em camadas bem definidas e com funcio
 5. Estrutura Java API;
 6. Aplicativos do sistema.
 
-- Referência: Google Developers. Arquitetura da Plataforma. Disponível em: https://developer.android.com/guide/platform?hl=pt-br.
+- Referência: Google Developers. Arquitetura da Plataforma. Disponível em: https://developer.android.com/guide/platform?hl=pt-br. Acesso em:30 de jan. 2023.
 
 == Uso do Emulador
 
 Após desenvolver um aplicativo, você pode testá-lo em seu próprio celular, mas caso não tenha um celular com sistema Android, você pode usar um emulador. Para criar um emulador na IDE, acesse o link disponibilizado: 
 
-- GOOGLE DEVELOPERS. Criar e gerenciar dispositivos virtuais. Disponível em: https://developer.android.com/studio/run/managing-avds?hl=pt-br.
+- GOOGLE DEVELOPERS. Criar e gerenciar dispositivos virtuais. Disponível em: https://developer.android.com/studio/run/managing-avds?hl=pt-br. Acesso em:30 de jan. 2023.
 
 == Estrutura do Projeto na IDE
 
@@ -61,7 +61,7 @@ Quando cria-se um novo projeto através da IDE, muitos arquivos e diretórios s�
 
 == Versões do Android
 
-Atualmente o sistema Android encontra-se na versão 13 (nível 33 em relação à API). Para mais detalhes sobre a API, acesse o link https://medium.com/androiddevelopers/now-in-android-74-886a95404e8b. Para ver mais detalhes sobre as diferenças entre as APIs 32 e 33, acesse o link: https://developer.android.com/sdk/api_diff/33/changes.
+Atualmente o sistema Android encontra-se na versão 13 (nível 33 em relação à API). Para mais detalhes sobre a API, acesse o link https://medium.com/androiddevelopers/now-in-android-74-886a95404e8b. Acesso em:30 de jan. 2023. Para ver mais detalhes sobre as diferenças entre as APIs 32 e 33, acesse o link: https://developer.android.com/sdk/api_diff/33/changes. Acesso em:30 de jan. 2023.
 
 Versões anteriores ao Android 13:
 
@@ -81,7 +81,7 @@ Figura 1
 
 image::distribuicao_versoes.png[]
 
-- Referência da imagem: https://androiddistribution.io/#/.
+- Referência da imagem: https://androiddistribution.io/#/. Acesso em:30 de jan. 2023.
 
 == Activity
 
@@ -91,7 +91,7 @@ Figura 2
 
 image::ciclo_vida.jpg[]
 
-- Referência da figura 2: GOOGLE DEVELOPERS. Entenda o ciclo de vida da atividade. Disponível em: https://developer.android.com/guide/components/activities/activity-lifecycle?hl=pt-br.
+- Referência da figura 2: GOOGLE DEVELOPERS. Entenda o ciclo de vida da atividade. Disponível em: https://developer.android.com/guide/components/activities/activity-lifecycle?hl=pt-br. Acesso em:30 de jan. 2023.
 
 Métodos dos ciclos de vida:
 
