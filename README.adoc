@@ -13,10 +13,8 @@
 
 = Programação para Dispositivos Móveis I
 
-Material de apoio à disciplina de Programação para Dispositivos Móveis I.
+Material de apoio com fins didáticos voltado para o aprendizado em programação móvel Android.
 
 1. link:aula_um/[Verificação e instação do OPENJDK / Instalação da IDE / Arquitetura do Android / Uso do Emulador / Estrutura do Projeto na IDE / Versões do Android / Activity / Ciclo de vida]
 
-== Referências
 
-- Fonte do template: https://github.com/manoelcampos/asciidoc-github-template
