@@ -23,4 +23,15 @@ image::linear_vertical.png[width=50,height=50]
 
 A figura 2 mostra as posições dos elementos quando usa-se o linear layout com orientação horizontal.
 
+Figura 2
+
 image::linear_horizontal.png[width=50,height=50]
+
+A figura 3 mostra um exemplo de combinação de layouts. Observe que foi possível inserir um linear layout com orientação horizontal, dentro de um linear layout com orientação vertical.
+
+Figura 
+
+image::combinacao_layouts.png[width=50,height=50]
+
+- Exemplos práticos
+
