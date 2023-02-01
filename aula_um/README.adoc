@@ -95,12 +95,12 @@ image::ciclo_vida.jpg[]
 
 Métodos dos ciclos de vida:
 
-- link:aula_um/codigo/onCreate.java[onCreate]
-- link:aula_um/codigo/onStart.java[onStart]
-- link:aula_um/codigo/onResume.java[onResume]
-- link:aula_um/codigo/onPause.java[onPause]
-- link:aula_um/codigo/onStop.java[onStop]
-- link:aula_um/codigo/onDestroy.java[onDestroy]
+- link:aula_um/codigos/onCreate.java[onCreate]
+- link:aula_um/codigos/onStart.java[onStart]
+- link:aula_um/codigos/onResume.java[onResume]
+- link:aula_um/codigos/onPause.java[onPause]
+- link:aula_um/codigos/onStop.java[onStop]
+- link:aula_um/codigos/onDestroy.java[onDestroy]
 
 
 
