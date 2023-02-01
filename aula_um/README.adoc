@@ -61,7 +61,7 @@ Quando cria-se um novo projeto através da IDE, muitos arquivos e diretórios s�
 
 == Versões do Android
 
-Atualmente o sistema Android encontra-se na versão 13 (nível 33 em relação à API). Para mais detalhes sobre a API, acesse o link https://medium.com/androiddevelopers/now-in-android-74-886a95404e8b. Acesso em:30 de jan. 2023. Para ver mais detalhes sobre as diferenças entre as APIs 32 e 33, acesse o link: https://developer.android.com/sdk/api_diff/33/changes. Acesso em:30 de jan. 2023.
+Atualmente o sistema Android encontra-se na versão 13 (nível 33 em relação à API). Para mais detalhes sobre a API e novidades, acessem os links: https://developer.android.com/about/versions/13?hl=pt-br e  https://medium.com/androiddevelopers/now-in-android-74-886a95404e8b. Acesso em:30 de jan. 2023. Para ver mais detalhes sobre as diferenças entre as APIs 32 e 33, acesse o link: https://developer.android.com/sdk/api_diff/33/changes. Acesso em:30 de jan. 2023.
 
 Versões anteriores ao Android 13:
 
