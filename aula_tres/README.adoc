@@ -1,1 +1,23 @@
+//caminho padrão para imagens
+
+:figure-caption: Figura
+:doctype: book
+
+//gera apresentacao
+//pode se baixar os arquivos e add no diretório
+:revealjsdir: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.8.0
+
+//GERAR ARQUIVOS
+//make slides
+//make ebook
+
+- Exemplos práticos (App Lanchonete)
+
+- link:codigos/MainActivity.java[MainActivity]
+- link:codigos/ActivityCafe.java[ActivityCafe]
+- link:codigos/ActivityBolo.java[ActivityBolo]
+- link:codigos/activity_main.xml[activity_main]
+- link:codigos/activity_cafe.xml[activity_cafe]
+- link:codigos/activity_bolo.xml[activity_bolo]
+
 
