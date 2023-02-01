@@ -33,5 +33,6 @@ Figura
 
 image::combinacao_layouts.png[width=80,height=80]
 
-- Exemplos práticos
+- Exemplos práticos (linear layout, view, activity e intent)
+
 
