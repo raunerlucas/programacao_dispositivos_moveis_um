@@ -35,6 +35,11 @@ image::combinacao_layouts.png[width=80,height=80]
 
 - Exemplos práticos (linear layout, view, activity e intent)
 
+- link:codigos/MainActivity.java[MainActivity]
+- link:codigos/activity_main.xml[activity_main]
+- link:codigos/SegundaActivity.java[SegundaActivity]
+- link:codigos/activity_segunda.xml[activity_segunda]
+
 A ferramenta Color Tool fornece uma paleta de cores possibilitando uma visualização das combinações das cores. A ferramenta ajuda no design do aplicativo, segue o link para acesso: https://m2.material.io/resources/color/#!/
 
 
