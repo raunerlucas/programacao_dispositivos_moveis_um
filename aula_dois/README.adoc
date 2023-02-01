@@ -12,3 +12,15 @@
 //make ebook
 
 = Linear Layout
+
+O layout pode ser visto como um container, pois nele vão estar as views como um botão, um campo de entrada de texto, uma imagem e outras views. Existem vários tipos de layout que o SDK oferece que serão vistos em outros exemplos. O Linear Layout é o mais simples dos layouts, nele pode ser configurado dois tipos de orientações. Qual a diferença entre o Linear Layout com orientação vertical e com orientação horizontal?
+
+A figura 1 mostra as posições dos elementos quando usa-se o linear layout com orientação verticial.
+
+Figura 1
+
+image::linear_vertical.png
+
+A figura 2 mostra as posições dos elementos quando usa-se o linear layout com orientação horizontal.
+
+image::linear_horizontal.png
