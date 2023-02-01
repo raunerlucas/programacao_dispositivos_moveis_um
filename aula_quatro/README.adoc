@@ -17,6 +17,12 @@ A List View é um grupo de views cujo objetivo é apresentar itens no sentido ve
 
 Para mais detalhes sobre este componente veja: GOOGLE DEVELOPERS. ListView. Disponível em:  https://developer.android.com/reference/android/widget/ListView. Acesso em: 01 de fev.2022.
       
+- Exemplos práticos (lista simples)
+
+- link:codigos/MainActivity.java[MainActivity]
+- link:codigos/activity_main.xml[activity_main]
+- link:codigos/Activity2.java[Activity2]
+- link:codigos/activity_2.xml[activity_2]
 
 
 
