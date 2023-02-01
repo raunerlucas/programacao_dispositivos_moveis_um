@@ -42,4 +42,10 @@ image::combinacao_layouts.png[width=80,height=80]
 
 A ferramenta Color Tool fornece uma paleta de cores possibilitando uma visualização das combinações das cores. A ferramenta ajuda no design do aplicativo, segue o link para acesso: https://m2.material.io/resources/color/#!/
 
+Para criar as várias versões de resolução de imagem necessárias para o aplicativo podemos usar várias ferramentas. A ferramenta App Icon Generator pode servir para essa finalidade. A ferramenta oferece três opções, das quais duas são relevantes para o desenvolvimento de aplicativos Android. As duas opções são:
+ - AppIcon: usada para criar ícones;
+ - Image sets:  usada criar as imagens que serão usadas no aplicativo. 
+A ferramenta esta disponível no seguinte endereço: https://appicon.co/.
+Depois de criar as várias versões da imagem, use o recurso Resource Manager no Android Studio para adicionar as imagens.
 
+- Exemplos práticos (App Lanchonete)
