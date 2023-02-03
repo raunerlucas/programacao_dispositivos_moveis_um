@@ -11,7 +11,7 @@
 //make slides
 //make ebook
 
-- Exemplos práticos (App Lanchonete)
+== Exemplos práticos (App Lanchonete)
 
 - link:codigos/MainActivity.java[MainActivity]
 - link:codigos/ActivityCafe.java[ActivityCafe]
