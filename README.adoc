@@ -17,4 +17,6 @@ Material de apoio com fins didáticos voltado para o aprendizado em programaçã
 
 1. link:aula_um/[Verificação e instação do OPENJDK / Instalação da IDE / Arquitetura do Android / Uso do Emulador / Estrutura do Projeto na IDE / Versões do Android / Activity / Ciclo de vida]
 
+2. link:aula_dois/[Linear Layout / View, Activity / Intent]
+
 
