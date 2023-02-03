@@ -47,6 +47,8 @@ Para criar as várias versões de resolução de imagem necessárias para o apli
  - AppIcon: usada para criar ícones. A ferramenta esta disponível no seguinte endereço: https://appicon.co/.
  
  - Image sets:  usada criar as imagens que serão usadas no aplicativo. 
+ 
+ Outra ferramenta que também pode ser usada para criação de ícones é criada por ROMAN NURIK chamada Android Asset Studio. Disponível em: http://assetstudio.androidpro.com.br/. Acesso em: 03 fev. 2023;
 
 Depois de criar as várias versões da imagem, use o recurso Resource Manager no Android Studio para adicionar as imagens.
 
