@@ -1,1 +1,29 @@
+//caminho padrão para imagens
+
+:figure-caption: Figura
+:doctype: book
+
+//gera apresentacao
+//pode se baixar os arquivos e add no diretório
+:revealjsdir: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.8.0
+
+//GERAR ARQUIVOS
+//make slides
+//make ebook
+
+= Barra de Ações (App Bar)
+
+A barra de ações é um item importante para seu app, além de identificá-lo, este oferece outros recursos com o menu flutuante, muito usado para dar mais opções ao usuário. Para implementar o AppBar pode ser usado a classe ActionBar e ToolBar. Nativamente, o AppBar vem implementado pela ActionBar, porém, a mais usada atualmente é a classe ToolBar.
+
+Materiais para mais detalhes:
+
+- GOOGLE DEVELOPERS. Adicionar barra de apps. Disponível em: https://developer.android.com/training/appbar#lessons. Acessado em: 08 fev. 2023.
+- GOOGLE DEVELOPERS. Adicionar e processsar ações. Disponível em: https://developer.android.com/training/appbar/actions. Acessado em: 08 fev. 2023.
+- GOOGLE DEVELOPERS. Configurar a barra de apps. Disponível em: https://developer.android.com/training/appbar/setting-up. Acessado em: 08 fev. 2023.
+- STACKOVERFLOW. Qual a diferença de uma toolbar para uma action bar? 2017. Disponível em: https://pt.stackoverflow.com/questions/178775/qual-a-diferen%C3%A7a-de-uma-toolbar-para-uma-action-bar. Pergunta feita pela usuário Aline (https://pt.stackoverflow.com/users/36515/aline) e respondida pelo usuário (https://pt.stackoverflow.com/users/2541/ramaral). Acessado em: 08 fev. 2023.
+
+- Exemplos práticos
+- Inicialmente deve-se alterar no arquivo Theme.xml a seguinte tag:  <style name="Theme.ExemploAppBar_01" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+
 
