@@ -23,4 +23,8 @@ Material de apoio com fins didáticos voltado para o aprendizado em programaçã
 
 4. link:aula_quatro/[List View: simples e personalizado]
 
+5. link:aula_cinco/[Barra de ações e Menu]
+
+6. link:aula_seis/[Caixas de diálogo]
+
 
