@@ -1,1 +1,20 @@
+//caminho padrão para imagens
 
+:figure-caption: Figura
+:doctype: book
+
+//gera apresentacao
+//pode se baixar os arquivos e add no diretório
+:revealjsdir: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.8.0
+
+//GERAR ARQUIVOS
+//make slides
+//make ebook
+
+= Caixa de Diálogo (Alert Dialog)
+
+Na linguagem Java usa-se a classe JOptionPane para criar as caixas de diálogo. No Android usa-se a classe AlertDialog para o mesmo propósito. As caixas de diálogo são usadas geralmente para obter uma informação simples do usuário, "sim" ou "não" referente à uma pergunta. 
+
+Material para mais detalhes:
+
+- GOOGLE DEVELOPERS. Caixas de diálogo. Disponível em: https://developer.android.com/guide/topics/ui/dialogs?hl=pt-br#java. Acessado em: 08 fev. 2023.
