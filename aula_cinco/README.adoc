@@ -23,6 +23,7 @@ Materiais para mais detalhes:
 - STACKOVERFLOW. Qual a diferença de uma toolbar para uma action bar? 2017. Disponível em: https://pt.stackoverflow.com/questions/178775/qual-a-diferen%C3%A7a-de-uma-toolbar-para-uma-action-bar. Pergunta feita pela usuário Aline (https://pt.stackoverflow.com/users/36515/aline) e respondida pelo usuário (https://pt.stackoverflow.com/users/2541/ramaral). Acessado em: 08 fev. 2023.
 
 Exemplos práticos
+
 - Inicialmente deve-se alterar no arquivo Theme.xml a seguinte tag:  <style name="Theme.ExemploAppBar_01" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
 - link:aula_cinco/codigos/activity_main.xml[activity_main]
