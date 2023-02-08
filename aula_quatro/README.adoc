@@ -28,6 +28,9 @@ Para mais detalhes sobre este componente veja: GOOGLE DEVELOPERS. ListView. Disp
 
 - link:codigos/MainActivity3.java[MainActivity]
 - link:codigos/activity_main3.xml[activity_main]
+- link:codigos/item_lista.xml[item_lista]
+- link:codigos/ItemLista.java[ItemLista]
+- link:codigos/MeuAdapter.java[MeuAdapter]
 - link:codigos/Activity3.java[Activity2]
 - link:codigos/activity_3.xml[activity_2]
 
