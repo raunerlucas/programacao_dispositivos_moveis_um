@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/java"
+        android:icon="@mipmap/ic_launcher"
+        android:title="@string/item_java"/>
+    <item android:id="@+id/php"
+        android:title="@string/item_php"/>
+    <item android:id="@+id/C"
+        android:title="@string/item_c"/>
+
+</menu>
