@@ -1,4 +1,4 @@
-public class MainActivity extends AppCompatActivity
+public class MainActivity3 extends AppCompatActivity
         implements
         AdapterView.OnItemClickListener {
 
