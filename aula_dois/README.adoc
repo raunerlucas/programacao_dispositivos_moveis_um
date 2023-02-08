@@ -44,10 +44,8 @@ A ferramenta Color Tool fornece uma paleta de cores possibilitando uma visualiza
 
 Para criar as várias versões de resolução de imagem necessárias para o aplicativo podemos usar várias ferramentas. A ferramenta App Icon Generator pode servir para essa finalidade. A ferramenta oferece três opções, das quais duas são relevantes para o desenvolvimento de aplicativos Android. As duas opções são:
 
- - AppIcon: usada para criar ícones. A ferramenta esta disponível no seguinte endereço: https://appicon.co/. Acesso em: 03 fev. 2023
- 
- - Image sets:  usada criar as imagens que serão usadas no aplicativo. 
- 
+ - AppIcon: usada para criar ícones / formatação das imagens que serão usadas no aplicativo. A ferramenta esta disponível no seguinte endereço: https://appicon.co/. Acesso em: 03 fev. 2023
+  
 Outra ferramenta que também pode ser usada para criação de ícones é criada por ROMAN NURIK chamada Android Asset Studio. Disponível em: http://assetstudio.androidpro.com.br/. Acesso em: 03 fev. 2023;
 
 Depois de criar as várias versões da imagem, use o recurso Resource Manager no Android Studio para adicionar as imagens.
