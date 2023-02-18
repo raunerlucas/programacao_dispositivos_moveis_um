@@ -37,4 +37,14 @@ Exemplos práticos (AlertDialog Personalizado)
 
 - link:dois/dialog.xml[dialog]
 
+Exemplos práticos (AlertDialog List)
+
+- link:tres/activity_main.xml[activity_main]
+
+- link:tres/string.xml[string]
+
+- link:tres/MyDialogFragment.java[MyDialogFragment]
+
+- link:tres/MainActivity.java[MainActivity]
+
 
