@@ -27,4 +27,14 @@ Exemplos práticos (AlertDialog Basic)
 
 - link:um/MainActivity.java[MainActivity]
 
+Exemplos práticos (AlertDialog Personalizado)
+
+- link:dois/activity_main.xml[activity_main]
+
+- link:dois/MyDialogFragment.java[MyDialogFragment]
+
+- link:dois/MainActivity.java[MainActivity]
+
+- link:dois/dialog.xml[dialog]
+
 
