@@ -18,3 +18,7 @@ Na linguagem Java usa-se a classe JOptionPane para criar as caixas de diálogo. 
 Material para mais detalhes:
 
 - GOOGLE DEVELOPERS. Caixas de diálogo. Disponível em: https://developer.android.com/guide/topics/ui/dialogs?hl=pt-br#java. Acessado em: 08 fev. 2023.
+
+- Exemplos práticos (AlertDialog Basic)
+
+
