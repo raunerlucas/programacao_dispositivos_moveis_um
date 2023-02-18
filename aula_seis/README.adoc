@@ -47,4 +47,13 @@ Exemplos práticos (AlertDialog List)
 
 - link:tres/MainActivity.java[MainActivity]
 
+Exemplos práticos (AlertDialog with multiple choice)
+
+- link:quatro/activity_main.xml[activity_main]
+
+- link:quatro/string.xml[string]
+
+- link:quatro/MyDialogFragment.java[MyDialogFragment]
+
+- link:quatro/MainActivity.java[MainActivity]
 
