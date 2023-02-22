@@ -3,3 +3,11 @@
 O SDK Android fornece outras views interessantes para construção de layouts. Neste tópico serão abordados: ProgressBar,
 que trata-se de uma barra de progresso para operações em andamento; Spinner para apresentar dados na direção top-down e RadioGroup 
 que permite criar um grupo mutualmente exclusivo de opções.
+
+Exemplos práticos
+
+- link: um/activity_main.xml[activity_main]
+
+- link: um/MainActivity.java[MainActivity]
+
+- link: um/Estudante.java[Estudante]
