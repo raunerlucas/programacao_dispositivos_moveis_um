@@ -35,6 +35,6 @@ Adicionar o botão flutuante em seu projeto, é uma tarefa simples. Para adicion
 
 Exemplos práticos (Botão Flutuante)
 
-- tres/activity_main.xml[activity_main]
+- link:tres/activity_main.xml[activity_main]
 
-- tres/MainActivity.java[MainActivity]
+- link:tres/MainActivity.java[MainActivity]
