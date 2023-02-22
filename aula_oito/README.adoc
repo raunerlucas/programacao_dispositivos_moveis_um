@@ -15,3 +15,7 @@ Você pode aproveitar os recursos de estilização para personalizar as formas d
 Exemplos práticos (Botões Personalizados)
 
 - link:dois/button_custom.xml[button_custom]
+
+- link:dois/theme.xml[theme]
+
+- link:dois/layout.xml[layout]
