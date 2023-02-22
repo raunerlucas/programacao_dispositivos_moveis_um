@@ -1,11 +1,17 @@
-= Estilos e Temas
+= Estilos / Temas / Botões Personalizados / Botão Flutuante
 
 O SDK do Android fornece estilos e temas definidos para ser usado em um app. Quando um projeto na IDE é criado um tema já é disponibilizado, mas o desenvolvedor pode optar também criar ou personalizar seus próprios estilos e temas.
 
-Exemplos práticos
+Exemplos práticos (Estilos e Temas)
 
 - link:um/activity_main.xml[activity_main]
 
 - link:um/colors.xml[colors]
 
 - link:um/themes.xml[themes]
+
+Você pode aproveitar os recursos de estilização para personalizar as formas dos Buttons. 
+
+Exemplos práticos (Botões Personalizados)
+
+- link:dois/button_custom.xml[button_custom]
