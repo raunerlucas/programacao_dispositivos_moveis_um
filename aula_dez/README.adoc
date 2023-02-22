@@ -24,3 +24,78 @@ Exemplos práticos (estático):
 
 Exemplos práticos (dinâmico):
 
+- link:dois/activity_main.xml[activity_main]
+
+- link:dois/MainActivity.java[MainActivity]
+
+- link:dois/tela1.xml[tela1]
+
+- link:dois/Tela1.java[Tela1]
+
+- link:dois/tela2.xml[tela2]
+
+- link:dois/Tela2.java[Tela2]
+
+Veja que na documentação oficial, clique aqui, que a tag para adicionar o fragmento foi atualizada para 
+
+<androidx.fragment.app.FragmentContainerView>. A mesma tag pode ser usada tanto para adicionar o fragmento via XML como programaticamente. A diferença é que para adicionar via XML, deve ser usado o atributo name, passando o nome da classe java que estende a classe Fragment. Caso deseje adicionar de forma dinâmica use o atributo id. 
+
+
+Por exemplo: no arquivo activity_main.xml a nova tag  adicionada ficaria assim:
+
+
+<androidx.fragment.app.FragmentContainerView
+
+   android:layout_width="wrap_content"
+
+   android:layout_height="wrap_content"
+
+   android:id="@+id/tela" />
+
+
+Na classe MainActivity, coloque o gerenciamento de fragmento no método onCreate.
+
+
+protected void onCreate(Bundle savedInstanceState) {
+
+   super.onCreate(savedInstanceState);
+
+   setContentView(R.layout.activity_main);
+
+
+   getSupportFragmentManager().beginTransaction()
+
+           .setReorderingAllowed(true)
+
+           .add(R.id.tela, FragmentActivity.class,null)
+
+           .commit();
+
+}
+
+
+Neste exemplo, a classe FragmentActivity estende a classe Fragment. Observe que não é mais necessário o método inflate para passar o layout criado. Isto é feito no construtor da classe. 
+
+
+public class FragmentActivity extends Fragment {
+
+   public FragmentActivity(){
+
+       super(R.layout.tela);
+
+   }
+
+
+   @Override
+
+   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+      // super.onViewCreated(view, savedInstanceState);
+
+   }
+
+}
+
+Exemplos práticos:
+
+
