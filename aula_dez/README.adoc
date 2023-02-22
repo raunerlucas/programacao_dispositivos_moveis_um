@@ -10,6 +10,14 @@ Os fragmentos também possuem um ciclo de vida, sendo que o método mais relevan
 
 Exemplos práticos:
 
-- link:um/Activity_Main.xml[Activity_Main]
+- link:um/activity_main.xml[activity_main]
 
 - link:um/MainActivity.java[MainActivity]
+
+- link:um/tela1.xml[tela1]
+
+- link:um/Tela1.java[Tela1]
+
+- link:um/tela2.xml[tela2]
+
+- link:um/Tela2.java[Tela2]
