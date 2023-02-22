@@ -1,1 +1,11 @@
 = Estilos e Temas
+
+O SDK do Android fornece estilos e temas definidos para ser usado em um app. Quando um projeto na IDE é criado um tema já é disponibilizado, mas o desenvolvedor pode optar também criar ou personalizar seus próprios estilos e temas.
+
+Exemplos práticos
+
+- link:um/activity_main.xml[/activity_main]
+
+- link:um/colors.xml[colors]
+
+- link:um/themes.xml[themes]
