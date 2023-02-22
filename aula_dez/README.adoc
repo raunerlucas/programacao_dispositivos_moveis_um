@@ -104,6 +104,6 @@ Exemplos práticos:
 
 - link:tres/example_fragment.xml[example_fragment]
 
-- link:tres/ExampleFragment.java[ExampleFragmen]
+- link:tres/ExampleFragment.java[ExampleFragment]
 
 
