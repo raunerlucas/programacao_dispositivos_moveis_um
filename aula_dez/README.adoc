@@ -1,6 +1,6 @@
 = Fragments
 
-Os fragmentos foram criados com o objetivo de aproveitar todo o espaço disponível em uma atividade. A ideia é dividir a atividade em várias partes. Cada uma dessas partes possui seu próprio layout, clico de vida e necessitam de uma atividade. Conforme consta na documentação oficial, Google Developers (2021), "Um Fragment representa uma parte reutilizável da IU do seu app. Um fragmento define e gerencia o próprio layout, tem o próprio ciclo de vida e pode processar os próprios eventos de entrada. Fragmentos não podem existir por conta própria" .
+Os fragmentos foram criados com o objetivo de aproveitar todo o espaço disponível em uma atividade. A ideia é dividir a atividade em várias partes. Cada uma dessas partes possui seu próprio layout, clico de vida e necessitam de uma atividade. Conforme consta na documentação oficial, Google Developers (2021), "Um fragmento representa uma parte reutilizável da IU do seu app. Um fragmento define e gerencia o próprio layout, tem o próprio ciclo de vida e pode processar os próprios eventos de entrada. Fragmentos não podem existir por conta própria" .
 
 Referências do texto entre aspas: 
 
