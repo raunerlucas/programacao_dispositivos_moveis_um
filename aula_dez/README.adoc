@@ -1,1 +1,15 @@
 = Fragments
+
+Os fragmentos foram criados com o objetivo de aproveitar todo o espaço disponível em uma atividade. A ideia é dividir a atividade em várias partes. Cada uma dessas partes possui seu próprio layout, clico de vida e necessitam de uma atividade. Conforme consta na documentação oficial, Google Developers (2021), "Um Fragment representa uma parte reutilizável da IU do seu app. Um fragmento define e gerencia o próprio layout, tem o próprio ciclo de vida e pode processar os próprios eventos de entrada. Fragmentos não podem existir por conta própria" .
+
+Referências do texto entre aspas: 
+
+- GOOGLE DEVELOPERS. Fragmentos. Disponível em: <https://developer.android.com/guide/fragments#videos>. Acesso em: 22 de fev. 2022. 
+
+Os fragmentos também possuem um ciclo de vida, sendo que o método mais relevante é o onCreateView que será chamado para criar a interface gráfica personalizada no arquivo de layout especifico do fragmento. O método retorna uma View que representa a raiz do layout do fragmento. Para a activity o fragmento será visto como mais uma view inserida em seu layout.
+
+Exemplos práticos:
+
+- link:um/Activity_Main.xml[Activity_Main]
+
+- link:um/MainActivity.java[MainActivity]
