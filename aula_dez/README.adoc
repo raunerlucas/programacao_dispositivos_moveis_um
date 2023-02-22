@@ -98,4 +98,12 @@ public class FragmentActivity extends Fragment {
 
 Exemplos práticos:
 
+- link:tres/activity_main.xml[activity_main]
+
+- link:tres/MainActivity.java[MainActivity]
+
+- link:tres/example_fragment.xml[example_fragment]
+
+- link:tres/ExampleFragment.java[ExampleFragmen]
+
 
