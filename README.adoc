@@ -29,3 +29,5 @@ Material de apoio com fins didáticos voltado para o aprendizado em programaçã
 
 7. link:aula_sete/[Outras views: ProgressBar / Spinner / RadioGroup]
 
+8. link:aula_oito/[Estilos e Temas]
+
