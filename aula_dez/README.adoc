@@ -8,7 +8,7 @@ Referências do texto entre aspas:
 
 Os fragmentos também possuem um ciclo de vida, sendo que o método mais relevante é o onCreateView que será chamado para criar a interface gráfica personalizada no arquivo de layout especifico do fragmento. O método retorna uma View que representa a raiz do layout do fragmento. Para a activity o fragmento será visto como mais uma view inserida em seu layout.
 
-Exemplos práticos:
+Exemplos práticos (estático):
 
 - link:um/activity_main.xml[activity_main]
 
@@ -21,3 +21,6 @@ Exemplos práticos:
 - link:um/tela2.xml[tela2]
 
 - link:um/Tela2.java[Tela2]
+
+Exemplos práticos (dinâmico):
+
