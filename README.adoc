@@ -37,3 +37,5 @@ Material de apoio com fins didáticos voltado para o aprendizado em programaçã
 
 11. link:aula_onze/[Armazenamento Interno e Externo]
 
+12. link:aula_doze/[Armazenamento em Banco de Dados - SQLite]
+
