@@ -1,71 +1,72 @@
-public class SegundaActivity extends AppCompatActivity {
-
-   private TextView textViewTexto;
-
-   @Override
-
-protected void onCreate(Bundle savedInstanceState) {
-
-   super.onCreate(savedInstanceState);
-
-   setContentView(R.layout.activity_segunda);
-
-   textViewTexto = findViewById(R.id.textViewTexto);
-
-   String texto = getInfo();
-
-   textViewTexto.setText(texto);
-
-}//onCreate
-  
-  private String getInfo() {
-
-   StringBuffer sb = null;
-
-   try {
-
-       FileInputStream fis = openFileInput("meuArq.txt");  //solicita a abertura do arquivo no modo de leitura. O arquivo precisa existir.
-
-       sb = new StringBuffer();   
-
-       int retorno = 0;
-
-       char texto = 0;
-
-       while((retorno = fis.read())!=-1){  //o método read() devolve o caractere presente no arquivo, dessa forma é colocado em um laço de repetição. Os caracteres serão devolvidos até encontrar o valor -1 (significando o fim o arquivo)
-
-           texto = (char)retorno;
-
-           sb.append(texto);  //adicionar o caractere no StringBuffer
-
-       }//while
-
-       fis.close();   //encerra o arquivo
-
-   } catch (FileNotFoundException e) {
-
-       e.printStackTrace();
-
-   } catch (IOException e) {
-
-       e.printStackTrace();
-
-   }
+import androidx.appcompat.app.AppCompatActivity;
 
 
-   return sb.toString();
+import android.content.Intent;
+
+import android.os.Bundle;
+
+import android.view.View;
+
+import android.widget.AdapterView;
+
+import android.widget.ArrayAdapter;
+
+import android.widget.ListView;
 
 
-}//getInfo
-  
-  public void abrirTela(View view) {
+import java.util.ArrayList;
 
-   Intent i = new Intent(getApplicationContext(), MainActivity.class);
 
-   i.putExtra("texto",textViewTexto.getText().toString());
+public class Activity2 extends AppCompatActivity
 
-   startActivity(i);
+      implements AdapterView.OnItemClickListener {
 
-}
+  private ListView lista;
 
-}
+  private ArrayAdapter<Pessoa> adapter;
+
+
+  @Override
+
+  protected void onCreate(Bundle savedInstanceState) {
+
+      super.onCreate(savedInstanceState);
+
+      setContentView(R.layout.activity_2);
+
+      lista = findViewById(R.id.lista);
+
+      ArrayList<Pessoa>dados = (ArrayList<Pessoa>) getIntent()
+
+              .getSerializableExtra("dados");
+
+      adapter = new ArrayAdapter<>(this,
+
+              android.R.layout.simple_list_item_1,dados);
+
+      lista.setAdapter(adapter);
+
+      lista.setOnItemClickListener(this);
+
+  }//onCreate
+
+
+  @Override
+
+  public void onItemClick(AdapterView<?> parent, View view,
+
+                          int position, long id) {
+
+     Pessoa p = (Pessoa) parent.getItemAtPosition(position);
+
+      Intent it = new Intent(Activity2.this, MainActivity.class);
+
+      it.putExtra("dado",p);
+
+      startActivity(it);
+
+  }//onItem
+
+}//class
+
+
