@@ -22,3 +22,5 @@ Exemplos práticos (Armazenamento externo):
 - link:dois/activity_segunda.xml[activity_segunda]
 
 - link:dois/SegundaActivity.java[SegundaActivity]
+
+- No arquivo AndroidManifest.xml acrescentar a permissão necessária: <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
