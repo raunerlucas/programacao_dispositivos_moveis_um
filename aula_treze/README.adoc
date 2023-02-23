@@ -16,6 +16,13 @@ Recurso que permite criar listas dinâmicas com mais eficiência e economia de r
 
 Exemplos práticos:
 
+- link:dois/main_activity.xml[main_activity]
+
+- link:dois/item_layout.xml[item_layout]
+
+- link:dois/ItemModel.java[ItemModel]
+
+- link:dois/ItemAdapter.java[ItemAdapter]
 
 
 
