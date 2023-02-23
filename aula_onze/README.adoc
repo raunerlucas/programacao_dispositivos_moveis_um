@@ -1,1 +1,26 @@
+= Armzenamento Interno e Externo
 
+Para mais detalhes sobre as formas de armazenar dados no Android: GOOGLE DEVELOPERS. Visão geral do armazenamento de dados e arquivos. 
+Disponível em: https://developer.android.com/training/data-storage?hl=pt-br. Acesso em: 22 fev. 2023.
+
+Exemplos práticos (Armazenamento interno):
+
+- link:um/activity_main.xml[activity_main]
+
+- link:um/MainActivity.java[MainActivity]
+
+- link:um/activity_segunda.xml[activity_segunda]
+
+- link:um/SegundaActivity.java[SegundaActivity]
+
+Exemplos práticos (Armazenamento externo):
+
+- link:dois/activity_main.xml[activity_main]
+
+- link:dois/MainActivity.java[MainActivity]
+
+- link:dois/activity_segunda.xml[activity_segunda]
+
+- link:dois/SegundaActivity.java[SegundaActivity]
+
+- No arquivo AndroidManifest.xml deve ser acrescentado a permissão necessária: <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
