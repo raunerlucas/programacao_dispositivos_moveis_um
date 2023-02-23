@@ -1,1 +1,7 @@
+= Armazenamento em Banco de Dados - SQLite
 
+Para ver mais detalhes sobre a persistência em banco de dados: GOOGLE DEVELOPERS. Salvar dados usando o SQLite. Disponível em: https://developer.android.com/training/data-storage/sqlite?hl=pt-br. Acesso em: 22 fev. 2023.
+
+Exemplos práticos (CRUD):
+
+- 
