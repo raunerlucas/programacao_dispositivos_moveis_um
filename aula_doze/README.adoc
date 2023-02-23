@@ -17,3 +17,5 @@ Exemplos práticos (CRUD):
 - link:um/activity_segunda.xml[activity_segunda]
 
 - link:im/SegundaActivity.java[SegundaActivity]
+
+Para visualizar as tabelas criadas no aplicativo é necessário exportar o arquivo .db e usar um aplicativo específico, por exemplo o SQLiteStudio, disponível em: https://sqlitestudio.pl/.
