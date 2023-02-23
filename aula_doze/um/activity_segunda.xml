@@ -10,24 +10,18 @@
 
    android:layout_height="match_parent"
 
-   android:layout_margin="10dp"
-
    android:orientation="vertical"
 
    tools:context=".Activity2">
 
 
-   <TextView
+   <ListView
 
        android:layout_width="wrap_content"
 
-       android:layout_height="match_parent"
+       android:layout_height="wrap_content"
 
-       android:text="textViewTexto"
-
-       android:onClick="abrirTela"
-
-       android:id="@+id/textViewTexto"/>
+       android:id="@+id/lista"/>
 
 
 </LinearLayout>
