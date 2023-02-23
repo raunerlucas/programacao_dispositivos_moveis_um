@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
    xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,8 +8,6 @@
 
    android:layout_height="match_parent"
 
-   android:layout_margin="10dp"
-
    android:orientation="vertical"
 
    tools:context=".MainActivity">
@@ -19,13 +15,26 @@
 
    <EditText
 
-       android:layout_width="match_parent"
+       android:layout_width="wrap_content"
 
        android:layout_height="wrap_content"
 
-       android:id="@+id/editTextTexto"
+       android:hint="digite seu nome"
 
-       android:hint="Digite um texto"
+       android:id="@+id/editTextNome"
+
+        />
+
+
+   <EditText
+
+       android:layout_width="wrap_content"
+
+       android:layout_height="wrap_content"
+
+       android:hint="digite seu telefone"
+
+       android:id="@+id/editTextTelefone"
 
        />
 
@@ -45,13 +54,13 @@
 
            android:layout_height="wrap_content"
 
-           android:text="S"
+           android:layout_weight="1"
 
-           android:id="@+id/buttonS"
+           android:text="SAVE"
 
            android:onClick="clicar"
 
-           android:layout_weight="1"/>
+           android:id="@+id/buttonS"/>
 
 
        <Button
@@ -60,13 +69,29 @@
 
            android:layout_height="wrap_content"
 
-           android:text="E"
+           android:layout_weight="1"
 
-           android:id="@+id/buttonE"
+           android:text="LIST"
 
            android:onClick="clicar"
 
-           android:layout_weight="1"/>
+           android:id="@+id/buttonL"/>
+
+
+       <Button
+
+           android:layout_width="0dp"
+
+           android:layout_height="wrap_content"
+
+           android:layout_weight="1"
+
+           android:text="DELETE"
+
+           android:onClick="clicar"
+
+           android:id="@+id/buttonD"/>
+
 
 
    </LinearLayout>
