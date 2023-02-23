@@ -5,3 +5,20 @@ Disponível em: https://developer.android.com/training/data-storage?hl=pt-br. Ac
 
 Exemplos práticos (Armazenamento interno):
 
+- link:um/activity_main.xml[activity_main]
+
+- link:um/MainActivity.java[MainActivity]
+
+- link:um/activity_segunda.xml[activity_segunda]
+
+- link:um/SegundaActivity.java[SegundaActivity]
+
+Exemplos práticos (Armazenamento externo):
+
+- link:dois/activity_main.xml[activity_main]
+
+- link:dois/MainActivity.java[MainActivity]
+
+- link:dois/activity_segunda.xml[activity_segunda]
+
+- link:dois/SegundaActivity.java[SegundaActivity]
