@@ -5,6 +5,10 @@ em: https://developer.android.com/guide/topics/ui/layout/cardview?hl=pt-br. Aces
 
 Exemplos práticos:
 
+- link:um/main_activity.xml[main_activity]
+
+- link:um/MainActivity.java[MainActivity]
+
 
 = Recycler View
 
