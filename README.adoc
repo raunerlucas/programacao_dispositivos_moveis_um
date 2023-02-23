@@ -39,3 +39,4 @@ Material de apoio com fins didáticos voltado para o aprendizado em programaçã
 
 12. link:aula_doze/[Armazenamento em Banco de Dados - SQLite]
 
+13. link:aula_treze[CARD VIEW]
