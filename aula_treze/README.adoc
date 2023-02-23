@@ -1,0 +1,10 @@
+= CARD VIEW
+
+Permite que a construção do layout baseado em cartões. Para mais detalhes sobre Card View: GOOGLE DEVELOPERS. Criar um layout baseado em cards. Disponível
+em: https://developer.android.com/guide/topics/ui/layout/cardview?hl=pt-br. Acesso: 22 de fev. 2023.
+
+Exemplos práticos:
+
+
+
+
