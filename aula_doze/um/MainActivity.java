@@ -1,86 +1,198 @@
+import androidx.appcompat.app.AppCompatActivity;
+
+
+import android.content.Context;
+
+import android.content.Intent;
+
+import android.database.sqlite.SQLiteOpenHelper;
+
+import android.os.Bundle;
+
+import android.view.View;
+
+import android.widget.Button;
+
+import android.widget.EditText;
+
+import android.widget.Toast;
+
+
+import java.util.ArrayList;
+
+
 public class MainActivity extends AppCompatActivity {
 
-   private EditText editTextNome;
+   private EditText editTextNome, editTextTelefone;
 
-   private Button buttonS, buttonE;
+   private Button buttonS, buttonD, buttonL;
 
-
-  @Override
-
-protected void onCreate(Bundle savedInstanceState) {
-
-   super.onCreate(savedInstanceState);
-
-   setContentView(R.layout.activity_main);
-
-   editTextNome = findViewById(R.id.editTextTexto);
-
-   buttonS = findViewById(R.id.buttonS);
-
-   buttonE = findViewById(R.id.buttonE);
+   private Pessoa p;
 
 
-   Intent  i = getIntent();  
+   private static Banco helper;
 
-   editTextNome.setText(i.getStringExtra("texto"));  //obter os dados quando a segunda activity passar os dados para esta.
 
-}//onCreate
-  
-  public void clicar(View v){
+   @Override
 
-   FileOutputStream fos = null;
+   protected void onCreate(Bundle savedInstanceState) {
 
-   if(v.getId() == R.id.buttonS){
+       super.onCreate(savedInstanceState);
 
-       String conteudo = editTextNome.getText().toString();   //obter o dado digitado no campo de entrada
+       setContentView(R.layout.activity_main);
 
-       try {
+       editTextNome = findViewById(R.id.editTextNome);
 
-           fos = openFileOutput("meuArq.txt",
+       editTextTelefone = findViewById(R.id.editTextTelefone);
 
-                   Context.MODE_PRIVATE);  //se o arquivo existir, este será aberto. Caso não exista, este será criado. O arquivo é exclusivo do aplicativo.
+       buttonS= findViewById(R.id.buttonS);
 
-           fos.write(conteudo.getBytes());  //escreve no arquivo
+       buttonL= findViewById(R.id.buttonL);
 
-           fos.close();  //sempre que o arquivo for aberto, este deverá ser fechado.
+       buttonD= findViewById(R.id.buttonD);
 
-           Toast.makeText(getApplicationContext(),"Salvo",
 
-                   Toast.LENGTH_SHORT).show();
+       p= (Pessoa) getIntent().getSerializableExtra("dado");
 
-           editTextNome.setText("");
+       if(p!=null){
 
-           Intent i = new Intent(getApplicationContext(),Activity2.class); 
+           editTextNome.setText(p.getNome());
 
-           startActivity(i);   //abrir a segunda tela
-
-       } catch (FileNotFoundException e) {
-
-           e.printStackTrace();
-
-           Log.e("erro1","arquivo não encontrado");
-
-       } catch (IOException e) {
-
-           e.printStackTrace();
-
-           Log.e("erro2","não foi possível escrever");
+           editTextTelefone.setText(p.getTelefone());
 
        }
 
-   }//if
+
+   }//onCreate
 
 
-   if(v.getId() == R.id.buttonE){
+   public static SQLiteOpenHelper criarBanco(Context context){
 
-          getApplicationContext().deleteFile("meuArq.txt");  //deletar o arquivo
+       if(helper==null){
 
-          editTextNome.setText("");
+           helper = new Banco(context);
 
-          Toast.makeText(getApplicationContext(),"arquivo excluído",Toast.LENGTH_SHORT).show();
+       }
 
-   }//if
+       return helper;
 
-}//clicar
+   }//
 
-}
+
+   public void clicar(View view) {
+
+       CRUD crud = new CRUD(getApplicationContext());
+
+       switch (view.getId()){
+
+           case R.id.buttonS:
+
+
+               if(p==null){
+
+                   p = new Pessoa();
+
+                   p.setNome(editTextNome.getText().toString());
+
+                   p.setTelefone(editTextTelefone.getText().toString());
+
+                   long retorno = crud.adicionar(p);
+
+                   if(retorno!=-1){
+
+                       Toast.makeText(MainActivity.this,"salvo", Toast.LENGTH_SHORT).show();
+
+                       p=null;
+
+                       editTextNome.setText("");
+
+                       editTextTelefone.setText("");
+
+                   }else{
+
+                       Toast.makeText(MainActivity.this,"não salvo", Toast.LENGTH_SHORT).show();
+
+                   }
+
+               }else{
+
+                   p.setNome(editTextNome.getText().toString());
+
+                   p.setTelefone(editTextTelefone.getText().toString());
+
+                   int retorno = crud.atualizar(p);
+
+                   if(retorno!=0){
+
+                       Toast.makeText(MainActivity.this,"salvo", Toast.LENGTH_SHORT).show();
+
+                   }else{
+
+                       Toast.makeText(MainActivity.this,"não salvo", Toast.LENGTH_SHORT).show();
+
+                   }
+
+               }
+
+               break;
+
+
+           case R.id.buttonL:
+
+               ArrayList<Pessoa> dados = crud.listar();
+
+               if(dados!=null){
+
+                   Intent it =new Intent(MainActivity.this,
+
+                           Activity2.class);
+
+                   it.putExtra("dados",dados);
+
+                   startActivity(it);
+
+                   finish();
+
+               }//if
+
+               else{
+
+                   Toast.makeText(MainActivity.this,"sem dados",
+
+                           Toast.LENGTH_SHORT).show();
+
+               }
+
+               break;
+
+
+           case R.id.buttonD:
+
+               int retorno = crud.excluir(p);
+
+               if(retorno>0){
+
+                   Toast.makeText(MainActivity.this,"dados deletados",
+
+                           Toast.LENGTH_SHORT).show();
+
+                   editTextNome.setText("");
+
+                   editTextTelefone.setText("");
+
+               }else{
+
+                   Toast.makeText(MainActivity.this,"erro ao deletar",
+
+                           Toast.LENGTH_SHORT).show();
+
+               }
+
+               break;
+
+
+       }//switch
+
+   }//clicar
+
+}//class
