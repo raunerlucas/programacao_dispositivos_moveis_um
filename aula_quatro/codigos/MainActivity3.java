@@ -44,7 +44,7 @@ public class MainActivity3 extends AppCompatActivity
         public void onItemClick(AdapterView<?> arg0,
                                 View arg1, int arg2, long arg3)
         {
-            ItemLista item = meuAdapter.getItem(arg2);
+            ItemLista item = arg0.getItemAtPosition(arg2);
 
             Toast.makeText(this, "Você Clicou em: "
                             + item.getDados(),
