@@ -39,7 +39,7 @@ public class MeuAdapter extends BaseAdapter {
         view = inflater.inflate(R.layout.item_lista, null);
 
         TextView texto = (TextView) view.findViewById(R.id.texto);
-        texto.setText(item.getImagem());
+        texto.setText(item.getDados());
 
         ImageView imagem = (ImageView)view.findViewById(R.id.imagem);
         imagem.setImageResource(item.getImagem());
