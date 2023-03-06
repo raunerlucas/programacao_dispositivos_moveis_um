@@ -26,25 +26,25 @@ Exemplos práticos
 
 - Inicialmente deve-se alterar no arquivo Theme.xml a seguinte tag:  <style name="Theme.ExemploAppBar_01" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
-- link:aula_cinco/codigos/activity_main.xml[activity_main]
+- link:codigos/activity_main.xml[activity_main]
 
-- link:aula_cinco/codigos/MainActivity.java[MainActivity.java]
+- link:codigos/MainActivity.java[MainActivity.java]
 
-- link:aula_cinco/codigos/meu_toolbar.xml[meu_toolbar]
+- link:codigos/meu_toolbar.xml[meu_toolbar]
 
-- link:aula_cinco/codigos/menu_toolbar.xml[menu_toolbar]
+- link:codigos/menu_toolbar.xml[menu_toolbar]
 
-- link:aula_cinco/codigos/JavaActivity.java[JavaActivity]
+- link:codigos/JavaActivity.java[JavaActivity]
 
-- link:aula_cinco/codigos/activity_java.xml[activity_java]
+- link:codigos/activity_java.xml[activity_java]
 
-- link:aula_cinco/codigos/PhpActivity.java[PhpActivity]
+- link:codigos/PhpActivity.java[PhpActivity]
 
-- link:aula_cinco/codigos/activity_php.xml[activity_php]
+- link:codigos/activity_php.xml[activity_php]
 
-- link:aula_cinco/codigos/CActivity.java[CActivity]
+- link:codigos/CActivity.java[CActivity]
 
-- link:aula_cinco/codigos/activity_c.xml[activity_c]
+- link:codigos/activity_c.xml[activity_c]
 
 
 
