@@ -100,6 +100,7 @@ Métodos dos ciclos de vida:
 - link:codigos/onResume.java[onResume]
 - link:codigos/onPause.java[onPause]
 - link:codigos/onStop.java[onStop]
+- link:códigos/onRestart.java[onRestart]
 - link:codigos/onDestroy.java[onDestroy]
 
 
