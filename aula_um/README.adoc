@@ -30,12 +30,12 @@ Para maiores informações sobre as novidades no Android Studio, acesse: o canal
 
 O Android é um sistema operacional criado em camadas bem definidas e com funcionalidades específicas. As camadas são denominadas em:
 
-1. Kernel do linux;
-2. Camada de abstração de hardware;
-3. Android Runtime;
-4. Bibliotecas C/C++ nativas:
-5. Estrutura Java API;
-6. Aplicativos do sistema.
+1. Kernel do linux: segurança, sólidez, ampla documentação. Os fabricantes dos aparelhos podem criar drives para um sistema amplamente conhecido. São aproveitados o gerenciamento de memória e processos do Linux;
+2. Camada de abstração de hardware: bibliotecas que implementam interfaces que permitem a comunicação do hardware com APIs de alto nível;
+3. Android Runtime: máquina virtual executa o arquivo DEX (bytecodes);
+4. Bibliotecas C/C++ nativas: alguns componentes usam bibliotecas nativas;
+5. Estrutura Java API: fornecem os recursos que possibilitam a criação dos aplicativos;
+6. Aplicativos do sistema: Gmail, contatos, navegadores e os criados por você.
 
 - Referência: Google Developers. Arquitetura da Plataforma. Disponível em: https://developer.android.com/guide/platform?hl=pt-br. Acesso em:30 de jan. 2023.
 
