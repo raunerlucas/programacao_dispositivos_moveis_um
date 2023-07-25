@@ -35,7 +35,7 @@ O Android é um sistema operacional criado em camadas bem definidas e com funcio
 3. Android Runtime: máquina virtual executa o arquivo DEX (bytecodes);
 4. Bibliotecas C/C++ nativas: alguns componentes usam bibliotecas nativas;
 5. Estrutura Java API: fornecem os recursos que possibilitam a criação dos aplicativos;
-6. Aplicativos do sistema: Gmail, contatos, navegadores e os criados por você.
+6. Aplicativos do sistema: Gmail, contatos, navegadores e outros.
 
 - Referência: Google Developers. Arquitetura da Plataforma. Disponível em: https://developer.android.com/guide/platform?hl=pt-br. Acesso em:30 de jan. 2023.
 
@@ -63,7 +63,7 @@ Quando cria-se um novo projeto através da IDE, muitos arquivos e diretórios s�
 
 Atualmente o sistema Android encontra-se na versão 13 (nível 33 em relação à API). Para mais detalhes sobre a API e novidades, acessem os links: https://developer.android.com/about/versions/13?hl=pt-br e  https://medium.com/androiddevelopers/now-in-android-74-886a95404e8b. Acesso em:30 de jan. 2023. Para ver mais detalhes sobre as diferenças entre as APIs 32 e 33, acesse o link: https://developer.android.com/sdk/api_diff/33/changes. Acesso em:30 de jan. 2023.
 
-Versões anteriores ao Android 13:
+Algumas versões anteriores ao Android 13:
 
  - Android 4.4 Kit Kat;
  - Android 5 Lollipop;
