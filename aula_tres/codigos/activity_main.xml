@@ -1,86 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-
+    android:orientation="vertical" tools:context=".MainActivity">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/cardapio"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <TableLayout
-        android:layout_width="match_parent"
+        android:text="@string/card_pio"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+    <TableLayout android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <TableRow
-            android:layout_width="match_parent"
+        <TableRow android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/imageViewCafe"
+            <ImageView android:id="@+id/imageCafe"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="click"
-                android:src="@drawable/chicara" />
-
-            <ImageView
-                android:id="@+id/imageViewBolo"
+                android:onClick="escolher"
+                android:src="@drawable/xicara_de_cafe"/>
+            <ImageView android:id="@+id/imageBolo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="click"
-                android:src="@drawable/bolo" />
-
-
+                android:onClick="escolher"
+                android:src="@drawable/bolo"/>
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="0dp"
+            <TextView android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/purple_200"
+                android:background="@color/ciano50"
                 android:gravity="center"
-                android:text="Café"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <TextView
-                android:layout_width="0dp"
+                android:text="@string/caf"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+            <TextView android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/purple_200"
+                android:background="@color/amarelo50"
                 android:gravity="center"
-                android:text="Bolo"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                android:text="@string/bolo"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
         </TableRow>
-        <LinearLayout
-            android:layout_width="match_parent"
+        <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
-            <Button
-                android:id="@+id/buttonCalcular"
+            <Button android:id="@+id/btCalcular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="click"
-                android:text="Calcular" />
-
-            <TextView
-                android:layout_width="match_parent"
+                android:onClick="escolher"
+                android:text="Calcular"/>
+            <TextView android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewResultado"/>
         </LinearLayout>
     </TableLayout>
 </LinearLayout>
+
+   
