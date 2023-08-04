@@ -1,4 +1,4 @@
-package com.example.applanchonete;
+package com.example.app_lanchonete;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,10 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.android.material.textfield.TextInputEditText;
-
 public class ActivityCafe extends AppCompatActivity {
-    private TextInputEditText editTextNumber;
+    private EditText editTextQuantidadeCafe;
     private Button buttonCafe;
     private Double valores;
 
@@ -20,7 +18,7 @@ public class ActivityCafe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cafe);
 
-        editTextNumber = findViewById(R.id.textInputUnidade);
+        editTextQuantidadeCafe = findViewById(R.id.editTextQuantidadeCafe);
         buttonCafe = findViewById(R.id.buttonCafe);
         Intent intent = getIntent();
         if (intent != null){
@@ -29,7 +27,7 @@ public class ActivityCafe extends AppCompatActivity {
     }
 
     public void clicar(View view){
-        int unidade = Integer.parseInt(editTextNumber.getText().toString());
+        int unidade = Integer.parseInt(editTextQuantidadeCafe.getText().toString());
         double total = (unidade * 2.50);
         Intent intent  = new Intent(getApplicationContext(), MainActivity.class);
         valores = valores + total;
