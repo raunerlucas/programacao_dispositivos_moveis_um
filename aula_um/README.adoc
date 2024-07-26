@@ -15,8 +15,8 @@
 
 Para verificar ou instalar o OpenJDK, acesse os links disponibilizados a seguir:
 
-- OPENJDK. How to download and install prebuilt OpenJDK packages. Disponível em: https://openjdk.java.net/install/. Acesso em:30 de jan. 2023.
-- ORACLE. Como posso definir ou alterar a variável do sistema PATH? Disponível em: https://www.java.com/pt_BR/download/help/path.xml. Acesso em:30 de jan. 2023.
+- OPENJDK. How to download and install prebuilt OpenJDK packages. Disponível em: https://openjdk.java.net/install/. Acesso em: 26 de jul. 2024.
+- ORACLE. Como posso definir ou alterar a variável do sistema PATH? Disponível em: https://www.java.com/pt_BR/download/help/path.xml. Acesso em: 26 de jul. 2023.
 
 == Instalação da IDE
 
