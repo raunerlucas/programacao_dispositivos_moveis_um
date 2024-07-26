@@ -109,6 +109,12 @@ Métodos dos ciclos de vida:
 - link:codigos/onStop.java[onStop]
 - link:codigos/onDestroy.java[onDestroy]
 
+Exemplo prático:
+
+- link:codigos/MainActivity.java[MainActivity]
+- link:codigos/activity_main.xml[activity_main]
+- link:codigos/Activity2.java[Activity2]
+- link:codigos/activity_2.xml[activity_2]
 
 
 
