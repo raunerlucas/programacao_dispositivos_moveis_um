@@ -98,7 +98,7 @@ Figura 2
 
 image::ciclo_vida.jpg[]
 
-- Referência da figura 2: GOOGLE DEVELOPERS. Entenda o ciclo de vida da atividade. Disponível em: https://developer.android.com/guide/components/activities/activity-lifecycle?hl=pt-br. Acesso em:30 de jan. 2023.
+- Referência da figura 2: GOOGLE DEVELOPERS. Entenda o ciclo de vida da atividade. Disponível em: https://developer.android.com/guide/components/activities/activity-lifecycle?hl=pt-br. Acesso em: 26 de jul. 2024.
 
 Métodos dos ciclos de vida:
 
