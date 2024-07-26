@@ -33,17 +33,17 @@ O Android é um sistema operacional criado em camadas bem definidas e com funcio
 1. Kernel do linux: segurança, sólidez, ampla documentação. Os fabricantes dos aparelhos podem criar drives para um sistema amplamente conhecido. São aproveitados o gerenciamento de memória e processos do Linux;
 2. Camada de abstração de hardware: bibliotecas que implementam interfaces que permitem a comunicação do hardware com APIs de alto nível;
 3. Android Runtime: máquina virtual executa o arquivo DEX (bytecodes);
-4. Bibliotecas C/C++ nativas: alguns componentes usam bibliotecas nativas;
-5. Estrutura Java API: fornecem os recursos que possibilitam a criação dos aplicativos;
-6. Aplicativos do sistema: Gmail, contatos, navegadores e outros.
+4. Bibliotecas C/C++ nativas: alguns componentes usam bibliotecas nativas, como a SQLite;
+5. Estrutura Java API: fornecem os recursos que possibilitam a criação dos aplicativos. Activity, Service, Content Provider, Broadcast Receiver são exemplos desses recursos;
+6. Aplicativos do sistema: Gmail, contatos, navegadores e outros. É a parte mais visível para o usuário. Os aplicativos podem ser desenvolvidos nativamente (para o sistema Android) e podem também ser desenvolvidos baseados na arquitetura web.
 
-- Referência: Google Developers. Arquitetura da Plataforma. Disponível em: https://developer.android.com/guide/platform?hl=pt-br. Acesso em:30 de jan. 2023.
+- Referência: Google Developers. Arquitetura da Plataforma. Disponível em: https://developer.android.com/guide/platform?hl=pt-br. Acesso em: 26 de jul. 2024.
 
 == Uso do Emulador
 
 Após desenvolver um aplicativo, você pode testá-lo em seu próprio celular, mas caso não tenha um celular com sistema Android, você pode usar um emulador. Para criar um emulador na IDE, acesse o link disponibilizado: 
 
-- GOOGLE DEVELOPERS. Criar e gerenciar dispositivos virtuais. Disponível em: https://developer.android.com/studio/run/managing-avds?hl=pt-br. Acesso em:30 de jan. 2023.
+- GOOGLE DEVELOPERS. Criar e gerenciar dispositivos virtuais. Disponível em: https://developer.android.com/studio/run/managing-avds?hl=pt-br. Acesso em: 26 de jul. 2024.
 
 == Estrutura do Projeto na IDE
 
@@ -57,11 +57,11 @@ Quando cria-se um novo projeto através da IDE, muitos arquivos e diretórios s�
 - diretório gradle;
 - e outros.
 
-É importante entender esses arquivos e diretórios criados. Por exemplo, o arquivo AndroidManifest.xml contém informações relevantes para o aplicativo, neste são definidos o nome totalmente qualificado do projeto, a definição da atividade principal e as secundárias, permissões que serão usadas, definição do tema e outras configurações. Já no arquivo build.gradle são definidos a versão do Android (mínima e a alvo), adição de outros repositórios providos de terceiros e outras configurações.
+É importante entender esses arquivos e diretórios criados. Por exemplo, o arquivo AndroidManifest.xml contém informações relevantes para o aplicativo, neste são definidos o nome totalmente qualificado do projeto, a definição da atividade principal e as secundárias, permissões que serão usadas, definição do tema e outras configurações. Já no arquivo build.gradle são definidos a versão do Android (mínima e a alvo), adição de outras bibliotecas providas de terceiros e outras configurações.
 
 == Versões do Android
 
-Atualmente o sistema Android encontra-se na versão 13 (nível 33 em relação à API). Para mais detalhes sobre a API e novidades, acessem os links: https://developer.android.com/about/versions/13?hl=pt-br e  https://medium.com/androiddevelopers/now-in-android-74-886a95404e8b. Acesso em:30 de jan. 2023. Para ver mais detalhes sobre as diferenças entre as APIs 32 e 33, acesse o link: https://developer.android.com/sdk/api_diff/33/changes. Acesso em:30 de jan. 2023.
+Atualmente o sistema Android encontra-se na versão 13 (nível 33 em relação à API). Para mais detalhes sobre a API e novidades, acessem os links: https://developer.android.com/about/versions/13?hl=pt-br e  https://medium.com/androiddevelopers/now-in-android-74-886a95404e8b. Acesso em: 26 de jul. 2024. Para ver mais detalhes sobre as diferenças entre as APIs 32 e 33, acesse o link: https://developer.android.com/sdk/api_diff/33/changes. Acesso em: 26 de jul. 2024.
 
 Algumas versões anteriores ao Android 13:
 
@@ -81,7 +81,14 @@ Figura 1
 
 image::distribuicao_versoes.png[]
 
-- Referência da imagem: https://androiddistribution.io/#/. Acesso em:30 de jan. 2023.
+- Referência da imagem: https://androiddistribution.io/#/. Acesso em: 26 de jul. 2024.
+
+== Componentes Relevantes Usados na Implementação de Aplicativos
+
+- Activity: é ponto de entrada do usuário com o aplicativo. Representa a tela do aplicativo;
+- Service: permite tarefas serem executadas em segunda plano (background), sem interface com o usuário. Mesmo após o encerramento do app, a tarefa continua em execução;
+- Content Provider: permite acesso aos dados de um app, por exemplo, um banco de dados com outros apps;
+- Broadcast Receiver: recebe e responde a eventos/mensagens do sistema ou de outros apps.
 
 == Activity
 
