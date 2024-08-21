@@ -15,6 +15,13 @@
 
 A List View é um grupo de views cujo objetivo é apresentar itens no sentido vertical, ou seja um embaixo do outro. Cada item é uma view. As listas podem ser simples e personalizadas. O componente ListView não consegue acessar os dados a serem mostrados diretamente. Para esse propósito, é necessário usar um Adapter. Dessa forma, é usado um ListAdapter, que implementa as funcionalidades da interface Adapter, esta classe tem acesso direto aos dados a serem visualizados. Se for usado uma lista simples, basta usar a estrutura pronta que o Android fornece, mas na lista personalizada é necessário usar um Adaptar específico para dar suporte aos dados que serão mostrados.
 
+ListView é conteiner responsável em exibir as views.
+Adapter tem a função de criar e fornecer as views que são mostradas no ListView. Existem algumas variações:
+
+- ArrayAdapter: Adapter simples que usa uma lista de objetos (ArrayList) para criar views.
+- CursorAdapter: Adapter que pode ser usado com dados retornados de um banco de dados.
+- BaseAdapter: Adapter que permite criar adaptadores personalizados com controle total sobre a criação de views.
+
 Para mais detalhes sobre este componente veja: GOOGLE DEVELOPERS. ListView. Disponível em:  https://developer.android.com/reference/android/widget/ListView. Acesso em: 01 fev.2022.
       
 - Exemplos práticos (lista simples)
