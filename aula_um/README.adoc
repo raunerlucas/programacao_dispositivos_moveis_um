@@ -124,8 +124,7 @@ Bundle funciona como um Map no Java. Trata-se de uma estrutura de dados usada pa
 [source,java]
 protected void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    outState.putString("key_data", "value");
-  
+    outState.putString("key_data", "value");  
 }
 
 - Recuperar o estado da Atividade
@@ -134,14 +133,10 @@ protected void onSaveInstanceState(Bundle outState) {
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
     if (savedInstanceState != null) {
-       
-        String data = savedInstanceState.getString("key_data");
-        
+        String data = savedInstanceState.getString("key_data");     
     }
 }
-
 
 - Passar dados de uma atividade para outra 
 [source,java]
