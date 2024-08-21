@@ -120,14 +120,30 @@ Exemplo prático:
 
 Bundle funciona como um Map no Java. Trata-se de uma estrutura de dados usada para passar informações entre componentes, como Activities, Fragments e Services. Serve também para armazenar o estado de uma Activity quando ocorre mudanças de configuração (por exemplo, rotação de tela). Quando ocorre a rotação de tela, a atividade é destruída e construída novamente. Dessa forma, o Bundle pode ser usado para salvar e recuperar alguma informação importante.
 
-//para salvar o estado da Atividade
+- Salvar o estado da Atividade
+[source,java]
+protected void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    outState.putString("key_data", "value");
+  
+}
+
+- Recuperar o estado da Atividade
+[source,java]
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    if (savedInstanceState != null) {
+       
+        String data = savedInstanceState.getString("key_data");
+        
+    }
+}
 
 
-
-//para recuperar o estado da Atividade
-
-
-//para passar dados de uma atividade para outra 
+- Passar dados de uma atividade para outra 
 [source,java]
 Intent intent = new Intent(this, SecondActivity.class);
 Bundle bundle = new Bundle();
