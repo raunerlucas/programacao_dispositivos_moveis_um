@@ -20,7 +20,7 @@ Adapter tem a função de criar e fornecer as views que são mostradas no ListVi
 
 - ArrayAdapter: Adapter simples que usa uma lista de objetos (ArrayList) para criar views.
 - CursorAdapter: Adapter que pode ser usado com dados retornados de um banco de dados.
-- BaseAdapter: Adapter que permite criar adaptadores personalizados com controle total sobre a criação de views.
+- BaseAdapter: Adapter que permite criar adaptadores personalizados para criar views personalizadas.
 
 Para mais detalhes sobre este componente veja: GOOGLE DEVELOPERS. ListView. Disponível em:  https://developer.android.com/reference/android/widget/ListView. Acesso em: 01 fev.2022.
       
