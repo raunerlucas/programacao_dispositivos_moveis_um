@@ -19,7 +19,7 @@ A figura 1 mostra as posições dos elementos quando usa-se o linear layout com 
 
 Figura 1
 
-image::linear_vertical.png[width=80,height=80]
+image::linear_vertical.png[width=100,height=80]
 
 A figura 2 mostra as posições dos elementos quando usa-se o linear layout com orientação horizontal.
 
