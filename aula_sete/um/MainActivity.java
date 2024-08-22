@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            //adapterView refere-se ao spinner
+            //view refere-se ao item do spinner. Cada item no spinner é uma view.
+            //i o índice da lista de dados
+            //l ID exclusivo do item que geralmente é o mesmo índice.
         int item = Integer.parseInt(idades[i]);
         e = new Estudante(editTextNome.getText().toString(),
                 obterSituacao(),
@@ -103,6 +107,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
+        //acionado quando o spinner é limpo ou  a seleção é removida.
     }
 }
