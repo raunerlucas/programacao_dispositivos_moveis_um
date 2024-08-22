@@ -37,7 +37,7 @@ O Android é um sistema operacional criado em camadas bem definidas e com funcio
 5. Estrutura Java API: fornecem os recursos que possibilitam a criação dos aplicativos. Activity, Service, Content Provider, Broadcast Receiver são exemplos desses recursos;
 6. Aplicativos do sistema: Gmail, contatos, navegadores e outros. É a parte mais visível para o usuário. Os aplicativos podem ser desenvolvidos nativamente (para o sistema Android) e podem também ser desenvolvidos baseados na arquitetura web.
 
-- Referência: Google Developers. Arquitetura da Plataforma. Disponível em: https://developer.android.com/guide/platform?hl=pt-br. Acesso em: 26 de jul. 2024.
+- Referência: GOOGLE DEVELOPERS. Arquitetura da Plataforma. Disponível em: https://developer.android.com/guide/platform?hl=pt-br. Acesso em: 26 de jul. 2024.
 
 == Uso do Emulador
 
