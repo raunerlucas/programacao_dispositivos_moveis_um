@@ -59,6 +59,15 @@ Quando cria-se um novo projeto através da IDE, muitos arquivos e diretórios s�
 
 É importante entender esses arquivos e diretórios criados. Por exemplo, o arquivo AndroidManifest.xml contém informações relevantes para o aplicativo, neste são definidos o nome totalmente qualificado do projeto, a definição da atividade principal e as secundárias, permissões que serão usadas, definição do tema e outras configurações. Já no arquivo build.gradle são definidos a versão do Android (mínima e a alvo), adição de outras bibliotecas providas de terceiros e outras configurações.
 
+== Do Desenvolvimento até a Execução
+
+- Inicialmente o programador escreve o código-fonte em Java;
+- O arquivo é compilado para o formato .class e depois convertido para o formato .dex;
+- Para a distribuição do app é usado um arquivo APK, que consiste no empacotamento do arquivo .dex com os arquivos de layouts, imagens, sons, metadados, etc;
+- 
+
+Referência: GOOGLE DEVELOPERS. Fundamentos  de aplicativos. Disponível em: https://developer.android.com/guide/components/fundamentals?hl=pt-br
+
 == Versões do Android
 
 Atualmente o sistema Android encontra-se na versão 13 (nível 33 em relação à API). Para mais detalhes sobre a API e novidades, acessem os links: https://developer.android.com/about/versions/13?hl=pt-br e  https://medium.com/androiddevelopers/now-in-android-74-886a95404e8b. Acesso em: 26 de jul. 2024. Para ver mais detalhes sobre as diferenças entre as APIs 32 e 33, acesse o link: https://developer.android.com/sdk/api_diff/33/changes. Acesso em: 26 de jul. 2024.
