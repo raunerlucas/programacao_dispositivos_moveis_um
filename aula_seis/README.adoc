@@ -60,19 +60,13 @@ Exemplos práticos (AlertDialog with multiple choice)
 Para ter uma lista com única escolha basta trocar o método setMultiChoiceItems pelo método setSingleChoiceItems.
 
 Veja o exemplo:
-
+[source,java]
  .setSingleChoiceItems(R.array.array_semana, 0, new DialogInterface.OnClickListener() {
-
                    @Override
-
                    public void onClick(DialogInterface dialogInterface, int i) {
-
                        Toast.makeText(getActivity().getApplicationContext(),
-
                                recuperarItem(i), Toast.LENGTH_SHORT).show();
-
                    }
-
                });
                
 
