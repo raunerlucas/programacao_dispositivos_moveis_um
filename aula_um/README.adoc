@@ -155,7 +155,8 @@ Métodos dos ciclos de vida:
         super.onDestroy();
         Toast.makeText(getApplicationContext(), "OnDestroy", Toast.LENGTH_SHORT).show();
     }
-Exemplo prático:
+
+- Exemplo prático:
 
 - MainActivity.java
 [source,java]
@@ -244,14 +245,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 public class Activity2 extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
-
     }
 }
+
 - activity_2.xml
 [source.xml]
 <?xml version="1.0" encoding="utf-8"?>
