@@ -11,7 +11,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 public class MyDialogFragment extends DialogFragment {
-
+// O uso do fragmento ajuda a evitar problemas com as caixas de diálogos, como a perda do estado do diálogo durante rotações de tela.
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -41,6 +41,14 @@ public class MyDialogFragment extends DialogFragment {
                                 "Aproveite o dia!!", Toast.LENGTH_SHORT).show();
                     }
                 });
-        return builder.create();
+        AlertDialog dialog = builder.create();
+//onDismiss não pertence ao ciclo de vida do DialogFragment, mas pode ser usado quando o diálogo for fechado pelo usuário.
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                Toast.makeText(getActivity().getApplicationContext(), "Encerrando o diálogo", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return dialog;
     }//onCreateDialog
 }//class
