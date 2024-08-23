@@ -6,8 +6,218 @@ que permite criar um grupo mutualmente exclusivo de opções.
 
 Exemplos práticos
 
-- link:um/activity_main.xml[activity_main]
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Digite seu nome"
+        android:id="@+id/editTextNome"
+        android:padding="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Situação no curso:"
+        android:padding="10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/radioGroupSituacao"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regular"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:id="@+id/radioButtonR"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="Irregular"
+            android:id="@+id/radioButtonI"/>
+    </RadioGroup>
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/purple_200"
+        android:id="@+id/spinner"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CLIQUE"
+        android:onClick="clicar"
+        android:background="@color/teal_700"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:id="@+id/button"/>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="false"
+        android:max="100"
+        android:padding="10dp"
+        android:progress="0"
+        android:visibility="invisible" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/textViewResultado"
+        android:text=""/>
+</LinearLayout>
 
-- link:um/MainActivity.java[MainActivity]
+- link:um/MainActivity.java
+[MainActivity]
+package com.example.appprogressbar_spinner_radio;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.TextView;
+public class MainActivity extends AppCompatActivity
+        implements AdapterView.OnItemSelectedListener {
+    private EditText editTextNome;
+    private RadioButton radioButtonR, radioButtonI;
+    private Button button;
+    private Spinner spinner;
+    private ArrayAdapter<String> adapter;
+    private String idades[] = {"20","30","40","50","60","70","80","90","100"};
+    private ProgressBar progressBar;
+    private TextView textViewResultado;
+    private Estudante e;
+    private int i;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        editTextNome=findViewById(R.id.editTextNome);
+        radioButtonR=findViewById(R.id.radioButtonR);
+        radioButtonI=findViewById(R.id.radioButtonI);
+        button=findViewById(R.id.button);
+        spinner=findViewById(R.id.spinner);
+        adapter=new ArrayAdapter<String>(getApplicationContext(),
+                android.R.layout.simple_list_item_1,idades);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+        progressBar=findViewById(R.id.progressBar);
+        textViewResultado=findViewById(R.id.textViewResultado);
+    }
+    private void executarProgressBar(){
+        final Handler handler =  new Handler();
+        progressBar.setVisibility(View.VISIBLE);
+        i = progressBar.getProgress();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(i<100){
+                    i = i+10;
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setProgress(i);
+                            if(i>=100){
+                                textViewResultado.setText(e.toString());
+                            }//if
+                        }//run
+                    });
+                    try{
+                        Thread.sleep(2000);
+                    }catch (InterruptedException e){
+                        System.out.println(e.getMessage());
+                    }
+                }
+            }//run
+        }).start();
+    }//
+    private String obterSituacao(){
+        String s="";
+        if(radioButtonR.isChecked()){
+            s="regular";
+        }
+        if(radioButtonI.isChecked()){
+            s="irregular";
+        }
+        return s;
+    }//
+    public void clicar(View v){
+        if(e!=null){
+            executarProgressBar();
+        }
+    }//
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            //adapterView refere-se ao spinner
+            //view refere-se ao item do spinner. Cada item no spinner é uma view.
+            //i o índice da lista de dados
+            //l ID exclusivo do item que geralmente é o mesmo índice.
+        int item = Integer.parseInt(idades[i]);
+        e = new Estudante(editTextNome.getText().toString(),
+                obterSituacao(),
+                item);
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        //acionado quando o spinner é limpo ou  a seleção é removida.
+    }
+}
 
-- link:um/Estudante.java[Estudante]
+- Estudante.java
+[source,java]
+package com.example.appprogressbar_spinner_radio;
+public class Estudante {
+    private String nome,situacao;
+    private int idade;
+    public Estudante() {
+    }
+    public Estudante(String nome, String situacao, int idade) {
+        this.nome = nome;
+        this.situacao = situacao;
+        this.idade = idade;
+    }
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public String getSituacao() {
+        return situacao;
+    }
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+    public int getIdade() {
+        return idade;
+    }
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+    @Override
+    public String toString() {
+        return "Estudante{" +
+                "nome='" + nome + '\'' +
+                ", situacao='" + situacao + '\'' +
+                ", idade=" + idade +
+                '}';
+    }
+}
