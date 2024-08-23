@@ -24,19 +24,347 @@ Adapter tem a função de criar e fornecer as views que são mostradas no ListVi
 
 Para mais detalhes sobre este componente veja: GOOGLE DEVELOPERS. ListView. Disponível em:  https://developer.android.com/reference/android/widget/ListView. Acesso em: 01 fev.2022.
       
-- Exemplos práticos (lista simples)
+Exemplos práticos (lista simples)
 
-- link:codigos/MainActivity.java[MainActivity]
-- link:codigos/activity_main.xml[activity_main]
-- link:codigos/Activity2.java[Activity2]
-- link:codigos/activity_2.xml[activity_2]
+- MainActivity.java
+[source,java]
+package com.example.app_listasimples;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+import java.util.ArrayList;
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
+    private ListView listViewLinguagens;
+    private ArrayList<String> listaDados;
+    private ArrayAdapter adapter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        listViewLinguagens = findViewById(R.id.listaLinguagens);
+        preencherLista();
+        preencherAdapter();
+        listViewLinguagens.setAdapter(adapter);
+        listViewLinguagens.setOnItemClickListener(this);
+        listViewLinguagens.setOnItemLongClickListener(this);
+    }
+    private void preencherAdapter() {
+        adapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,listaDados);
+    }
+    private void preencherLista() {
+        listaDados = new ArrayList<>();
+        listaDados.add("C");
+        listaDados.add("JAVA");
+        listaDados.add("KOTLIN");
+        listaDados.add("LUA");
+        listaDados.add("PASCAL");
+        listaDados.add("PYTHON");
+    }
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        String item = adapterView.getItemAtPosition(i).toString();
+        abrirTela(item);
+    }
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+        String linguagem = adapterView.getItemAtPosition(i).toString();
+        Toast.makeText(this, "click Longo "+ linguagem, Toast.LENGTH_SHORT).show();
+        return true;
+    }
+    public void abrirTela(String item){
+        Intent intent;
+        switch (item){
+            case "C":
+                intent= new Intent(getApplicationContext(), Activity2.class);
+                startActivity(intent);
+                break;
+        }
+    }
+}
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10sp"
+    android:paddingRight="10sp"
+    tools:context=".MainActivity">
+  <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Linguagens de programação"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#0C0C0C"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ListView
+        android:id="@+id/listaLinguagens"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+- Activity2.java
+[Activity2,java]
+package com.example.app_listasimples;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.Toast;
+public class Activity2 extends AppCompatActivity {
+    private RadioButton radioButtonGuido,radioButtonDennis,radioButtonNiklaus;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_2);
+        radioButtonGuido = findViewById(R.id.radioButtonGuido);
+        radioButtonDennis = findViewById(R.id.radioButtonDennis);
+        radioButtonNiklaus = findViewById(R.id.radioButtonNiklaus);
+    }
+    public void onRadioButtonClicked(View view){
+        RadioButton radioButton = (RadioButton) view;
+        boolean select = radioButton.isChecked();
+        switch (view.getId()){
+            case R.id.radioButtonDennis:
+                if(select){
+                    Toast.makeText(this, "Acertou", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.radioButtonGuido:
+                if (select){
+                    radioButtonGuido.setText("");
+                }
+                break;
+            case R.id.radioButtonNiklaus:
+                if (select){
+                    radioButtonNiklaus.setText("");
+                }
+                break;
+        }
+    }
+}
+- activity_2.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity2">
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Quem criou a linguagem C ?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#050505"
+        android:textStyle="bold" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RadioButton
+            android:id="@+id/radioButtonGuido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Guido van Rossum" />
+        <RadioButton
+            android:id="@+id/radioButtonDennis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Dennis Ritchie" />
+        <RadioButton
+            android:id="@+id/radioButtonNiklaus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Niklaus Wirth" />
+    </RadioGroup>
+</LinearLayout>
 
-- Exemplos práticos (lista personalizada)
+Exemplos práticos (lista personalizada)
 
-- link:codigos/MainActivity3.java[MainActivity]
-- link:codigos/activity_main3.xml[activity_main]
-- link:codigos/item_lista.xml[item_lista]
-- link:codigos/ItemLista.java[ItemLista]
-- link:codigos/MeuAdapter.java[MeuAdapter]
-
+- MainActivity3.java
+[source,java]
+public class MainActivity3 extends AppCompatActivity
+        implements
+        AdapterView.OnItemClickListener {
+    private ListView listView;
+    private MeuAdapter meuAdapter;
+    private ArrayList<ItemLista> itens;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        listView = (ListView) findViewById(R.id.lista);
+        listView.setOnItemClickListener(this);
+        criarLista();
+    }
+    private void criarLista()
+        {
+            itens = new ArrayList<ItemLista>();
+            ItemLista item1 = new ItemLista("bolo",
+                    R.drawable.bolo);
+            ItemLista item2 = new ItemLista("pão",
+                    R.drawable.pao);
+            ItemLista item3 = new ItemLista("torta",
+                    R.drawable.torta);
+            itens.add(item1);
+            itens.add(item2);
+            itens.add(item3);
+            meuAdapter = new MeuAdapter(this, itens);
+            listView.setAdapter(meuAdapter);
+        }
+        public void onItemClick(AdapterView<?> arg0,
+                                View arg1, int arg2, long arg3)
+        {
+            ItemLista item = arg0.getItemAtPosition(arg2);
+            Toast.makeText(this, "Você Clicou em: "
+                            + item.getDados(),
+                    Toast.LENGTH_LONG).show();
+        }
+}
+- activity_main3.xml
+[source,xml]
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#FFFFFFFF"
+    >
+    <ListView
+        android:id="@+id/lista"
+        android:layout_margin="10dp"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#FFFFFFFF"
+        android:dividerHeight="2sp"
+        />
+</LinearLayout>
+- item_lista.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:padding="10dp">
+        <ImageView
+            android:id="@+id/imagem"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            />
+        <TextView
+            android:id="@+id/texto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5sp"
+            android:gravity="center_vertical"
+            android:textColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            />
+    </LinearLayout>
+</LinearLayout>
+- ItemLista.java
+[source,java]
+package com.example.minhalistacomplexa;
+public class ItemLista {
+    private String dados;
+    private int imagem;
+    public ItemLista()
+    {
+    }
+    public ItemLista(String dados, int imagem)
+    {
+        this.dados = dados;
+        this.imagem = imagem;
+    }
+    public int getImagem()
+    {   
+        return imagem;
+    }
+    public void setImagem(int imagem)
+    {   
+        this.imagem = imagem;
+    }
+    public String getDados()
+    {   
+        return dados;
+    }
+    public void setDados(String dados)
+    {
+        this.dados = dados;
+    }
+}
+- MeuAdapter.java
+[source,java]
+public class MeuAdapter extends BaseAdapter {
+    private LayoutInflater inflater; //LayoutInflater é uma classe cuja responsabilidade é converter o layout XML em objetos View 
+    private ArrayList<ItemLista> itens;
+    public MeuAdapter(Context context,
+                      ArrayList<ItemLista> itens)
+    {
+        this.itens = itens;
+        inflater = LayoutInflater.from(context);
+    }
+    public int getCount() //retorna a quantidade de itens da lista a serem mostradas
+    //o adapter usa esse int para saber quantas vezes o getView()será invocado.
+    {
+        return itens.size();
+    }
+    public ItemLista getItem(int position) //position corresponde a um índice da lista
+    {
+//retorna um item específico da lista que será mostrado.
+        return itens.get(position);
+    }
+    public long getItemId(int position)
+    {
+//retorna um ID único que identifica o item da lista, geralmente corresponde ao índice (position) da lista
+        return position;
+    }
+    public View getView(int position, View view, ViewGroup parent)
+    // position - a posição do item na lista.
+//view - referência de uma view já criada. 
+//parent - o ViewGroup pai ao qual a view será adicionada.
+    {
+  //retorna uma view com as características do layout do item criado.
+        ItemLista item = itens.get(position); 
+        view = inflater.inflate(R.layout.item_lista, null);
+//seta o conteúdo da view com os dados do item da lista.
+        TextView texto = (TextView) view.findViewById(R.id.texto);
+        texto.setText(item.getDados());
+        ImageView imagem = (ImageView)view.findViewById(R.id.imagem);
+        imagem.setImageResource(item.getImagem());
+        return view;
+    }
+}
 
