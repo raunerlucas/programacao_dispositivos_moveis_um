@@ -11,6 +11,19 @@
 //make slides
 //make ebook
 
+== Classe Context
+
+Trata-se de uma classe abstrata. Através dela seu app tem acesso aos recursos de layouts, imagens, strings, SharedPreferences, banco de dados, Services, BroadcastReceiver, etc.
+Alguns tipos de contexto: 
+- ApplicationContext: representa o contexto global do app, escopo de vida a nível de app;
+- ActivityContext: associado a uma atividade específica, escopo de vida a nível de atividade, usado para acessar recursos específicos da atividade como views, exibir caixas de diálogo.
+
+Application (classe base para manter o estado global do app) é um Context;
+Activity é um Context;
+Service é um Context.
+
+- Referência: STACK OVER FLOW. O que é um context no Android. Disponível em: https://pt.stackoverflow.com/questions/38853/o-que-%C3%A9-um-context-no-android. Pergunta realizada pelo usuário <https://pt.stackoverflow.com/users/6699/felipe-rce> e respondida pelo usuário <https://pt.stackoverflow.com/users/357/piovezan>. 
+
 = Linear Layout
 
 O layout pode ser visto como um container, pois nele vão estar as views como um botão, um campo de entrada de texto, uma imagem e outras views. Existem vários tipos de layout que o SDK oferece que serão vistos em outros exemplos. O Linear Layout é o mais simples dos layouts, nele pode ser configurado dois tipos de orientações. Qual a diferença entre o Linear Layout com orientação vertical e com orientação horizontal?
