@@ -64,7 +64,9 @@ Quando cria-se um novo projeto através da IDE, muitos arquivos e diretórios s�
 - Inicialmente o programador escreve o código-fonte em Java;
 - O arquivo é compilado para o formato .class e depois convertido para o formato .dex;
 - Para a distribuição do app é usado um arquivo APK, que consiste no empacotamento do arquivo .dex com os arquivos de layouts, imagens, sons, metadados, etc;
-- 
+- Quando o usuário clica em um app instalado. O Android aloca um processo. Cada app roda em um processo e em uma instância da máquina virtual. A máquina virtual carrega o .DEX na memória principal. O ART gerencia a memória e a pilha de execução;
+- O ciclo de vida dos componentes (Activity) é gerenciado pelo Android. O android gerencia as persmissões e segurança. Cada app roda em seu sandbox;
+- O código do app pode fazer chamadas ao sistema, ou seja, solicitar funções da API do kernel para acessar recursos de hardware, por exemplo: realizar uma escrita de arquivo.
 
 Referência: GOOGLE DEVELOPERS. Fundamentos  de aplicativos. Disponível em: https://developer.android.com/guide/components/fundamentals?hl=pt-br
 
