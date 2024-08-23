@@ -316,7 +316,6 @@ public class MyDialogFragment extends DialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity().getApplicationContext(),
                                 "Você clicou em: "+i, Toast.LENGTH_SHORT).show();
-
                         Toast.makeText(getActivity().getApplicationContext(),
                                 recuperarItem(i), Toast.LENGTH_SHORT).show();
                     }
