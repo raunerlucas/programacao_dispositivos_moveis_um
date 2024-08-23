@@ -78,7 +78,7 @@ Exemplos práticos
         android:text=""/>
 </LinearLayout>
 
-- link:um/MainActivity.java
+- MainActivity.java
 [source,java]
 package com.example.appprogressbar_spinner_radio;
 import androidx.appcompat.app.AppCompatActivity;
