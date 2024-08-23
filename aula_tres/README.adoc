@@ -13,7 +13,8 @@
 
 == Exemplos práticos (App Lanchonete)
 
-- MainActivity.java[source,java]
+- MainActivity.java
+[source,java]
 package com.example.app_lanchonete;
 import android.content.Intent;
 import android.os.Bundle;
