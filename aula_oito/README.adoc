@@ -4,21 +4,137 @@ O SDK do Android fornece estilos e temas definidos para ser usado em um app. Qua
 
 Exemplos práticos (Estilos e Temas)
 
-- link:um/activity_main.xml[activity_main]
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        style="@style/CodeFont"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Numbers"
+        android:hint="Digite seu nome"/>
+</LinearLayout>
 
-- link:um/colors.xml[colors]
+- colors.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="custom_theme_color">#FF5722</color>
+    <color name="custom_theme_color2">#FFC107</color>
+</resources>
 
-- link:um/themes.xml[themes]
-
+- themes.xml
+[source,xml]
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.ExemploTemasEstilos" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="CustomTheme" parent="Theme.AppCompat.Light">
+        <item name="android:windowBackground">@color/custom_theme_color</item>
+        <item name="android:colorBackground">@color/custom_theme_color2</item>
+    </style>
+    <style name="CodeFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#00FF00</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+    <style name="Numbers">
+        <item name="android:inputType">number</item>
+        <item name="android:textColor">#E91E63</item>
+    </style>
+</resources>
 Você pode aproveitar os recursos de estilização para personalizar as formas dos Buttons. 
 
 Exemplos práticos (Botões Personalizados)
 
-- link:dois/button_custom.xml[button_custom]
+- button_custom.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+   android:padding = "16dp"
+   android:shape="rectangle"
+   >
+   <size android:width="55dp"
+       android:height="55dp"/>
+   <gradient android:startColor="@color/purple_700"
+       android:endColor="@color/purple_200"
+       android:centerColor="#ffff"/>
+  <corners android:radius="10dp"/>
+</shape>
+  
+- heme.xml
+[source,xml]
+<resources xmlns:tools="http://schemas.android.com/tools">
+   <!-- Base application theme. -->
+   <style name="Theme.ExemploSpinner" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+       <!-- Primary brand color. -->
+       <item name="colorPrimary">@color/purple_500</item>
+       <item name="colorPrimaryVariant">@color/purple_700</item>
+       <item name="colorOnPrimary">@color/white</item>
+       <!-- Secondary brand color. -->
+       <item name="colorSecondary">@color/teal_200</item>
+       <item name="colorSecondaryVariant">@color/teal_700</item>
+       <item name="colorOnSecondary">@color/black</item>
+       <!-- Status bar color. -->
+       <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+       <!-- Customize your theme here. -->
+   </style>
+   <style name="ButtonCustom" parent="android:Widget">
+       <item name="android:background">@drawable/button_custom</item>
+   </style>
+</resources>
+</shape>
 
-- link:dois/theme.xml[theme]
-
-- link:dois/layout.xml[layout]
+- layout.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:orientation="vertical"
+   tools:context=".MainActivity">
+    <Button
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+       android:text="button custom"
+       style="@style/ButtonCustom"
+       />
+</LinearLayout>
 
 Segundo a Google Developers (2019), "um botão de ação flutuante (FAB, na sigla em inglês) é um botão circular que aciona a ação principal na IU do seu app." 
 
@@ -27,14 +143,58 @@ Ainda, de acordo com a Google Developers (2021), "Os botões de ação flutuante
 
 Referências do texto entre aspas: 
 
-- GOOGLE DEVELOPERS. Adicionar um botão flutuante. Disponível em: <https://developer.android.com/guide/topics/ui/floating-action-button?hl=pt-br>. Acesso em: 22 fev. 2023.
+- GOOGLE DEVELOPERS. Adicionar um botão flutuante. Disponível em: <https://developer.android.com/guide/topics/ui/floating-action-button?hl=pt-br>. Acesso em: 23 ago. 2024.
 
-- GOOGLE DEVELOPERS.FloatingActionButton. Disponível em: <https://developer.android.com/reference/com/google/android/material/floatingactionbutton/FloatingActionButton?hl=pt-br>. Acesso em: 22 fev. 2023.
+- GOOGLE DEVELOPERS.FloatingActionButton. Disponível em: <https://developer.android.com/reference/com/google/android/material/floatingactionbutton/FloatingActionButton?hl=pt-br>. Acesso em: 23 ago. 2024.
 
 Adicionar o botão flutuante em seu projeto, é uma tarefa simples. Para adicionar a tag <com.google.android.material.floatingactionbutton.FloatingActionButton /> juntamente com alguns atributos no arquivo de xml de layout. E depois usar a classe FloatingActionButton em uma classe .java.
 
 Exemplos práticos (Botão Flutuante)
 
-- link:tres/activity_main.xml[activity_main]
+- activity_main.xml
+[source,xml]
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context=".MainActivity">
+   <com.google.android.material.floatingactionbutton.FloatingActionButton
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_margin="16dp"
+       android:id="@+id/fab"
+       android:src="@android:drawable/ic_dialog_email"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintLeft_toLeftOf="parent"
+       app:layout_constraintRight_toRightOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-- link:tres/MainActivity.java[MainActivity]
+- MainActivity.java
+[source,java]
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+public class MainActivity extends AppCompatActivity {
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+       FloatingActionButton fab = findViewById(R.id.fab);  //conversão do xml para o tipo de classe
+       fab.setOnClickListener(new View.OnClickListener() {  //adicionar um listener para capturar evento de clique
+           @Override
+           public void onClick(View view) {   //método fornecido pela interface
+               Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                       .setAction("Action", null).show(); //mostrar uma mensagem, semelhante ao Toast. No método setAction é possível fazer que o Snackbar trate um evento. No exemplo, foi passado null, pois a ideia é apenas mostrar o texto na tela. 
+               Intent intent =  new Intent(MediaStore.ACTION_IMAGE_CAPTURE); //cria um objeto de mensagem com a ação de capturar uma imagem. Dessa forma, o app que tem a capacidade de tratar essa ação será chamado. Por exemplo, o app nativo que aciona a câmera do celular.
+               startActivity(intent);
+           }
+       });
+   }
+}
