@@ -113,7 +113,6 @@ public class ActivityBolo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bolo);
-
         editTextQuantidadeBolo = findViewById(R.id.editTextQuantidadeBolo);
         buttonAdicionar = findViewById(R.id.buttonAdicionar);
         Intent intent = getIntent();
