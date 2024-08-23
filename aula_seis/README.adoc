@@ -21,41 +21,444 @@ Material para mais detalhes:
 
 Exemplos práticos (AlertDialog Basic)
 
-- link:um/activity_main.xml[activity_main]
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:id="@+id/textViewHello"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-- link:um/MyDialogFragment.java[MyDialogFragment]
+- MyDialogFragment.java
+[source,java]
+package com.example.alertdialogfragmenttest;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
+public class MyDialogFragment extends DialogFragment {
+// O uso do fragmento ajuda a evitar problemas com as caixas de diálogos, como a perda do estado do diálogo durante rotações de tela.
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage("Como está o clima hoje?")
+                .setTitle("Responda a pergunta")
+                .setIcon(R.mipmap.ic_launcher)
+                .setPositiveButton("Quente", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Beba muita água", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Frio", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Coloque um casaco", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNeutralButton("Ameno", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Aproveite o dia!!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        AlertDialog dialog = builder.create();
+//onDismiss não pertence ao ciclo de vida do DialogFragment, mas pode ser usado quando o diálogo for fechado pelo usuário.
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                Toast.makeText(getActivity().getApplicationContext(), "Encerrando o diálogo", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return dialog;
+    }//onCreateDialog
+}//class
 
-- link:um/MainActivity.java[MainActivity]
+- MainActivity.java
+[source,java]
+package com.example.alertdialogfragmenttest;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+public class MainActivity extends AppCompatActivity {
+    private TextView textViewHello;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        textViewHello = findViewById(R.id.textViewHello);
+        textViewHello.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAlertDialog();
+            }
+        });
+    }
+    private void openAlertDialog() {
+        MyDialogFragment mdf = new MyDialogFragment();
+        mdf.show(getSupportFragmentManager(),"clima");
+    }//private
+}//class
 
 Exemplos práticos (AlertDialog Personalizado)
 
-- link:dois/activity_main.xml[activity_main]
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clicar"
+        android:id="@+id/btnClicar"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-- link:dois/MyDialogFragment.java[MyDialogFragment]
+- MyDialogFragment.java
+[source,java]
+package com.example.alertdialogpersonalizado;
 
-- link:dois/MainActivity.java[MainActivity]
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
+public class MyDialogFragment extends DialogFragment {
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        //return super.onCreateDialog(savedInstanceState);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog,null);
+        EditText editTextNome = view.findViewById(R.id.editTextNome);
+        builder.setView(view)
+                .setTitle("Personalizado")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String nome = editTextNome.getText().toString();
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Você clicou em sim "+nome, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNeutralButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String nome = editTextNome.getText().toString();
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Você clicou em não "+nome, Toast.LENGTH_SHORT).show();
+                    }
+                });
+        return builder.create();
+    }
+}//class
 
-- link:dois/dialog.xml[dialog]
+- MainActivity.java
+[source,java]
+package com.example.alertdialogpersonalizado;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity {
+    private Button buttonClicar;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        buttonClicar = findViewById(R.id.btnClicar);
+        buttonClicar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAlertDialog();
+            }
+        });
+    }
+    private void openAlertDialog() {
+        MyDialogFragment mdf = new MyDialogFragment();
+        mdf.show(getSupportFragmentManager(),"personalizado");
+    }
+}
+
+- dialog.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    android:padding="20dp"
+    android:background="@color/teal_200"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="AlertaDialog Personalizado"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextNome"
+        android:hint="Digite seu nome"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="teste"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:background="@color/purple_200"/>
+    </LinearLayout>
+</LinearLayout>
 
 Exemplos práticos (AlertDialog List)
 
-- link:tres/activity_main.xml[activity_main]
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:id="@+id/textViewHello"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-- link:tres/string.xml[string]
+- string.xml
+[source,xml]
+<resources>
+    <string name="app_name">AlertDialogList</string>
+    <array name="array_semana">
+        <item>Segunda-feira</item>
+        <item>Terça-feira</item>
+        <item>Quarta-feira</item>
+        <item>Quinta-feira</item>
+        <item>sexta-feira</item>
+    </array>
+</resources>
 
-- link:tres/MyDialogFragment.java[MyDialogFragment]
+- MyDialogFragment.java
+[source,java]
+package com.example.alertdialoglist;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
+public class MyDialogFragment extends DialogFragment {
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        //return super.onCreateDialog(savedInstanceState);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Escolha o dia da semana")
+                .setIcon(R.mipmap.ic_launcher)
+                .setItems(R.array.array_semana, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Você clicou em: "+i, Toast.LENGTH_SHORT).show();
 
-- link:tres/MainActivity.java[MainActivity]
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                recuperarItem(i), Toast.LENGTH_SHORT).show();
+                    }
+                });
+        return builder.create();
+    }//method
+    private String recuperarItem(int i){
+        Resources resources = getResources();
+        String[] dias_semana = resources.getStringArray(R.array.array_semana);
+        return dias_semana[i];
+    }
+}//class
+
+- MainActivity.java
+[source,java]
+package com.example.alertdialoglist;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+public class MainActivity extends AppCompatActivity {
+    private TextView textViewHello;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        textViewHello = findViewById(R.id.textViewHello);
+        textViewHello.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAlertDialogList();
+            }
+        });
+    }//onCreate
+    private void openAlertDialogList() {
+        MyDialogFragment mdf = new MyDialogFragment();
+        mdf.show(getSupportFragmentManager(),"lista_semana");
+    }
+}//class
 
 Exemplos práticos (AlertDialog with multiple choice)
 
-- link:quatro/activity_main.xml[activity_main]
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context=".MainActivity">
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Hello World!"
+       android:id="@+id/textViewHello"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintLeft_toLeftOf="parent"
+       app:layout_constraintRight_toRightOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-- link:quatro/string.xml[string]
+- string.xml
+[source,xml]
+<resources>
+   <string name="app_name">AlertDialogFragmentTest</string>
+   <array name="array_semana">
+       <item>Segunda-feira</item>
+       <item>Terça-feira</item>
+       <item>Quarta-feira</item>
+       <item>Quinta-feira</item>
+       <item>Sexta-feira</item>
+   </array>
+</resources>
 
-- link:quatro/MyDialogFragment.java[MyDialogFragment]
+- MyDialogFragment.java
+[source,java]
+package com.example.alertdialogfragmenttest;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
+public class MyDialogFragment extends DialogFragment {
+   @NonNull
+   @Override
+   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+      // return super.onCreateDialog(savedInstanceState);
+      AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+      builder.setTitle("Escolha o dia da semana: ")
+              .setIcon(R.mipmap.ic_launcher)
+              .setMultiChoiceItems(R.array.array_semana, null,       //adiciona uma lista de múltipla escolha
+                      new DialogInterface.OnMultiChoiceClickListener() {
+                  @Override
+                  public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                      if (b) {     //verificar qual item da lista foi selecionado
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                recuperarItem(i), Toast.LENGTH_SHORT).show();   //mostra qual elemento foi selecionado
+                      }
+                  }//onClick
+              });
+      return builder.create();
+   }//onCreateDialog
+   private String recuperarItem(int i){    
+       Resources res = getResources();
+       String[] dias_semana = res.getStringArray(R.array.array_semana);
+       return dias_semana[i];
+   }//
+}//class
 
-- link:quatro/MainActivity.java[MainActivity]
+- MainActivity.java
+[source,java]
+package com.example.alertdialogfragmenttest;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+public class MainActivity extends AppCompatActivity {
+   private TextView textViewHello;
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+       textViewHello = findViewById(R.id.textViewHello);
+       textViewHello.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               openAlertDialog();
+           }
+       });
+   }//onCreate
+   private void openAlertDialog(){
+       MyDialogFragment mdf = new MyDialogFragment();   //criação do objeto da classe MyDialogFragment
+       mdf.show(getSupportFragmentManager(),"clima");    //chame o método show passando um gerenciador de fragmento e a tag necessária para salvar/restaurar os dados referente do fragmento
+   }//open
+}//class
 
 Para ter uma lista com única escolha basta trocar o método setMultiChoiceItems pelo método setSingleChoiceItems.
 
