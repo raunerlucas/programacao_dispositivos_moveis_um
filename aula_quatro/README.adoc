@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 - Activity2.java
-[Activity2,java]
+[source,java]
 package com.example.app_listasimples;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
