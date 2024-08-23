@@ -94,7 +94,7 @@ Exemplos práticos (Botões Personalizados)
   <corners android:radius="10dp"/>
 </shape>
   
-- heme.xml
+- theme.xml
 [source,xml]
 <resources xmlns:tools="http://schemas.android.com/tools">
    <!-- Base application theme. -->
