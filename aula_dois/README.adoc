@@ -19,9 +19,9 @@ Alguns tipos de contexto:
 - ApplicationContext: representa o contexto global do app, escopo de vida a nível de app;
 - ActivityContext: associado a uma atividade específica, escopo de vida a nível de atividade, usado para acessar recursos específicos da atividade como views, exibir caixas de diálogo.
 
-Application (classe base para manter o estado global do app) é um Context;
-Activity é um Context;
-Service é um Context.
+Application (é uma classe base, a primeira a ser criada, tem a função de manter um contexto global para o aplicativo, possibilita armazenar dados globais) é um Context;
+Activity (usada para criar e gerenciar a interface do usuário) é um Context;
+Service (usada para executar tarefas em segundo plano) é um Context.
 
 - Referência: STACK OVER FLOW. O que é um context no Android. Disponível em: https://pt.stackoverflow.com/questions/38853/o-que-%C3%A9-um-context-no-android. Pergunta realizada pelo usuário <https://pt.stackoverflow.com/users/6699/felipe-rce> e respondida pelo usuário <https://pt.stackoverflow.com/users/357/piovezan>. 
 
