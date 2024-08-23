@@ -147,7 +147,6 @@ Exemplos práticos (AlertDialog Personalizado)
 - MyDialogFragment.java
 [source,java]
 package com.example.alertdialogpersonalizado;
-
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
