@@ -47,7 +47,7 @@ Figura
 
 image::combinacao_layouts.png[width=100,height=100]
 
-- Exemplos práticos (linear layout, view, activity e intent)
+Exemplos práticos (linear layout, view, activity e intent)
 
 - MainActivity.java
 [source,java]
@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent it = new Intent(MainActivity.this,SegundaActivity.class);
                 it.putExtra("dados",msg);
                 startActivity(it);
-
             }
         });
     }//onCreate
