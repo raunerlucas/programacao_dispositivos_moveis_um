@@ -47,106 +47,410 @@ Métodos do ciclo de vida:
 
 - onDetach(): o fragmento é desassociado da activity.
 
-image::cicloDeVidaFragment.png[]
+image::cicloDeVidaFragment.png[100,100]
 
 Referência: GOOGLE DEVELOPERS. Ciclo de Vida dos Fragmentos. Disponível em:<https://developer.android.com/guide/fragments/lifecycle?hl=pt-br>. Acessado em: 26 ago. 2024.
 
 Exemplos práticos (estático):
 
-- link:um/activity_main.xml[activity_main]
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:orientation="vertical"
+   tools:context=".MainActivity">
+   <fragment   //neste local será adicionado um Fragment
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1"
+       android:name="com.example.appfragment1.Tela1"   //nome da classe que implementa um Fragment
+       android:id="@+id/tela1"/>
+   <fragment   //neste local será adicionado um Fragment
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1"
+       android:name="com.example.appfragment1.Tela2"  //nome da classe que implementa um Fragment
+       android:id="@+id/tela2"/>
+</LinearLayout>
 
-- link:um/MainActivity.java[MainActivity]
+- MainActivity.java
+[source,java]
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+public class MainActivity extends AppCompatActivity {
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+   }
+}
 
-- link:um/tela1.xml[tela1]
+- tela1.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="vertical"
+   android:background="@color/colorPrimary"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent">
+<EditText
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:id="@+id/editTextNome"
+   android:hint="Digite seu nome"/>
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/buttonNome"
+       android:text="CLICK"/>
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/textViewNome"/>
+</LinearLayout>
 
-- link:um/Tela1.java[Tela1]
+- Tela1.java
+[source,java]
+public class Tela1 extends Fragment {
+   private EditText editText;
+   private Button button;
+   private TextView textView;
+  @Override
+public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//ViewGroup container permite vincular ao layout pai
+//a visualização não será anexada imediatamente ao pai, o sistema fará esse vinculo depois
+   //return super.onCreateView(inflater, container, savedInstanceState);
+   View view = inflater.inflate(R.layout.tela1,container,false);  //o layout criado é passado no argumento do método para inflar a view. O layout serve para mostrar a posição dos elementos.
+   editText = view.findViewById(R.id.editTextNome);
+   button = view.findViewById(R.id.buttonNome);
+   textView = view.findViewById(R.id.textViewNome);
+   button.setOnClickListener(new View.OnClickListener() {
+       @Override
+       public void onClick(View view) {
+           textView.setText(editText.getText().toString());
+       }
+   });
+   return view;
+}
+}
 
-- link:um/tela2.xml[tela2]
+- tela2.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="vertical"
+   android:layout_width="match_parent"
+   android:background="@color/colorPrimaryDark"
+   android:layout_height="match_parent">
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/editTextCurso"
+       android:hint="Digite o curso"/>
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/buttonCurso"
+       android:text="CLICK"/>
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/textViewCurso"/>
+</LinearLayout>
 
-- link:um/Tela2.java[Tela2]
+- Tela2.java
+[source,java]
+public class Tela2 extends Fragment {
+   private EditText editText;
+   private Button button;
+   private TextView textView;
+  @Override
+public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+   //return super.onCreateView(inflater, container, savedInstanceState);
+   View view = inflater.inflate(R.layout.tela2,container,false);  //o layout criado é passado no argumento do método para inflar a view. O layout serve para mostrar a posição dos elementos.
+   editText = view.findViewById(R.id.editTextCurso);
+   button = view.findViewById(R.id.buttonCurso);
+   textView = view.findViewById(R.id.textViewCurso);
+   button.setOnClickListener(new View.OnClickListener() {
+       @Override
+       public void onClick(View view) {
+           textView.setText(editText.getText().toString());
+       }
+   });
+   return view;
+}
+}
 
 Exemplos práticos (dinâmico):
 
-- link:dois/activity_main.xml[activity_main]
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:orientation="vertical"
+   tools:context=".MainActivity">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <Button
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:text="Tela1"
+           android:onClick="trocar"
+           android:id="@+id/buttonTela1"
+           android:layout_height="wrap_content"/>
+       <Button
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:text="Tela2"
+           android:onClick="trocar"
+           android:id="@+id/buttonTela2"
+           android:layout_height="wrap_content"/>
+   </LinearLayout>
+   <FrameLayout  //local onde será inserido o Fragment
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@color/colorPrimary"
+       android:id="@+id/telaPrincipal" />
+</LinearLayout>
 
-- link:dois/MainActivity.java[MainActivity]
+- MainActivity.java
+[source,java]
+public class MainActivity extends AppCompatActivity {
+   private Button buttonTela1,buttonTela2;
+   private FragmentManager fm;
+  @Override
+protected void onCreate(Bundle savedInstanceState) {
+   super.onCreate(savedInstanceState);
+   setContentView(R.layout.activity_main);
+   buttonTela1 = findViewById(R.id.buttonTela1);  //fazer as conversões
+   buttonTela2 = findViewById(R.id.buttonTela2);
+   fm = getSupportFragmentManager();   //obter uma referência do gerenciador
+}
+  public void trocar(View view){
+   if(view.getId() == R.id.buttonTela1){
+       FragmentTransaction ft = fm.beginTransaction();  //obter uma referência de FragmentTransaction, este serve para adicionar, remover e excluir o fragmento
+       ft.add(R.id.telaPrincipal, new Tela1());  //adicionar a tela 1 no FrameLayout da tela principal
+       ft.commit();  //confirmar a adição
+   }
+   if(view.getId() == R.id.buttonTela2){
+       FragmentTransaction ft = fm.beginTransaction();
+       ft.add(R.id.telaPrincipal, new Tela2());
+       ft.commit();
+   }
+}//
+}
 
-- link:dois/tela1.xml[tela1]
+- tela1.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="match_parent"
+   android:background="@color/colorPrimary"
+   android:orientation="vertical"
+   android:layout_height="match_parent">
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/editTextNome"
+       android:hint="Digite seu nome"/>
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/buttonNome"
+       android:text="CLICK"/>
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/textViewNome" />
+</LinearLayout>
 
-- link:dois/Tela1.java[Tela1]
+- Tela1.java
+[source,java]
+public class Tela1 extends Fragment {
+   private EditText editText;
+   private Button button;
+   private TextView textView;
+  @Override
+public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+   //return super.onCreateView(inflater, container, savedInstanceState);
+   View view = inflater.inflate(R.layout.tela1,container,false);  //o layout criado é passado no argumento do método para inflar a view. O layout serve para mostrar a posição dos elementos.
+   editText = view.findViewById(R.id.editTextNome);
+   button = view.findViewById(R.id.buttonNome);
+   textView = view.findViewById(R.id.textViewNome);
+   button.setOnClickListener(new View.OnClickListener() {
+       @Override
+       public void onClick(View view) {
+           textView.setText(editText.getText().toString());
+       }
+   });
+   return view;
+}
+}
 
-- link:dois/tela2.xml[tela2]
+- tela2.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="match_parent"
+   android:background="@color/colorPrimary"
+   android:orientation="vertical"
+   android:layout_height="match_parent">
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/editTextCurso"
+       android:hint="Digite o curso"/>
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/buttonCurso"
+       android:text="CLICK"/>
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/textViewCurso" />
+</LinearLayout>
 
-- link:dois/Tela2.java[Tela2]
+- Tela2.java
+[source,java]
+public class Tela2 extends Fragment {
+   private EditText editText;
+   private Button button;
+   private TextView textView
+  @Override
+public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+   //return super.onCreateView(inflater, container, savedInstanceState);
+   View view = inflater.inflate(R.layout.tela2,container,false);  //o layout criado é passado no argumento do método para inflar a view. O layout serve para mostrar a posição dos elementos.
+   editText = view.findViewById(R.id.editTextCurso);
+   button = view.findViewById(R.id.buttonCurso);
+   textView = view.findViewById(R.id.textViewCurso);
+   button.setOnClickListener(new View.OnClickListener() {
+       @Override
+       public void onClick(View view) {
+           textView.setText(editText.getText().toString());
+       }
+   });
+   return view;
+}
+}
 
 Veja que na documentação oficial, clique aqui, que a tag para adicionar o fragmento foi atualizada para 
 
 <androidx.fragment.app.FragmentContainerView>. A mesma tag pode ser usada tanto para adicionar o fragmento via XML como programaticamente. A diferença é que para adicionar via XML, deve ser usado o atributo name, passando o nome da classe java que estende a classe Fragment. Caso deseje adicionar de forma dinâmica use o atributo id. 
 
-
 Por exemplo: no arquivo activity_main.xml a nova tag  adicionada ficaria assim:
 
-
+[source,xml]
 <androidx.fragment.app.FragmentContainerView
-
    android:layout_width="wrap_content"
-
    android:layout_height="wrap_content"
-
    android:id="@+id/tela" />
-
 
 Na classe MainActivity, coloque o gerenciamento de fragmento no método onCreate.
 
-
+[source,java]
 protected void onCreate(Bundle savedInstanceState) {
-
    super.onCreate(savedInstanceState);
-
    setContentView(R.layout.activity_main);
-
-
    getSupportFragmentManager().beginTransaction()
-
            .setReorderingAllowed(true)
-
            .add(R.id.tela, FragmentActivity.class,null)
-
            .commit();
-
 }
-
 
 Neste exemplo, a classe FragmentActivity estende a classe Fragment. Observe que não é mais necessário o método inflate para passar o layout criado. Isto é feito no construtor da classe. 
 
-
+[source,java]
 public class FragmentActivity extends Fragment {
-
    public FragmentActivity(){
-
        super(R.layout.tela);
-
    }
-
-
    @Override
-
    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
       // super.onViewCreated(view, savedInstanceState);
-
    }
-
 }
 
 Exemplos práticos:
 
-- link:tres/activity_main.xml[activity_main]
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:orientation="vertical"
+   tools:context=".MainActivity">
+   <androidx.fragment.app.FragmentContainerView    //add fragmento via programação
+       xmlns:android="http://schemas.android.com/apk/res/android"
+       android:id="@+id/fragment_container_view"   //container do fragmento
+       android:layout_width="match_parent"
+       android:layout_height="match_parent" />
+</LinearLayout>
 
-- link:tres/MainActivity.java[MainActivity]
+- MainActivity.java
+[source,java]
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+public class MainActivity extends AppCompatActivity {
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+       if (savedInstanceState == null) {
+           Bundle bundle = new Bundle();
+           bundle.putInt("some_int", 10);
+           getSupportFragmentManager().beginTransaction()    //gerenciamento do fragmento
+                   .setReorderingAllowed(true)  //como consta na documentação, este método sempre deve ser usado nas transações dos fragmentos, pois permite uma execução adequada das transações.
+                   .add(R.id.fragment_container_view,
+                           ExampleFragment.class, bundle)   //adicionando o fragmento e passando o valor
+                   .commit();
+       }
+   }
+}
 
-- link:tres/example_fragment.xml[example_fragment]
+- example_fragment.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="vertical"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent">
+</LinearLayout>
 
-- link:tres/ExampleFragment.java[ExampleFragment]
-
+- ExampleFragment.java
+[source,java]
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+public class ExampleFragment extends Fragment {
+   public ExampleFragment() {
+       super(R.layout.example_fragment);   //carregando o layout
+   }
+   @Override
+   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+       super.onViewCreated(view, savedInstanceState);
+       Integer someInt = requireArguments().getInt("some_int");  //obtém o valor passado pela activity
+       Toast.makeText(getContext(),someInt.toString(),Toast.LENGTH_SHORT).show();
+   }
+}
 
