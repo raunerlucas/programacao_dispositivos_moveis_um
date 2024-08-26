@@ -1,3 +1,16 @@
+//caminho padrão para imagens
+:imagesdir: images
+:figure-caption: Figura
+:doctype: book
+
+//gera apresentacao
+//pode se baixar os arquivos e add no diretório
+:revealjsdir: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.8.0
+
+//GERAR ARQUIVOS
+//make slides
+//make ebook
+
 = Fragments
 
 Os fragmentos foram criados com o objetivo modularizar a parte gráfica do app. Cada uma dessas partes possui seu próprio layout, clico de vida e necessitam de uma atividade. Conforme consta na documentação oficial, Google Developers (2021), "Um fragmento representa uma parte reutilizável da IU do seu app. Um fragmento define e gerencia o próprio layout, tem o próprio ciclo de vida e pode processar os próprios eventos de entrada. Fragmentos não podem existir por conta própria" .
