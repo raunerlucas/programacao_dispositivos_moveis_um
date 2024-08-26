@@ -47,7 +47,7 @@ Métodos do ciclo de vida:
 
 - onDetach(): o fragmento é desassociado da activity.
 
-image::cicloDeVidaFragment.png[100,100]
+image::cicloDeVidaFragment.png[300,300]
 
 Referência: GOOGLE DEVELOPERS. Ciclo de Vida dos Fragmentos. Disponível em:<https://developer.android.com/guide/fragments/lifecycle?hl=pt-br>. Acessado em: 26 ago. 2024.
 
