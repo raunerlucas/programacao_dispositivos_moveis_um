@@ -9,21 +9,34 @@ Referências do texto entre aspas:
 Os fragmentos também possuem um ciclo de vida, sendo que o método mais relevante é o onCreateView que será chamado para criar a interface gráfica personalizada no arquivo de layout especifico do fragmento. O método retorna uma View que representa a raiz do layout do fragmento. Para a activity o fragmento será visto como mais uma view inserida em seu layout.
 
 Métodos do ciclo de vida:
+
 - onAttach(Context context): o fragmento é anexado ao contexto da activity;
+
 - onCreate(Bundle savedInstanceState): cria o fragmento, pode ser usado para passar informações vinculadas ao objeto Bundle; 
-- onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): retorna a View criada a partir do layout personalizado do fragmento.
-- onViewCreated(View view, Bundle savedInstanceState):invocado logo após a criação da View. Pode ser usado para adicionar eventos, ou outras configurações de interface gráfica.
-- onActivityCreated(Bundle savedInstanceState): método chamado quando a activity foi criada. Pode ser usado para acessar elementos definidos na activity.
-- onStart(): a mesma tarefa definida na activity, ou seja, está visível, mas não aceita solicitações do usuário.
-- onResume(): a mesma tarefa definida na activity, ou seja, visível e responde ao usuário.
-- onPause(): a mesma tarefa definida na activity, ou seja, é chamado quando o fragmento está parcialmente visível. 
-- onStop(): a mesma tarefa definida na activity, ou seja, é chamado quando o fragmento não está mais visível. 
-- onDestroyView(): método chamado quando a view do fragmento é destruída. Pode ser usado para liberar recursos associados à interface do usuário.
+
+- onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): retorna a View criada a partir do layout personalizado do fragmento;
+
+- onViewCreated(View view, Bundle savedInstanceState):invocado logo após a criação da View. Pode ser usado para adicionar eventos, ou outras configurações de interface gráfica;
+
+- onActivityCreated(Bundle savedInstanceState): método chamado quando a activity foi criada. Pode ser usado para acessar elementos definidos na activity;
+
+- onStart(): a mesma tarefa definida na activity, ou seja, está visível, mas não aceita solicitações do usuário;
+
+- onResume(): a mesma tarefa definida na activity, ou seja, visível e responde ao usuário;
+
+- onPause(): a mesma tarefa definida na activity, ou seja, é chamado quando o fragmento está parcialmente visível;
+
+- onStop(): a mesma tarefa definida na activity, ou seja, é chamado quando o fragmento não está mais visível;
+
+- onDestroyView(): método chamado quando a view do fragmento é destruída. Pode ser usado para liberar recursos associados à interface do usuário;
+
 - onDestroy(): chamado para encerrar o fragmento;
+
 - onDetach(): o fragmento é desassociado da activity.
 
 image::cicloDeVidaFragment.png[]
-Fonte da imagem: GOOGLE DEVELOPERS. Ciclo de Vida dos Fragmentos. Disponível em:<https://developer.android.com/guide/fragments/lifecycle?hl=pt-br>. Acessado em: 26 ago. 2024.
+
+Referência: GOOGLE DEVELOPERS. Ciclo de Vida dos Fragmentos. Disponível em:<https://developer.android.com/guide/fragments/lifecycle?hl=pt-br>. Acessado em: 26 ago. 2024.
 
 Exemplos práticos (estático):
 
