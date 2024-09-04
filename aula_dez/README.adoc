@@ -119,23 +119,30 @@ public class Tela1 extends Fragment {
    private EditText editText;
    private Button button;
    private TextView textView;
-  @Override
-public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 //ViewGroup container permite vincular ao layout pai
 //a visualização não será anexada imediatamente ao pai, o sistema fará esse vinculo depois
    //return super.onCreateView(inflater, container, savedInstanceState);
-   View view = inflater.inflate(R.layout.tela1,container,false);  //o layout criado é passado no argumento do método para inflar a view. O layout serve para mostrar a posição dos elementos.
-   editText = view.findViewById(R.id.editTextNome);
-   button = view.findViewById(R.id.buttonNome);
-   textView = view.findViewById(R.id.textViewNome);
-   button.setOnClickListener(new View.OnClickListener() {
-       @Override
-       public void onClick(View view) {
-           textView.setText(editText.getText().toString());
-       }
-   });
-   return view;
-}
+ @Override
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_a,container,
+                false);
+        return view;
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        //super.onViewCreated(view, savedInstanceState);
+        editText = view.findViewById(R.id.editTextNome);
+        button = view.findViewById(R.id.buttonNome);
+        textView = view.findViewById(R.id.textViewNome);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textView.setText(editText.getText().toString());
+            }
+        });
+    }
 }
 
 - tela2.xml
@@ -168,21 +175,27 @@ public class Tela2 extends Fragment {
    private EditText editText;
    private Button button;
    private TextView textView;
-  @Override
-public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-   //return super.onCreateView(inflater, container, savedInstanceState);
-   View view = inflater.inflate(R.layout.tela2,container,false);  //o layout criado é passado no argumento do método para inflar a view. O layout serve para mostrar a posição dos elementos.
-   editText = view.findViewById(R.id.editTextCurso);
-   button = view.findViewById(R.id.buttonCurso);
-   textView = view.findViewById(R.id.textViewCurso);
-   button.setOnClickListener(new View.OnClickListener() {
-       @Override
-       public void onClick(View view) {
-           textView.setText(editText.getText().toString());
-       }
-   });
-   return view;
-}
+ @Override
+    public View onCreateView(LayoutInflater inflater,
+                              ViewGroup container,  Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_b,container,
+                false);
+        return view;
+    }//method
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        //super.onViewCreated(view, savedInstanceState);
+        editText = view.findViewById(R.id.editTextCurso);
+        button = view.findViewById(R.id.buttonCurso);
+        textView = view.findViewById(R.id.textViewCurso);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textView.setText(editText.getText().toString());
+            }
+        });
+    }
 }
 
 Exemplos práticos (dinâmico):
@@ -281,21 +294,26 @@ public class Tela1 extends Fragment {
    private EditText editText;
    private Button button;
    private TextView textView;
-  @Override
-public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-   //return super.onCreateView(inflater, container, savedInstanceState);
-   View view = inflater.inflate(R.layout.tela1,container,false);  //o layout criado é passado no argumento do método para inflar a view. O layout serve para mostrar a posição dos elementos.
-   editText = view.findViewById(R.id.editTextNome);
-   button = view.findViewById(R.id.buttonNome);
-   textView = view.findViewById(R.id.textViewNome);
-   button.setOnClickListener(new View.OnClickListener() {
-       @Override
-       public void onClick(View view) {
-           textView.setText(editText.getText().toString());
-       }
-   });
-   return view;
-}
+@Override
+    public View onCreateView(LayoutInflater inflater,
+                              ViewGroup container,  Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_b,container,
+                false);
+        return view;
+    }//method
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        //super.onViewCreated(view, savedInstanceState);
+        editText = view.findViewById(R.id.editTextCurso);
+        button = view.findViewById(R.id.buttonCurso);
+        textView = view.findViewById(R.id.textViewCurso);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textView.setText(editText.getText().toString());
+            }
+        });
+    }
 }
 
 - tela2.xml
@@ -329,21 +347,26 @@ public class Tela2 extends Fragment {
    private EditText editText;
    private Button button;
    private TextView textView
-  @Override
-public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-   //return super.onCreateView(inflater, container, savedInstanceState);
-   View view = inflater.inflate(R.layout.tela2,container,false);  //o layout criado é passado no argumento do método para inflar a view. O layout serve para mostrar a posição dos elementos.
-   editText = view.findViewById(R.id.editTextCurso);
-   button = view.findViewById(R.id.buttonCurso);
-   textView = view.findViewById(R.id.textViewCurso);
-   button.setOnClickListener(new View.OnClickListener() {
-       @Override
-       public void onClick(View view) {
-           textView.setText(editText.getText().toString());
-       }
-   });
-   return view;
-}
+@Override
+    public View onCreateView(LayoutInflater inflater,
+                              ViewGroup container,  Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_b,container,
+                false);
+        return view;
+    }//method
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        //super.onViewCreated(view, savedInstanceState);
+        editText = view.findViewById(R.id.editTextCurso);
+        button = view.findViewById(R.id.buttonCurso);
+        textView = view.findViewById(R.id.textViewCurso);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textView.setText(editText.getText().toString());
+            }
+        });
+    }
 }
 
 Veja que na documentação oficial, clique aqui, que a tag para adicionar o fragmento foi atualizada para 
@@ -446,11 +469,25 @@ public class ExampleFragment extends Fragment {
    public ExampleFragment() {
        super(R.layout.example_fragment);   //carregando o layout
    }
-   @Override
-   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-       super.onViewCreated(view, savedInstanceState);
-       Integer someInt = requireArguments().getInt("some_int");  //obtém o valor passado pela activity
-       Toast.makeText(getContext(),someInt.toString(),Toast.LENGTH_SHORT).show();
-   }
+       @Override
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
+                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_a,
+                container,
+                false);
+        return view;
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+       // super.onViewCreated(view, savedInstanceState);
+        Bundle bundle = getArguments();
+        Log.i("bundle2",bundle.toString());
+        if (bundle != null) {
+            msg = bundle.getString("some");
+            textViewHello = view.findViewById(R.id.textViewHello);
+            textViewHello.setText(msg);
+        }
+    }
 }
 
