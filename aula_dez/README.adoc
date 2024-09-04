@@ -126,8 +126,7 @@ public class Tela1 extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_a,container,
-                false);
+        View view = inflater.inflate(R.layout.fragment_a,container, false);
         return view;
     }
     @Override
@@ -178,11 +177,9 @@ public class Tela2 extends Fragment {
  @Override
     public View onCreateView(LayoutInflater inflater,
                               ViewGroup container,  Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_b,container,
-                false);
+        View view = inflater.inflate(R.layout.fragment_b,container,false);
         return view;
     }//method
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         //super.onViewCreated(view, savedInstanceState);
@@ -295,10 +292,8 @@ public class Tela1 extends Fragment {
    private Button button;
    private TextView textView;
 @Override
-    public View onCreateView(LayoutInflater inflater,
-                              ViewGroup container,  Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_b,container,
-                false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_b,container, false);        
         return view;
     }//method
     @Override
@@ -348,10 +343,8 @@ public class Tela2 extends Fragment {
    private Button button;
    private TextView textView
 @Override
-    public View onCreateView(LayoutInflater inflater,
-                              ViewGroup container,  Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_b,container,
-                false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_b,container,false);
         return view;
     }//method
     @Override
@@ -438,7 +431,7 @@ public class MainActivity extends AppCompatActivity {
            Bundle bundle = new Bundle();
            bundle.putInt("some_int", 10);
            getSupportFragmentManager().beginTransaction()    //gerenciamento do fragmento
-                   .setReorderingAllowed(true)  //como consta na documentação, este método sempre deve ser usado nas transações dos fragmentos, pois permite uma execução adequada das transações.
+                   .setReorderingAllowed(true)  //como consta na documentação, este método sempre deve ser usado nas transações dos fragmentos, /////pois permite uma execução adequada das transações.
                    .add(R.id.fragment_container_view,
                            ExampleFragment.class, bundle)   //adicionando o fragmento e passando o valor
                    .commit();
@@ -470,12 +463,8 @@ public class ExampleFragment extends Fragment {
        super(R.layout.example_fragment);   //carregando o layout
    }
        @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,
-                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_a,
-                container,
-                false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {                      
+        View view = inflater.inflate(R.layout.fragment_a, container, false);     
         return view;
     }
     @Override
