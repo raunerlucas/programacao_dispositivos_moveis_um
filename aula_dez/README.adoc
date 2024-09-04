@@ -362,9 +362,7 @@ public class Tela2 extends Fragment {
     }
 }
 
-Veja que na documentação oficial, clique aqui, que a tag para adicionar o fragmento foi atualizada para 
-
-<androidx.fragment.app.FragmentContainerView>. A mesma tag pode ser usada tanto para adicionar o fragmento via XML como programaticamente. A diferença é que para adicionar via XML, deve ser usado o atributo name, passando o nome da classe java que estende a classe Fragment. Caso deseje adicionar de forma dinâmica use o atributo id. 
+Veja que na documentação oficial(https://developer.android.com/guide/fragments/create?hl=pt-br), que a tag para adicionar o fragmento foi atualizada para <androidx.fragment.app.FragmentContainerView>. A mesma tag pode ser usada tanto para adicionar o fragmento via XML como programaticamente. A diferença é que para adicionar via XML, deve ser usado o atributo name, passando o nome da classe java que estende a classe Fragment. Caso deseje adicionar de forma dinâmica use o atributo id. 
 
 Por exemplo: no arquivo activity_main.xml a nova tag  adicionada ficaria assim:
 
