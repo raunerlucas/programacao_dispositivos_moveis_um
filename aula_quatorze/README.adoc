@@ -1,0 +1,28 @@
+= Card View
+
+Permite que a construção do layout baseado em cartões. Para mais detalhes sobre Card View: GOOGLE DEVELOPERS. Criar um layout baseado em cards. Disponível
+em: https://developer.android.com/guide/topics/ui/layout/cardview?hl=pt-br. Acesso: 22 de fev. 2023.
+
+Exemplos práticos:
+
+- link:um/main_activity.xml[main_activity]
+
+- link:um/MainActivity.java[MainActivity]
+
+
+= Recycler View
+
+Recurso que permite criar listas dinâmicas com mais eficiência e economia de recursos. Para mais detalhes sobre Recycler View: GOOGLE DEVELOPERS. Criar listas dinâmicas com o Recycler View. Disponível em: https://developer.android.com/guide/topics/ui/layout/recyclerview?hl=pt-br. Acesso: 22 de fev. 2023.
+
+Exemplos práticos:
+
+- link:dois/main_activity.xml[main_activity]
+
+- link:dois/item_layout.xml[item_layout]
+
+- link:dois/ItemModel.java[ItemModel]
+
+- link:dois/ItemAdapter.java[ItemAdapter]
+
+
+
