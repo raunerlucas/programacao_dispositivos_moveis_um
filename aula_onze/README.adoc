@@ -146,9 +146,10 @@ protected void onCreate(Bundle savedInstanceState) {
    startActivity(i);
   }
 }
-Exemplos práticos (Armazenamento externo):
 
-- link:dois/activity_main.xml
+Exemplos práticos (Armazenamento externo no SDCARD):
+
+- activity_main.xml
 [source,xml]
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -297,3 +298,173 @@ protected void onCreate(Bundle savedInstanceState) {
 }//class
 
 - No arquivo AndroidManifest.xml deve ser acrescentado a permissão necessária: <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+Exemplos práticos (Armazenamento externo no Diretório Downloads):
+
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextNome"
+        android:hint="Digite seu nome"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/buttonS"
+            android:text="SALVAR"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/buttonE"
+            android:text="EXCLUIR"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/buttonL"
+            android:text="LER"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewLeitura"/>
+    </LinearLayout>
+</LinearLayout>
+
+- MainActivity.java
+[source,java]
+import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+public class MainActivity extends AppCompatActivity {
+    private EditText editTextNome;
+    private Button buttonS, buttonE,buttonL;
+    private TextView textViewLeitura;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        editTextNome = findViewById(R.id.editTextNome);
+        textViewLeitura = findViewById(R.id.textViewLeitura);
+        buttonE = findViewById(R.id.buttonE);
+        buttonE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                apagar();
+            }
+        });
+        buttonS = findViewById(R.id.buttonS);
+        buttonS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                salvar();
+            }
+        });
+        buttonL = findViewById(R.id.buttonL);
+        buttonL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String dados = lerDados();
+                textViewLeitura.setText(dados);
+            }
+        });
+    }//onCreate
+    public void salvar() {
+        String dado = editTextNome.getText().toString();
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            File file = new File(getApplicationContext().getExternalFilesDir(
+                    Environment.DIRECTORY_DOWNLOADS), "myData.txt");
+            if(file!=null){
+                FileOutputStream fos = null;
+                try {
+                    fos = new FileOutputStream(file);
+                    OutputStreamWriter osw = new OutputStreamWriter(fos);
+                    osw.write(dado);
+                    osw.close();
+                    fos.close();
+                    Toast.makeText(getApplicationContext(), "Salvo", Toast.LENGTH_SHORT).show();
+                    Log.i("File",file.getAbsolutePath());
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            } else {
+                Toast.makeText(this, "no file", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(this, "no free", Toast.LENGTH_SHORT).show();
+        }
+    }//
+    public void apagar(){
+        File file = new File(getApplicationContext().getExternalFilesDir(
+                Environment.DIRECTORY_DOWNLOADS), "myData.txt");
+        file.delete();
+        Toast.makeText(getApplicationContext(),"excluído", Toast.LENGTH_SHORT).show();
+    }//
+    private String lerDados() {
+        StringBuffer buffer = null;
+        File file = new File(getApplicationContext().getExternalFilesDir(
+                Environment.DIRECTORY_DOWNLOADS), "myData.txt");
+        FileInputStream fileInputStream = null;
+        try {
+            fileInputStream = new FileInputStream(file);
+            int i = -1;
+            buffer = new StringBuffer();
+            while ((i = fileInputStream.read()) != -1) {
+                buffer.append((char) i);
+            }
+            return buffer.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (fileInputStream != null) {
+                try {
+                    fileInputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return buffer.toString();
+    }
+}//class
