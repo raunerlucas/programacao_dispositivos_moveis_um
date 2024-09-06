@@ -1,26 +1,299 @@
 = Armzenamento Interno e Externo
 
-Para mais detalhes sobre as formas de armazenar dados no Android: GOOGLE DEVELOPERS. Visão geral do armazenamento de dados e arquivos. 
-Disponível em: https://developer.android.com/training/data-storage?hl=pt-br. Acesso em: 22 fev. 2023.
+Para mais detalhes sobre as formas de armazenar dados no Android acesse:
+
+GOOGLE DEVELOPERS. Visão geral do armazenamento de dados e arquivos. 
+Disponível em: https://developer.android.com/training/data-storage?hl=pt-br. Acesso em: 06 set. 2024.
 
 Exemplos práticos (Armazenamento interno):
 
-- link:um/activity_main.xml[activity_main]
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:layout_margin="10dp"
+   android:orientation="vertical"
+   tools:context=".MainActivity">
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/editTextTexto"
+       android:hint="Digite um texto"
+       />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <Button
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:text="S"
+           android:id="@+id/buttonS"
+           android:onClick="clicar"
+           android:layout_weight="1"/>
+       <Button
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:text="E"
+           android:id="@+id/buttonE"
+           android:onClick="clicar"
+           android:layout_weight="1"/>
+   </LinearLayout>
+</LinearLayout>
 
-- link:um/MainActivity.java[MainActivity]
+- MainActivity.java
+[source,java]
+public class MainActivity extends AppCompatActivity {
+   private EditText editTextNome;
+   private Button buttonS, buttonE;
+  @Override
+protected void onCreate(Bundle savedInstanceState) {
+   super.onCreate(savedInstanceState);
+   setContentView(R.layout.activity_main);
+   editTextNome = findViewById(R.id.editTextTexto);
+   buttonS = findViewById(R.id.buttonS);
+   buttonE = findViewById(R.id.buttonE);
+   Intent  i = getIntent();  
+   editTextNome.setText(i.getStringExtra("texto"));  //obter os dados quando a segunda activity passar os dados para esta.
+}//onCreate
+  public void clicar(View v){
+   FileOutputStream fos = null;
+   if(v.getId() == R.id.buttonS){
+       String conteudo = editTextNome.getText().toString();   //obter o dado digitado no campo de entrada
+       try {
+           fos = openFileOutput("meuArq.txt",
+                   Context.MODE_PRIVATE);  //se o arquivo existir, este será aberto. Caso não exista, este será criado. O arquivo é exclusivo do aplicativo.
+           fos.write(conteudo.getBytes());  //escreve no arquivo
+           fos.close();  //sempre que o arquivo for aberto, este deverá ser fechado.
+           Toast.makeText(getApplicationContext(),"Salvo",
+                   Toast.LENGTH_SHORT).show();
+           editTextNome.setText("");
+           Intent i = new Intent(getApplicationContext(),Activity2.class); 
+           startActivity(i);   //abrir a segunda tela
+       } catch (FileNotFoundException e) {
+           e.printStackTrace();
+           Log.e("erro1","arquivo não encontrado");
+       } catch (IOException e) {
+           e.printStackTrace();
+           Log.e("erro2","não foi possível escrever");
+       }
+   }//if
+   if(v.getId() == R.id.buttonE){
+          getApplicationContext().deleteFile("meuArq.txt");  //deletar o arquivo
+          editTextNome.setText("");
+          Toast.makeText(getApplicationContext(),"arquivo excluído",Toast.LENGTH_SHORT).show();
+   }//if
+ }//clicar
+}//class
 
-- link:um/activity_segunda.xml[activity_segunda]
+- activity_segunda.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:layout_margin="10dp"
+   android:orientation="vertical"
+   tools:context=".Activity2">
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="match_parent"
+       android:text="textViewTexto"
+       android:onClick="abrirTela"
+       android:id="@+id/textViewTexto"/>
+</LinearLayout>
 
-- link:um/SegundaActivity.java[SegundaActivity]
-
+- SegundaActivity.java
+[source,java]
+public class SegundaActivity extends AppCompatActivity {
+   private TextView textViewTexto;
+   @Override
+protected void onCreate(Bundle savedInstanceState) {
+   super.onCreate(savedInstanceState);
+   setContentView(R.layout.activity_segunda);
+   textViewTexto = findViewById(R.id.textViewTexto);
+   String texto = getInfo();
+   textViewTexto.setText(texto);
+}//onCreate
+  private String getInfo() {
+   StringBuffer sb = null;
+   try {
+       FileInputStream fis = openFileInput("meuArq.txt");  //solicita a abertura do arquivo no modo de leitura. O arquivo precisa existir.
+       sb = new StringBuffer();   
+       int retorno = 0;
+       char texto = 0;
+       while((retorno = fis.read())!=-1){  //o método read() devolve o caractere presente no arquivo, dessa forma é colocado em um laço de repetição. Os caracteres serão devolvidos até encontrar o valor -1 (significando o fim o arquivo)
+           texto = (char)retorno;
+           sb.append(texto);  //adicionar o caractere no StringBuffer
+       }//while
+       fis.close();   //encerra o arquivo
+   } catch (FileNotFoundException e) {
+       e.printStackTrace();
+   } catch (IOException e) {
+       e.printStackTrace();
+   }
+   return sb.toString();
+}//getInfo
+  public void abrirTela(View view) {
+   Intent i = new Intent(getApplicationContext(), MainActivity.class);
+   i.putExtra("texto",textViewTexto.getText().toString());
+   startActivity(i);
+  }
+}
 Exemplos práticos (Armazenamento externo):
 
-- link:dois/activity_main.xml[activity_main]
+- link:dois/activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:orientation="vertical"
+   tools:context=".MainActivity">
+   <EditText
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/editTextNome"
+       android:hint="Digite seu nome"
+        />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_margin="10dp">
+       <Button
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:onClick="clicar"
+           android:id="@+id/buttonS"
+           android:text="SALVAR"/>
+       <Button
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:onClick="clicar"
+           android:id="@+id/buttonE"
+           android:text="EXCLUIR"/>
+   </LinearLayout>
+</LinearLayout>
 
-- link:dois/MainActivity.java[MainActivity]
+- MainActivity.java
+[source,java]
+public class MainActivity extends AppCompatActivity {
+ private EditText editTextNome;
+ private Button buttonS, buttonE;
+  @Override
+protected void onCreate(Bundle savedInstanceState) {
+   super.onCreate(savedInstanceState);
+   setContentView(R.layout.activity_main);
+   editTextNome = findViewById(R.id.editTextNome);
+   buttonE = findViewById(R.id.buttonE);
+   buttonS = findViewById(R.id.buttonS);
+   Intent i = getIntent();
+   editTextNome.setText(i.getStringExtra("msg"));   //obter os dados quando a segunda activity passar os dados para esta.
+}//onCreate
+  public void clicar(View view) {
+   switch (view.getId()){
+       case R.id.buttonS:
+           String dado = editTextNome.getText().toString();
+           String state = Environment.getExternalStorageState();
+           if(Environment.MEDIA_MOUNTED.equals(state)){
+               File file =  new File("/sdcard/"+"meuArq.txt");  //criar o arquivo no cartão do dispositivo
+               FileOutputStream fos = null;
+               try {
+                   fos = new FileOutputStream(file);  //obter uma referência de arquivo no modo de escrita
+                   OutputStreamWriter osw = new OutputStreamWriter(fos);  //é necessário esta referência para ter acesso ao método de escrita
+                   osw.write(dado);  //escreve no arquivo
+                   osw.close();   //fecha o arquivo
+                   fos.close();  //fecha o arquivo
+                   Toast.makeText(getApplicationContext(),"Salvo",Toast.LENGTH_SHORT).show();
+                   Intent intent = new Intent(getApplicationContext(), Activity2.class);
+                   startActivity(intent);  //abrir a segunda tela
+               } catch (FileNotFoundException e) {
+                   e.printStackTrace();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+           }else{
+               Toast.makeText(getApplicationContext(),"não há espaço",Toast.LENGTH_SHORT).show();
+           }
+           break;
+       case R.id.buttonE:
+               apagar();
+               break;
+   }
+}//clicar
+  private void apagar(){
+   File file = new File("/sdcard/"+"meuArq.txt");
+   file.delete();   //deleta o arquivo
+   Toast.makeText(getApplicationContext(),"excluído", Toast.LENGTH_SHORT).show();
+  }//
+}//class
 
-- link:dois/activity_segunda.xml[activity_segunda]
+- activity_segunda.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context=".Activity2">
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/textView"
+       android:onClick="abrirActivity"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintLeft_toLeftOf="parent"
+       app:layout_constraintRight_toRightOf="parent"
+       app:layout_constraintTop_toTopOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-- link:dois/SegundaActivity.java[SegundaActivity]
+- SegundaActivity.java
+[source,java]
+public class SegundaActivity extends AppCompatActivity {
+   private TextView textView;
+   private static final String NOME_FILE = "/sdcard/meuArq.txt";
+   @Override
+protected void onCreate(Bundle savedInstanceState) {
+   super.onCreate(savedInstanceState);
+   setContentView(R.layout.activity_2);
+   textView = findViewById(R.id.textView);
+   textView.setText(obterDados());   //chamar o método obterDados que devolve uma String
+}//onCreate
+  private String obterDados(){
+   int retorno = 0;
+   StringBuilder texto = new StringBuilder();
+   String state = Environment.getExternalStorageState();  //obtém o diretório para ter acesso ao SDCARD. A partir da API 29, pode ser usado o método getExternalFilesDir(String) obtido através do Context.
+   if(Environment.MEDIA_MOUNTED.equals(state)){  //verifica se o dispositivo está montado
+       File file = new File(NOME_FILE); //Obtém o arquivo
+       try {
+          FileInputStream fis = new FileInputStream(file);   //necessário obter uma referência de FileInputStream para ter acesso ao método de leitura
+           while((retorno = fis.read())!= -1){    //método read() retorna caractere por caractere do arquivo, quando o valor for -1 chegou-se no final do arquivo.
+               texto.append((char) retorno);  //adiciona cada caractere ao StringBuffer
+           }
+           fis.close();
+          Toast.makeText(getApplicationContext(),texto,Toast.LENGTH_SHORT).show();
+       } catch (FileNotFoundException e) {
+           e.printStackTrace();
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+   }else{
+       Toast.makeText(getApplicationContext(),"não foi possível acessar",Toast.LENGTH_SHORT).show();
+   }
+   return texto.toString();  //retorna o texto que estava no arquivo
+}//obter
+}//class
 
 - No arquivo AndroidManifest.xml deve ser acrescentado a permissão necessária: <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
