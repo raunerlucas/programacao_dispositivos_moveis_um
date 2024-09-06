@@ -1,21 +1,244 @@
 = Armazenamento em Banco de Dados - SQLite
 
-Para ver mais detalhes sobre a persistência em banco de dados: GOOGLE DEVELOPERS. Salvar dados usando o SQLite. Disponível em: https://developer.android.com/training/data-storage/sqlite?hl=pt-br. Acesso em: 22 fev. 2023.
+Para ver mais detalhes sobre a persistência em banco de dados: 
 
-Exemplos práticos (CRUD):
+GOOGLE DEVELOPERS. Salvar dados usando o SQLite. Disponível em: https://developer.android.com/training/data-storage/sqlite?hl=pt-br. Acesso em: 06 set. 2024.
 
-- link:um/Banco.java[Banco]
+Exemplos práticos:
 
-- link:um/CRUD.java[CRUD]
+Versão 1:
 
-- link:um/Pessoa.java[Pessoa]
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/buttonInsert"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="clicar"
+            android:text="Insert" />
+        <Button
+            android:id="@+id/buttonList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="clicar"
+            android:text="List" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="result" />
+</LinearLayout>
 
-- link:um/activity_main.xml[activity_main]
+- User.java
+[source,java]
+public class User {
+    private long id;
+    private String name;
+    private int age;
+    public User(long id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+   public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}//
 
-- link:um/MainActivity.java[MainActivity]
+- UserDAO.java
+[source,java]
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import java.util.ArrayList;
+import java.util.List;
+public class UserDAO {
+    private SQLiteDatabase db;
+    public UserDAO(SQLiteDatabase db) {
+        this.db = db;
+    }
+    public long insertUser(String name, int age) {
+        if(db!=null){
+            ContentValues values = new ContentValues();
+            values.put(UserContract.COLUMN_NAME, name);
+            values.put(UserContract.COLUMN_AGE, age);
+            long id = db.insert(UserContract.TABLE_NAME,null,values);
+            return id;
+        }else{
+            return -1;
+        }
+    }//
+    public List<User> getAll() {
+        if(db!=null) {
+            List<User> users = new ArrayList<>();
+            String[] columns = {UserContract._ID, UserContract.COLUMN_NAME, UserContract.COLUMN_AGE};
+            Cursor cursor = db.query(UserContract.TABLE_NAME, columns,
+                    null, null, null, null,
+                    null);
+            while (cursor.moveToNext()) {
+                int id = cursor.getColumnIndex(UserContract._ID);
+                long id_user = cursor.getLong(id);
+                int name = cursor.getColumnIndex(UserContract.COLUMN_NAME);
+                String name_user = cursor.getString(name);
+                int age = cursor.getColumnIndex(UserContract.COLUMN_AGE);
+                int age_user = cursor.getInt(age);
+                users.add(new User(id_user, name_user, age_user));
+            }//while
+            cursor.close();
+            return users;
+        }else{
+            return null;
+        }
+    }//
+}//class
 
-- link:um/activity_segunda.xml[activity_segunda]
+- UserContract.java
+[source,java]
+import android.provider.BaseColumns;
+public class UserContract implements BaseColumns {
+    //public static final String _ID = "_id" é fornecido pela interface
+    public static final String TABLE_NAME = "user";
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_AGE = "age";
+}//class
 
-- link:im/SegundaActivity.java[SegundaActivity]
+- DBHelper.java
+[source,java]
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+public class DBHelper extends SQLiteOpenHelper {
+    private static final String DATABASE_NAME = "banco.db";
+    private static final int DATABASE_VERSION = 1;
+    private static final String SQL_CREATE_TABLE =
+            "CREATE TABLE " + UserContract.TABLE_NAME + " (" +
+                    UserContract._ID + " INTEGER PRIMARY KEY," +
+                    UserContract.COLUMN_NAME + " TEXT," +
+                    UserContract.COLUMN_AGE + " INTEGER)";
+    public DBHelper(Context context) {
+      super(context, DATABASE_NAME,
+                null, DATABASE_VERSION);
+    }
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(SQL_CREATE_TABLE);
+    }
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // caso uma coluna seja adicionada,
+        // use este método para atualização do banco de dados
+    }
+}//class
+
+- DBManager.java
+[source,java]
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+public class DBManager {
+    private DBHelper dbHelper;
+    private SQLiteDatabase database;
+    public DBManager(Context context) {
+        dbHelper = new DBHelper(context);
+    }
+
+    public void open() {
+        database = dbHelper.getWritableDatabase();
+    }
+
+    public void close() {
+        dbHelper.close();
+    }
+    public SQLiteDatabase getDatabase(){
+        return database;
+    }
+}
+
+- MainActivity.java
+[source,java]
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import android.database.Cursor;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import java.util.List;
+public class MainActivity extends AppCompatActivity {
+    private UserDAO userDAO;
+    private DBManager databaseManager;
+    private Button buttonInsert,buttonList;
+    private TextView textViewResult;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        databaseManager = new DBManager(this);
+        databaseManager.open();
+        userDAO = new UserDAO(databaseManager.getDatabase());
+        buttonInsert = findViewById(R.id.buttonInsert);
+        buttonList = findViewById(R.id.buttonList);
+        textViewResult = findViewById(R.id.textViewResult);
+    }//
+    public void clicar(View view){
+        if(view.getId() == R.id.buttonInsert){
+            long userId1 = userDAO.insertUser("Ana",30);
+            long userId2 = userDAO.insertUser("Rodrigo",20);
+            String result = userId1 +"-"+ userId2;
+            textViewResult.setText(result);
+        }
+        if(view.getId() == R.id.buttonList){
+            List<User> dados = userDAO.getAll();
+            textViewResult.setText(dados.toString());
+        }
+    }//
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        databaseManager.close();
+    }
+}//class
+
+
+
+
 
 Para visualizar as tabelas criadas no aplicativo é necessário exportar o arquivo .db e usar um aplicativo específico, por exemplo o SQLiteStudio, disponível em: https://sqlitestudio.pl/.
