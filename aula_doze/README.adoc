@@ -553,11 +553,9 @@ public class DBManager {
     public DBManager(Context context) {
         dbHelper = new DBHelper(context);
     }
-
     public void open() {
         database = dbHelper.getWritableDatabase();
     }
-
     public void close() {
         dbHelper.close();
     }
@@ -898,13 +896,5 @@ public class MainActivity extends AppCompatActivity {
         textViewTexto.setText(msg);
     }
 }
-
-Persistência usando a biblioteca ROOM.
-
-
-
-
-
-
 
 Para visualizar as tabelas criadas no aplicativo é necessário exportar o arquivo .db e usar um aplicativo específico, por exemplo o SQLiteStudio, disponível em: https://sqlitestudio.pl/.
