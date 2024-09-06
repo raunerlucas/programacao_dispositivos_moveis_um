@@ -66,7 +66,8 @@ protected void onCreate(Bundle savedInstanceState) {
        String conteudo = editTextNome.getText().toString();   //obter o dado digitado no campo de entrada
        try {
            fos = openFileOutput("meuArq.txt",
-                   Context.MODE_PRIVATE);  //se o arquivo existir, este será aberto. Caso não exista, este será criado. O arquivo é exclusivo do aplicativo.
+                   Context.MODE_PRIVATE);  //se o arquivo existir, este será aberto. 
+//Caso não exista, este será criado. O arquivo é exclusivo do aplicativo.
            fos.write(conteudo.getBytes());  //escreve no arquivo
            fos.close();  //sempre que o arquivo for aberto, este deverá ser fechado.
            Toast.makeText(getApplicationContext(),"Salvo",
@@ -128,7 +129,8 @@ protected void onCreate(Bundle savedInstanceState) {
        sb = new StringBuffer();   
        int retorno = 0;
        char texto = 0;
-       while((retorno = fis.read())!=-1){  //o método read() devolve o caractere presente no arquivo, dessa forma é colocado em um laço de repetição. Os caracteres serão devolvidos até encontrar o valor -1 (significando o fim o arquivo)
+       while((retorno = fis.read())!=-1){  //o método read() devolve o caractere presente no arquivo, 
+//dessa forma é colocado em um laço de repetição. Os caracteres serão devolvidos até encontrar o valor -1 (significando o fim o arquivo)
            texto = (char)retorno;
            sb.append(texto);  //adicionar o caractere no StringBuffer
        }//while
@@ -212,7 +214,8 @@ protected void onCreate(Bundle savedInstanceState) {
                FileOutputStream fos = null;
                try {
                    fos = new FileOutputStream(file);  //obter uma referência de arquivo no modo de escrita
-                   OutputStreamWriter osw = new OutputStreamWriter(fos);  //é necessário esta referência para ter acesso ao método de escrita
+                   OutputStreamWriter osw = new OutputStreamWriter(fos);  //é necessário esta referência para 
+//ter acesso ao método de escrita
                    osw.write(dado);  //escreve no arquivo
                    osw.close();   //fecha o arquivo
                    fos.close();  //fecha o arquivo
