@@ -379,7 +379,7 @@ protected void onCreate(Bundle savedInstanceState) {
    super.onCreate(savedInstanceState);
    setContentView(R.layout.activity_main);
    getSupportFragmentManager().beginTransaction()
-           .setReorderingAllowed(true)
+           .setReorderingAllowed(true) //pede para o sistema reordenar as operações de transições dos fragmentos
            .add(R.id.tela, FragmentActivity.class,null)
            .commit();
 }
@@ -632,7 +632,6 @@ public class ListaFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
        // super.onViewCreated(view, savedInstanceState);
-
         ListView listView = view.findViewById(R.id.list_view);
         String[] items = {"Java", "Python", "Kotlin"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
