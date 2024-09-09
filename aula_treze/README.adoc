@@ -1,28 +1,556 @@
-= Card View
+= Biblioteca ROOM
 
-Permite que a construção do layout baseado em cartões. Para mais detalhes sobre Card View: GOOGLE DEVELOPERS. Criar um layout baseado em cards. Disponível
-em: https://developer.android.com/guide/topics/ui/layout/cardview?hl=pt-br. Acesso: 22 de fev. 2023.
+O SDK do Android fornece uma biblioteca que facilita o uso do banco de dados. Conforme consta na documentação oficial, a biblioteca ROOM adiciona uma camada de abstração retirando as implementações mais complexas do banco SQLite. Para mais detalhes, acesse a página: GOOGLE DEVELOPERS. Salvar dados em um banco de dados local usando Room. Disponível em: https://developer.android.com/training/data-storage/room?hl=pt-br. Acessado em 9 set. 2024.
 
-Exemplos práticos:
+Para usar a lib ROOM no seu projeto, primeiramente é necessário importar a biblioteca. Dessa forma, deve-se ir no arquivo Gradle a nível de app e adicionar as duas linhas no bloco de dependências:
 
-- link:um/main_activity.xml[main_activity]
-
-- link:um/MainActivity.java[MainActivity]
-
-
-= Recycler View
-
-Recurso que permite criar listas dinâmicas com mais eficiência e economia de recursos. Para mais detalhes sobre Recycler View: GOOGLE DEVELOPERS. Criar listas dinâmicas com o Recycler View. Disponível em: https://developer.android.com/guide/topics/ui/layout/recyclerview?hl=pt-br. Acesso: 22 de fev. 2023.
+[source,xml]
+implementation ("androidx.room:room-runtime:2.4.0")
+annotationProcessor ("androidx.room:room-compiler:2.4.0")
 
 Exemplos práticos:
 
-- link:dois/main_activity.xml[main_activity]
+Versão 1:
 
-- link:dois/item_layout.xml[item_layout]
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <EditText
+        android:id="@+id/editTextNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:hint="digite seu nome" />
+    <EditText
+        android:id="@+id/editTextTelefone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="digite seu telefone" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/buttonS"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:onClick="clicar"
+            android:text="Salvar" />
+        <Button
+            android:id="@+id/buttonL"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:onClick="clicar"
+            android:text="Listar" />
+        <Button
+            android:id="@+id/buttonD"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="clicar"
+            android:text="Excluir" />
+    </LinearLayout>
+</LinearLayout>
 
-- link:dois/ItemModel.java[ItemModel]
+- activity_2.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity2">
+    <ListView
+        android:id="@+id/lista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
 
-- link:dois/ItemAdapter.java[ItemAdapter]
+- Pessoa.java
+[source,java]
+import android.os.Parcel;
+import android.os.Parcelable;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import java.io.Serializable;
+@Entity
+public class Pessoa implements Serializable {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    @ColumnInfo(name = "nome")
+    private String nome;
+    @ColumnInfo(name = "telefone")
+    private String telefone;
+    public Pessoa(int id, String nome, String telefone) {
+        this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+    }
+    public Pessoa() {
+    }
+     public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public String getTelefone() {
+        return telefone;
+    }
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", telefone='" + telefone + '\'' +
+                '}';
+    }
+}//class
+
+- PessoaDao.java
+[source,java]
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
+import java.util.List;
+@Dao
+public interface PessoaDao {
+    @Insert
+    public long adicionar(Pessoa p);
+    @Query("SELECT * FROM pessoa")
+    public List<Pessoa> listar();
+    @Update
+    public int atualizar(Pessoa p);
+    @Delete
+    public int excluir(Pessoa p);
+}
+
+- Banco.java
+[source,java]
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
+@Database(entities = {Pessoa.class}, version = 1)
+public abstract class Banco extends RoomDatabase {
+    public abstract PessoaDao pessoaDao();
+}
+
+- MainActivity.java
+[source,java]
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import java.util.ArrayList;
+public class MainActivity extends AppCompatActivity {
+    private EditText editTextNome, editTextTelefone;
+    private Button butttonS, buttonD, buttonL;
+    private Pessoa p;
+    private PessoaDao dao;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        editTextNome = findViewById(R.id.editTextNome);
+        editTextTelefone = findViewById(R.id.editTextTelefone);
+        butttonS = findViewById(R.id.buttonS);
+        buttonD = findViewById(R.id.buttonD);
+        buttonL = findViewById(R.id.buttonL);
+        p = (Pessoa) getIntent().getSerializableExtra("dado");
+        if (p != null) {
+            editTextNome.setText(p.getNome());
+            editTextTelefone.setText(p.getTelefone());
+        }
+        Banco db = Room.databaseBuilder(getApplicationContext(),
+                Banco.class, "meu_banco")
+                .allowMainThreadQueries().build();
+        dao = db.pessoaDao();
+    }//onCreate
+    public void clicar(View view) {
+            if (view.getId()==R.id.buttonS) {
+                if (p == null) {
+                    p = new Pessoa();
+                    p.setNome(editTextNome.getText().toString());
+                    p.setTelefone(editTextTelefone.getText().toString());
+                    long retorno = dao.adicionar(p);
+                    if (retorno != -1) {
+                        Toast.makeText(MainActivity.this, "Salvo", Toast.LENGTH_SHORT).show();
+                        p = null;
+                        editTextNome.setText("");
+                        editTextTelefone.setText("");
+                    } else {
+                        Toast.makeText(MainActivity.this, "Não salvo", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    p.setNome(editTextNome.getText().toString());
+                    p.setTelefone(editTextTelefone.getText().toString());
+                    int retorno = dao.atualizar(p);
+                    if (retorno != 0) {
+                        Toast.makeText(MainActivity.this, "Salvo", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "Não salvo", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        if (view.getId()==R.id.buttonL) {
+            ArrayList<Pessoa> dados = (ArrayList) dao.listar();
+            if (dados != null) {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                intent.putExtra("dados", dados);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(MainActivity.this, "Sem dados", Toast.LENGTH_SHORT).show();
+            }
+        }
+        if (view.getId()==R.id.buttonD) {
+            int retorno = dao.excluir(p);
+            if (retorno > 0) {
+                Toast.makeText(MainActivity.this, "Deletado", Toast.LENGTH_SHORT).show();
+                p = null;
+                editTextNome.setText("");
+                editTextTelefone.setText("");
+            } else {
+                Toast.makeText(MainActivity.this, "Erro", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }//clicar
+}//class
+
+- Activity2.java
+[source,java]
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import java.util.ArrayList;
+public class Activity2 extends AppCompatActivity  implements AdapterView.OnItemClickListener {
+    private ListView listView;
+    private ArrayAdapter<Pessoa> adapter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_2);
+        listView = findViewById(R.id.lista);
+        ArrayList<Pessoa> dados = (ArrayList<Pessoa>) getIntent().getSerializableExtra("dados");
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dados);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
+    }
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Pessoa p = (Pessoa) adapterView.getItemAtPosition(i);
+        Intent intent = new Intent(Activity2.this, MainActivity.class);
+        intent.putExtra("dado", p);
+        startActivity(intent);
+    }
+}
+
+Versão 2: Esse exemplo é uma adaptação do exemplo disponibilizado em: STACKOVERFLOW. Android Room One-to-Many Relationship. 2021. Disponível: <https://stackoverflow.com/questions/66897173/android-room-one-to-many-relationship>. Pergunta feita pelo usuário <https://stackoverflow.com/users/328518/adil-bhatty> e respondida pelo usuário <https://stackoverflow.com/users/4744514/miket>.
+
+- AllDao.java
+[source,java]
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.Query;
+import java.util.List;
+@Dao
+public interface AllDao {
+    @Insert
+    Long inserirCurso(Curso s);
+    @Insert
+    Long inserirDisciplina(Disciplina c);
+    @Insert
+    Long inserirEstudante(Estudante s);
+    @Query("SELECT * FROM _curso")
+    List<Curso> obterTodosCursos();
+    @Query("SELECT * FROM _curso WHERE curso_id = :curso_id ")
+    Curso obterUmCurso(Long curso_id);
+    @Query("SELECT * FROM _disciplina")
+    List<Disciplina> obterTodasDisciplinas();
+    @Query("SELECT * FROM _disciplina WHERE disciplina_id = :disciplina_id")
+    Disciplina obterUmaDisciplina(Long disciplina_id);
+    @Query("SELECT * FROM _estudante " +
+            "JOIN _curso ON _curso.curso_id = _estudante.estudante_id " +
+            "JOIN _disciplina ON _disciplina.disciplina_id = _estudante.disciplina_id")
+    List<EstudanteECursoEDisciplina> obterEstudanteECursoEDisciplina();
+    @Query("SELECT * FROM _estudante")
+    List<EstudanteComCursoComDisciplina> obterEstudanteComCursoComDisciplina();
+}
+
+- MyDatabase.java
+[source,java]
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
+@Database(entities = {Curso.class, Disciplina.class, Estudante.class}
+        ,version = 1)
+public abstract class MyDatabase extends RoomDatabase {
+        abstract AllDao allDao();
+}
+
+- Curso.java
+[source,java]
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+@Entity(tableName = "_curso")
+class Curso {
+    @PrimaryKey
+    @ColumnInfo(name = "curso_id")
+    Long cursoid;
+    @NonNull
+    @ColumnInfo(name = "curso_nome")
+    String cursoNome;
+    Curso(){}
+    @Ignore
+    Curso(String cursoNome) {
+        this.cursoNome = cursoNome;
+    }
+}
+
+- Disciplina.java
+[source,java]
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+@Entity(tableName = "_disciplina")
+class Disciplina {
+    @PrimaryKey
+    @ColumnInfo(name = "disciplina_id")
+    Long disciplinaId;
+    @NonNull
+    @ColumnInfo(name = "disciplina_nome")
+    String disciplinaNome;
+    Disciplina(){}
+    @Ignore
+    Disciplina(String disciplinaNome) {
+        this.disciplinaNome = disciplinaNome;
+    }
+}
+
+- Estudante.java
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+@Entity(
+        tableName = "_estudante", foreignKeys = {
+        @ForeignKey(
+                entity = Curso.class,
+                parentColumns = {"curso_id"},
+                childColumns = {"curso_id"},
+                onDelete = ForeignKey.CASCADE,
+                onUpdate = ForeignKey.CASCADE
+        ),
+        @ForeignKey(
+                entity = Disciplina.class,
+                parentColumns = {"disciplina_id"},
+                childColumns = {"disciplina_id"},
+                onDelete = ForeignKey.CASCADE,
+                onUpdate = ForeignKey.CASCADE
+        )
+}
+)
+class Estudante {
+    @PrimaryKey
+    @ColumnInfo(name = "estudante_id")
+    Long estudanteId;
+    @ColumnInfo(name = "estudante_nome")
+    String estudanteNome;
+    @ColumnInfo(name = "curso_id", index = true)
+    Long cursoId;
+    @ColumnInfo(name = "disciplina_id", index = true)
+    Long disciplinaId;
+    Estudante(){}
+    @Ignore
+    Estudante(String estudanteNome, long cursoId, long disciplinaId) {
+        this.estudanteNome = estudanteNome;
+        this.cursoId = cursoId;
+        this.disciplinaId = disciplinaId;
+    }
+}
+
+- EstudanteECursoEDisciplina.java
+[source,java]
+import androidx.room.Embedded;
+public class EstudanteECursoEDisciplina {
+    @Embedded
+    Estudante estudante;
+    String curso_nome;
+    String disciplina_nome;
+}
+
+- EstudanteComCursoComDisciplina.java
+[source,java]
+import androidx.room.Embedded;
+import androidx.room.Relation;
+import java.util.List;
+public class EstudanteComCursoComDisciplina {
+    @Embedded
+    Estudante estudante;
+    @Relation(entity = Curso.class,parentColumn = "curso_id",
+            entityColumn = "curso_id")
+    List<Curso> cursoList;
+    @Relation(entity = Disciplina.class,parentColumn = "disciplina_id",
+            entityColumn = "disciplina_id")
+    List<Disciplina> disciplinaList;
+}
+
+- activity_main.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:id="@+id/textViewUm"
+         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewDois"
+        android:text="Hello World!"
+       />
+</LinearLayout>
+
+- MainActivity.java
+[source,java]
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+import java.util.List;
+public class MainActivity extends AppCompatActivity {
+    private MyDatabase db;
+    private AllDao allDao;
+    private TextView textViewUm, textViewDois;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        textViewUm = findViewById(R.id.textViewUm);
+        textViewDois = findViewById(R.id.textViewDois);
+        // obtendo uma instância do banco
+        db = Room.databaseBuilder(this, MyDatabase.class, "mydb")
+                .allowMainThreadQueries()
+                .build();
+        // acesso ao dao
+        allDao = db.allDao();
+        // criando alguns cursos
+        Curso[] s_array = {new Curso("Curso1"),
+                new Curso("Curso2"),
+                new Curso("Curso3")
+        };
+        // inserindo cursos no banco
+        for (Curso s : s_array) {
+            allDao.inserirCurso(s);
+        }
+        // criando objetos de disciplinas
+        Disciplina[] c_array = {
+                new Disciplina("Disciplina1"),
+                new Disciplina("Disciplina2"),
+                new Disciplina("Disciplina3")
+        };
+        // inserindo as disciplinas no banco
+        for (Disciplina c : c_array) {
+            allDao.inserirDisciplina(c);
+        }
+        // criando alguns objetos estudantes
+        Estudante[] st_array = {
+                new Estudante("Fred", 3, 3),
+                new Estudante("Mary", 1, 2)
+        };
+        //inserindo estudantes no banco
+        for (Estudante st : st_array) {
+            allDao.inserirEstudante(st);
+        }
+        // obter os estudantes com curso e disciplina
+        // usando POJO 1 (realtionship via joins)
+        List<EstudanteECursoEDisciplina> sasac = allDao.obterEstudanteECursoEDisciplina();
+        StringBuilder dados = new StringBuilder();
+        for (EstudanteECursoEDisciplina ssc : sasac) {
+            dados.append("ESTUDENTEINFO1: " + "Estudante Nome = " + ssc.estudante.estudanteNome +
+                                "\n\t ID=" + ssc.estudante.estudanteId +
+                                " CursoID=" + ssc.estudante.cursoId +
+                                " DisciplinaID=" + ssc.estudante.disciplinaId +
+                                "\n\t\t Curso Nome = " + ssc.curso_nome +
+                                "\n\t\t Disciplina Nome = " + ssc.disciplina_nome +"\n"
+                                );
+        }
+        textViewUm.setText(dados.toString());
+        dados = new StringBuilder();
+        // obter os estudante com curso e disciplina
+        // usando POJO 2 (with @Relation's)
+        List<EstudanteComCursoComDisciplina> swswc = allDao.obterEstudanteComCursoComDisciplina();
+        for (EstudanteComCursoComDisciplina ssc : swswc) {
+            dados.append("ESTUDENTEINFO2: " + "Estudante Nome = " + ssc.estudante.estudanteNome +
+                    "\n\t ID=" + ssc.estudante.estudanteId +
+                    " CursoID=" + ssc.estudante.cursoId +
+                    " DisciplinaID=" + ssc.estudante.disciplinaId +
+                    "\n\t\t Curso Nome = " + ssc.cursoList.get(0).cursoNome +
+                    "\n\t\t Disciplina Nome = " + ssc.disciplinaList.get(0).disciplinaNome +"\n"
+            );
+        }
+        textViewDois.setText(dados.toString());
+    }//onCreate
+}//class
+
+
+
+
+
+
+
+
+
+
 
 
 
