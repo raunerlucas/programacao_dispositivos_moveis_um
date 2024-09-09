@@ -5,10 +5,82 @@ em: https://developer.android.com/guide/topics/ui/layout/cardview?hl=pt-br. Aces
 
 Exemplos práticos:
 
-- link:um/main_activity.xml[main_activity]
+- main_activity.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:orientation="vertical"
+   tools:context=".MainActivity">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+       <androidx.cardview.widget.CardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="10dp"
+           app:cardBackgroundColor="@color/purple_200"
+           app:cardCornerRadius="20dp"
+           app:cardElevation="10dp"
+           app:cardUseCompatPadding="true">
+           <ImageView
+               android:id="@+id/imgBolo"
+               android:layout_width="200dp"
+               android:layout_height="200dp"
+               android:layout_gravity="center"
+               android:layout_margin="10dp"
+               android:src="@drawable/bolo" />
+       </androidx.cardview.widget.CardView>
+       <androidx.cardview.widget.CardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="10dp"
+           app:cardBackgroundColor="@color/purple_200"
+           app:cardCornerRadius="20dp"
+           app:cardElevation="10dp"
+           app:cardUseCompatPadding="true">
+           <ImageView
+               android:id="@+id/imgCafe"
+               android:layout_width="200dp"
+               android:layout_height="200dp"
+               android:layout_gravity="center"
+               android:layout_margin="10dp"
+               android:src="@drawable/cafe" />
+       </androidx.cardview.widget.CardView>
+       <androidx.cardview.widget.CardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="10dp"
+           app:cardBackgroundColor="@color/purple_200"
+           app:cardCornerRadius="20dp"
+           app:cardElevation="10dp"
+          app:cardUseCompatPadding="true">
+           <ImageView
+               android:id="@+id/imgPizza"
+               android:layout_width="200dp"
+               android:layout_height="200dp"
+               android:layout_gravity="center"
+               android:layout_margin="10dp"
+               android:src="@drawable/pizza" />
+       </androidx.cardview.widget.CardView>
+   </LinearLayout>
+</ScrollView>
 
-- link:um/MainActivity.java[MainActivity]
-
+- MainActivity.java
+[source,java]
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+public class MainActivity extends AppCompatActivity {
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+   }
+}
 
 = Recycler View
 
@@ -16,13 +88,135 @@ Recurso que permite criar listas dinâmicas com mais eficiência e economia de r
 
 Exemplos práticos:
 
-- link:dois/main_activity.xml[main_activity]
+- main_activity.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context=".MainActivity">
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/recycleView"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-- link:dois/item_layout.xml[item_layout]
+- item_layout.xml
+[source,xml]
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:layout_margin="10dp"
+   app:cardBackgroundColor="@color/purple_200"
+   app:cardCornerRadius="8dp"
+   app:cardElevation="8dp"
+   app:cardUseCompatPadding="true">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+       <ImageView
+           android:id="@+id/imageView"
+           android:layout_width="100dp"
+           android:layout_height="100dp"
+           android:layout_margin="10dp"
+           android:padding="10dp"
+           android:src="@mipmap/ic_launcher" />
+       <TextView
+           android:id="@+id/textView"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="bolo"
+           android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+           />
+   </LinearLayout>
+</androidx.cardview.widget.CardView>
 
-- link:dois/ItemModel.java[ItemModel]
+- ItemModel.java
+[source,java]
+public class ItemModel {
+   private int imagem;
+   private String texto;
+   public ItemModel(int imagem, String texto) {
+       this.imagem = imagem;
+       this.texto = texto;
+   }
+   public int getImagem() {
+       return imagem;
+   }
+   public void setImagem(int imagem) {
+      this.imagem = imagem;
+   }
+   public String getTexto() {
+       return texto;
+   }
+   public void setTexto(String texto) {
+       this.texto = texto;
+   }
+   @Override
+   public String toString() {
+       return "ItemModal{" +
+               "imagem=" + imagem +
+               ", texto='" + texto + '\'' +
+               '}';
+   }
+}
 
-- link:dois/ItemAdapter.java[ItemAdapter]
+- ItemAdapter.java
+[source,java]
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import java.util.ArrayList;
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
+   private Context context;
+   private ArrayList<ItemModel> itemModelArrayList;
+   public ItemAdapter(Context context, ArrayList<ItemModel> itemModelArrayList) {
+       this.context = context;
+       this.itemModelArrayList = itemModelArrayList;
+   }
+   @NonNull
+   @Override
+   public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
+                                        int viewType) {
+     View view = LayoutInflater.from(parent.getContext()).
+               inflate(R.layout.item_layout, parent, false);
+       return new ViewHolder(view);
+   }
+   @Override
+   public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+       ItemModel itemModel = itemModelArrayList.get(position);
+       holder.imageView.setImageResource(itemModel.getImagem());
+       holder.textView.setText(itemModel.getTexto());
+   }
+   @Override
+   public int getItemCount() {
+       return itemModelArrayList.size();
+   }
+   public class ViewHolder extends RecyclerView.ViewHolder{
+       private ImageView imageView;
+       private TextView textView;
+       public ViewHolder(@NonNull View itemView) {
+           super(itemView);
+           imageView = itemView.findViewById(R.id.imageView);
+           textView = itemView.findViewById(R.id.textView);
+       }
+   }//inner
+}//class
 
 
 
