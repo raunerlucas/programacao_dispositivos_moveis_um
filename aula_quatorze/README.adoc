@@ -1,7 +1,7 @@
 = Card View
 
 Permite que a construção do layout baseado em cartões. Para mais detalhes sobre Card View: GOOGLE DEVELOPERS. Criar um layout baseado em cards. Disponível
-em: https://developer.android.com/guide/topics/ui/layout/cardview?hl=pt-br. Acesso: 22 de fev. 2023.
+em: https://developer.android.com/guide/topics/ui/layout/cardview?hl=pt-br. Acesso: 09 de set. 2024.
 
 Exemplos práticos:
 
@@ -12,7 +12,7 @@ Exemplos práticos:
 
 = Recycler View
 
-Recurso que permite criar listas dinâmicas com mais eficiência e economia de recursos. Para mais detalhes sobre Recycler View: GOOGLE DEVELOPERS. Criar listas dinâmicas com o Recycler View. Disponível em: https://developer.android.com/guide/topics/ui/layout/recyclerview?hl=pt-br. Acesso: 22 de fev. 2023.
+Recurso que permite criar listas dinâmicas com mais eficiência e economia de recursos. Para mais detalhes sobre Recycler View: GOOGLE DEVELOPERS. Criar listas dinâmicas com o Recycler View. Disponível em: https://developer.android.com/guide/topics/ui/layout/recyclerview?hl=pt-br. Acesso: 09 de set. 2024.
 
 Exemplos práticos:
 
