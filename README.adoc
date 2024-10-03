@@ -7,6 +7,15 @@
 //pode se baixar os arquivos e add no diretório
 :revealjsdir: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.8.0
 
+ifdef::env-github,env-browser[]
+// Exibe ícones para os blocos como NOTE e IMPORTANT no GitHub
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
 //GERAR ARQUIVOS
 //make slides
 //make ebook
@@ -15,7 +24,7 @@
 
 Material de apoio com fins didáticos voltado para o aprendizado em programação móvel Android.
 
-IMPORTANT: Atenção, este material passa por constante atualizações/modificações.
+IMPORTANT: Atenção, este material passa por atualizações/modificações.
 
 1. link:aula_um/[Verificação e instação do OPENJDK / Instalação da IDE / Arquitetura do Android / Uso do Emulador / Estrutura do Projeto na IDE / Versões do Android / Activity / Ciclo de vida]
 
