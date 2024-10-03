@@ -10,306 +10,138 @@
 //GERAR ARQUIVOS
 //make slides
 //make ebook
+## Introdução ao Desenvolvimento Mobile com Java, Kotlin e React Native
 
-== Verificação / Instalação do OpenJDK
+Este guia apresenta os primeiros passos para o desenvolvimento mobile utilizando três tecnologias populares: Java, Kotlin e React Native. Abordaremos a instalação do ambiente, estrutura básica de um projeto e o ciclo de vida de uma Activity no Android.
 
-Para verificar ou instalar o OpenJDK, acesse os links disponibilizados a seguir:
+**Público Alvo:** Iniciantes em desenvolvimento mobile.
 
-- OPENJDK. How to download and install prebuilt OpenJDK packages. Disponível em: https://openjdk.java.net/install/. Acesso em: 26 de jul. 2024.
-- ORACLE. Como posso definir ou alterar a variável do sistema PATH? Disponível em: https://www.java.com/pt_BR/download/help/path.xml. Acesso em: 26 de jul. 2024.
+### Por que desenvolver para mobile?
 
-== Instalação da IDE
+O uso de smartphones e tablets tem crescido exponencialmente, tornando o desenvolvimento mobile uma área promissora e com alta demanda. Aplicativos móveis permitem alcançar um público vasto, oferecendo soluções inovadoras para diversas necessidades.
 
-Antes de instalar a IDE, por favor, verifique se o OpenJDK foi devidamente instalado, pois o Android Studio necessita do JDK para funcionar. Para a instalação do Android Studio, acesse o seguinte link:
+### Linguagens e Frameworks:
 
-- GOOGLE DEVELOPERS. Instalar o Android Studio. Disponível em: https://developer.android.com/studio/install?hl=pt-br. Acesso em: 26 de jul. 2024.
+* **Java:** Linguagem robusta e popular, amplamente utilizada no desenvolvimento Android. Possui uma vasta comunidade e recursos online.
+* **Kotlin:** Linguagem moderna e concisa, que se tornou a favorita de muitos desenvolvedores Android. Oferece interoperabilidade com Java e recursos poderosos para melhorar a produtividade.
+* **React Native:** Framework JavaScript para construir aplicativos móveis nativos utilizando React. Permite criar aplicativos para Android e iOS com uma única base de código, acelerando o desenvolvimento e reduzindo custos.
 
-Para maiores informações sobre as novidades no Android Studio, acesse: o canal Android Developers. What's new in Android Studio Eletric Eel. Disponível em: https://www.youtube.com/watch?v=bVt14IBv4NA&list=RDCMUCVHFbqXqoYvEWM1Ddxl0QDg&index=2. Acesso em: 26 de jul. 2024.
+### Ambiente de Desenvolvimento:
 
-== Arquitetura do Sistema Android
+* **Android Studio:** IDE oficial para desenvolvimento Android, gratuita e disponível para Windows, macOS e Linux. Oferece ferramentas completas para desenvolvimento, incluindo emulador de dispositivos.
 
-O Android é um sistema operacional criado em camadas bem definidas e com funcionalidades específicas. As camadas são denominadas em:
+#### Instalação do Ambiente:
 
-1. Kernel do linux: segurança, sólidez, ampla documentação. Os fabricantes dos aparelhos podem criar drives para um sistema amplamente conhecido. São aproveitados o gerenciamento de memória e processos do Linux;
-2. Camada de abstração de hardware: bibliotecas que implementam interfaces que permitem a comunicação do hardware com APIs de alto nível;
-3. Android Runtime: máquina virtual executa o arquivo DEX (bytecodes);
-4. Bibliotecas C/C++ nativas: alguns componentes usam bibliotecas nativas, como a SQLite;
-5. Estrutura Java API: fornecem os recursos que possibilitam a criação dos aplicativos. Activity, Service, Content Provider, Broadcast Receiver são exemplos desses recursos;
-6. Aplicativos do sistema: Gmail, contatos, navegadores e outros. É a parte mais visível para o usuário. Os aplicativos podem ser desenvolvidos nativamente (para o sistema Android) e podem também ser desenvolvidos baseados na arquitetura web.
+1. **Java Development Kit (JDK):** Necessário para compilar e executar código Java. Faça o download e instalação do OpenJDK em: https://openjdk.java.net/install/
+* **Configuração da variável de ambiente PATH:** Siga as instruções em: https://www.java.com/pt_BR/download/help/path.xml
 
-- Referência: GOOGLE DEVELOPERS. Arquitetura da Plataforma. Disponível em: https://developer.android.com/guide/platform?hl=pt-br. Acesso em: 26 de jul. 2024.
+2. **Android Studio:** Faça o download e instalação em: https://developer.android.com/studio/install?hl=pt-br
+* **Novidades do Android Studio:** https://www.youtube.com/watch?v=bVt14IBv4NA&list=RDCMUCVHFbqXqoYvEWM1Ddxl0QDg&index=2
 
-== Uso do Emulador
+### Criando seu Primeiro Projeto:
 
-Após desenvolver um aplicativo, você pode testá-lo em seu próprio celular, mas caso não tenha um celular com sistema Android, você pode usar um emulador. Para criar um emulador na IDE, acesse o link disponibilizado: 
+Após instalar o Android Studio, você pode criar um novo projeto e escolher entre Java, Kotlin ou React Native como linguagem principal.
 
-- GOOGLE DEVELOPERS. Criar e gerenciar dispositivos virtuais. Disponível em: https://developer.android.com/studio/run/managing-avds?hl=pt-br. Acesso em: 26 de jul. 2024.
+* **Java e Kotlin:**  O Android Studio oferece templates de projeto para iniciar rapidamente.
+* **React Native:** Utilize o React Native CLI para criar um novo projeto. Siga as instruções em: https://reactnative.dev/docs/environment-setup
 
-== Estrutura do Projeto na IDE
+### Estrutura de um Projeto Android:
 
-Quando cria-se um novo projeto através da IDE, muitos arquivos e diretórios são criados. Existem arquivos como:
+* **Manifesto do Aplicativo (AndroidManifest.xml):** Contém informações essenciais sobre o aplicativo, como nome, ícone, permissões e componentes (Activities, Services, etc.).
+* **Atividades (Activities):** Representam telas do aplicativo, permitindo interação com o usuário.
+* **Layouts (XML):** Definem a interface gráfica do usuário, organizando elementos visuais na tela.
+* **Código-fonte (Java/Kotlin):** Contém a lógica do aplicativo, controlando o comportamento dos componentes e respondendo a eventos.
 
-- .java;
-- .xml;
-- de imagem;
-- diretório src;
-- diretório libs;
-- diretório gradle;
-- e outros.
+### Ciclo de Vida de uma Activity:
 
-É importante entender esses arquivos e diretórios criados. Por exemplo, o arquivo AndroidManifest.xml contém informações relevantes para o aplicativo, neste são definidos o nome totalmente qualificado do projeto, a definição da atividade principal e as secundárias, permissões que serão usadas, definição do tema e outras configurações. Já no arquivo build.gradle são definidos a versão do Android (mínima e a alvo), adição de outras bibliotecas providas de terceiros e outras configurações.
+Uma Activity passa por diferentes estados durante sua execução. Compreender esse ciclo é fundamental para criar aplicativos responsivos e eficientes.
 
-== Do Desenvolvimento até a Execução
+**Principais métodos do ciclo de vida:**
 
-- Inicialmente o programador escreve o código-fonte em Java;
-- O arquivo é compilado para o formato .class e depois convertido para o formato .dex;
-- Para a distribuição do app é usado um arquivo APK, que consiste no empacotamento do arquivo .dex com os arquivos de layouts, imagens, sons, metadados, etc;
-- Quando o usuário clica em um app instalado. O Android aloca um processo. Cada app roda em um processo e em uma instância da máquina virtual. A máquina virtual carrega o .DEX na memória principal. O ART gerencia a memória e a pilha de execução;
-- O ciclo de vida dos componentes (Activity) é gerenciado pelo Android. O android gerencia as persmissões e segurança. Cada app roda em seu sandbox;
-- O código do app pode fazer chamadas ao sistema, ou seja, solicitar funções da API do kernel para acessar recursos de hardware, por exemplo: realizar uma escrita de arquivo.
+* **onCreate()**: Chamado quando a Activity é criada. Utilize este método para inicializar componentes e carregar layouts.
+* **onStart()**: Chamado quando a Activity se torna visível para o usuário.
+* **onResume()**: Chamado quando a Activity inicia ou retorna do estado pausado, estando pronta para receber interações do usuário.
+* **onPause()**: Chamado quando a Activity perde o foco, deixando de estar em primeiro plano (ex: ao abrir outra aplicação).
+* **onStop()**: Chamado quando a Activity deixa de ser visível (ex: ao minimizar o aplicativo).
+* **onDestroy()**: Chamado antes da Activity ser destruída (ex: ao fechar o aplicativo).
 
-Referência: GOOGLE DEVELOPERS. Fundamentos  de aplicativos. Disponível em: https://developer.android.com/guide/components/fundamentals?hl=pt-br
+### Exemplo Prático (Olá Mundo):
 
-== Versões do Android
+**Java:**
 
-Atualmente o sistema Android encontra-se na versão 13 (nível 33 em relação à API). Para mais detalhes sobre a API e novidades, acessem os links: https://developer.android.com/about/versions/13?hl=pt-br e  https://medium.com/androiddevelopers/now-in-android-74-886a95404e8b. Acesso em: 26 de jul. 2024. Para ver mais detalhes sobre as diferenças entre as APIs 32 e 33, acesse o link: https://developer.android.com/sdk/api_diff/33/changes. Acesso em: 26 de jul. 2024.
+```java
+package com.example.meuprimeiroapp;
 
-Algumas versões anteriores ao Android 13:
-
- - Android 4.4 Kit Kat;
- - Android 5 Lollipop;
- - Android 6 Marshmallow;
- - Android 7 Nougat;
- - Android 8 Oreo;
- - Android 9 Pie;
- - Android 10;
- - Android 11;
- - Android 12.
-
-A figura 1 mostra o quantitativo das versões do Android usadas, referente ao mês de janeiro de 2023. Os dados são mantidos pela 9to5Google.
-
-Figura 1
-
-image::distribuicao_versoes.png[]
-
-- Referência da imagem: https://androiddistribution.io/#/. Acesso em: 26 de jul. 2024.
-
-== Componentes Relevantes Usados na Implementação de Aplicativos
-
-- Activity: é ponto de entrada do usuário com o aplicativo. Representa a tela do aplicativo;
-- Service: permite tarefas serem executadas em segunda plano (background), sem interface com o usuário. Mesmo após o encerramento do app, a tarefa continua em execução;
-- Content Provider: permite acesso aos dados de um app, por exemplo, um banco de dados com outros apps;
-- Broadcast Receiver: recebe e responde a eventos/mensagens do sistema ou de outros apps.
-
-== Activity
-
-A activity é um componente disponível no SDK do Android responsável em apresentar a parte visual (interface gráfica) do aplicativo. A activity possui métodos que são invocados automaticamente pelo sistema. O entendimento desses métodos é fundamental para o funcionamento adequado do aplicativo. A figura 2 mostra os métodos envolvidos no ciclo de vida.
-
-Figura 2
-
-image::ciclo_vida.jpg[]
-
-- Referência da figura 2: GOOGLE DEVELOPERS. Entenda o ciclo de vida da atividade. Disponível em: https://developer.android.com/guide/components/activities/activity-lifecycle?hl=pt-br. Acesso em: 26 de jul. 2024.
-
-Métodos dos ciclos de vida:
-
-- onCreate
-[source,java]
-@Override
-    protected void onCreate(Bundle savedInstanceState) {
-//único método cuja a implementação é obrigatória;
-//executado apenas uma única vez durante todo o ciclo da atividade;
-//usado para configurações iniciais da atividade.
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toast.makeText(getApplicationContext(), "OnCreate", Toast.LENGTH_SHORT).show();
-    }
-- onStart
-[source,java]
-@Override
-    protected void onStart() {
-//a atividade está visível, porém não esta apta para atender as solicitações do usuário.
-        super.onStart();
-        Toast.makeText(getApplicationContext(), "OnStart", Toast.LENGTH_SHORT).show();
-    }
-- onResume
-[source,java]
-@Override
-    protected void onResume() {
-//a atividade está apta para atender as solicitações do usuário.
-        super.onResume();
-        Toast.makeText(getApplicationContext(), "OnResume", Toast.LENGTH_SHORT).show();
-    }
-- onPause
-[source,java]
- @Override
-    protected void onPause() {
-//método chamado quando activity não tem mais foco;
-//a atividade não está mais em primeiro plano, mas ainda existe uma referência dela.
-        super.onPause();
-        Toast.makeText(getApplicationContext(), "OnPause", Toast.LENGTH_SHORT).show();
-    }
-- onStop
-[source,java]
- @Override
-    protected void onStop() {
-//a atividade não é mais visível ao usuário;
-//nesta fase, na falta de recursos o sistema pode destruir a atividade. Portanto, é um bom lugar para realizar a persistência de dados.
-        super.onStop();
-        Toast.makeText(getApplicationContext(), "OnStop", Toast.LENGTH_SHORT).show();
-    }
-- onDestroy
-[source,java]
- @Override
-//depois da execução deste método, a atividade é destruída.
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(getApplicationContext(), "OnDestroy", Toast.LENGTH_SHORT).show();
-    }
-
-- Exemplo prático:
-
-- MainActivity.java
-[source,java]
-package com.example.activity_ciclo_de_vida;
-import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 public class MainActivity extends AppCompatActivity {
-    private TextView textView1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Log.i("onCreate","atividade criada");
-        textView1 = findViewById(R.id.textView1);
-        textView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, Activity2.class);
-                startActivity(i);
-            }
-        });
-    }//
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i("onStart","atividade iniciada ");
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i("onResume","atividade pronta ");
-    }
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i("onPause","atividade pausada ");
-    }
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i("onStop","atividade paralizada ");
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i("onDestroy","atividade destruída ");
-    }
-}//class
+        setContentView(R.layout.activity_main); // Define o layout da activity
 
-- activity_main.xml
-[source,xml]
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Primeira tela"
-        android:id="@+id/textView1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-- Activity2.java
-[source,java]
-package com.example.activity_ciclo_de_vida;
-import android.os.Bundle;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-public class Activity2 extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_2);
+        TextView textoOlaMundo = findViewById(R.id.textoOlaMundo); // Encontra o TextView no layout pelo ID
+        textoOlaMundo.setText("Olá, Mundo!"); // Define o texto do TextView
     }
 }
+```
 
-- activity_2.xml
-[source.xml]
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tela2"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activity2">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Segunda tela"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+**Kotlin:**
 
-== Bundle
+```kotlin
+package com.example.meuprimeiroapp
 
-Bundle funciona como um Map no Java. Trata-se de uma estrutura de dados usada para passar informações entre componentes, como Activities, Fragments e Services. Serve também para armazenar o estado de uma Activity quando ocorre mudanças de configuração (por exemplo, rotação de tela). Quando ocorre a rotação de tela, a atividade é destruída e construída novamente. Dessa forma, o Bundle pode ser usado para salvar e recuperar alguma informação importante.
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.TextView
 
-- Salvar o estado da Atividade
-[source,java]
-protected void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    outState.putString("key_data", "value");  
-}
+class MainActivity : AppCompatActivity() {
 
-- Recuperar o estado da Atividade
-[source,java]
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-    if (savedInstanceState != null) {
-        String data = savedInstanceState.getString("key_data");     
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val textoOlaMundo = findViewById<TextView>(R.id.textoOlaMundo)
+        textoOlaMundo.text = "Olá, Mundo!"
     }
 }
+```
 
-- Passar dados de uma atividade para outra 
-[source,java]
-Intent intent = new Intent(this, SecondActivity.class);
-Bundle bundle = new Bundle();
-bundle.putString("key", "value");
-intent.putExtras(bundle);
-startActivity(intent);
+**React Native:**
 
+```jsx
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <Text>Olá, Mundo!</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
+export default App;
+```
+
+### Próximos Passos:
+
+* **Documentação Oficial:**
+* **Java:** https://docs.oracle.com/javase/tutorial/
+* **Kotlin:** https://kotlinlang.org/docs/home.html
+* **React Native:** https://reactnative.dev/docs/getting-started
+* **Crie projetos simples:** Experimente criar aplicativos básicos para se familiarizar com cada linguagem/framework.
+* **Explore a documentação do Android:** https://developer.android.com/docs
+
+Lembre-se, a prática é fundamental! Continue explorando e construindo seus próprios projetos. Boa sorte em sua jornada no desenvolvimento mobile!
