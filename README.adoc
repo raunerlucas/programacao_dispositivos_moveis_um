@@ -24,7 +24,7 @@ endif::[]
 
 Material de apoio com fins didáticos voltado para o aprendizado em programação móvel Android.
 
-IMPORTANT: Atenção, este material passa por atualizações.
+IMPORTANT: Atenção, este material é atualizado regularmente.
 
 1. link:aula_um/[Verificação e instação do OPENJDK / Instalação da IDE / Arquitetura do Android / Uso do Emulador / Estrutura do Projeto na IDE / Versões do Android / Activity / Ciclo de vida]
 
