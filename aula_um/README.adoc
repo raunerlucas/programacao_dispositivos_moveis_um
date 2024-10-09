@@ -26,10 +26,6 @@ Aplicativos móveis permitem alcançar um público vasto, oferecendo soluções 
 
 * **Java:** Linguagem robusta e popular, amplamente utilizada no desenvolvimento Android.
 Possui uma vasta comunidade e recursos online.
-* **Kotlin:** Linguagem moderna e concisa, que se tornou a favorita de muitos desenvolvedores Android.
-Oferece interoperabilidade com Java e recursos poderosos para melhorar a produtividade.
-* **React Native:** Framework JavaScript para construir aplicativos móveis nativos utilizando React.
-Permite criar aplicativos para Android e iOS com uma única base de código, acelerando o desenvolvimento e reduzindo custos.
 
 === Ambiente de Desenvolvimento:
 
@@ -47,11 +43,9 @@ Faça o download e instalação do OpenJDK em: https://openjdk.java.net/install/
 
 === Criando seu Primeiro Projeto:
 
-Após instalar o Android Studio, você pode criar um novo projeto e escolher entre Java, Kotlin ou React Native como linguagem principal.
+Após instalar o Android Studio, você pode criar um novo projeto e escolher entre Java ou Kotlin.
 
 * **Java e Kotlin:**  O Android Studio oferece templates de projeto para iniciar rapidamente.
-* **React Native:** Utilize o React Native CLI para criar um novo projeto.
-Siga as instruções em: https://reactnative.dev/docs/environment-setup
 
 === Estrutura de um Projeto Android:
 
@@ -66,6 +60,8 @@ Uma Activity passa por diferentes estados durante sua execução.
 Compreender esse ciclo é fundamental para criar aplicativos responsivos e eficientes.
 
 **Principais métodos do ciclo de vida:**
+
+image::images/ciclo_vida.jpg[Ciclo de Vida de uma Activity]
 
 * **onCreate()**: Chamado quando a Activity é criada.
 Utilize este método para inicializar componentes e carregar layouts.
@@ -102,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Encontra o TextView no layout pelo ID e define seu texto
         TextView textoOlaMundo = findViewById(R.id.main);
-        textoOlaMundo.setText("Olá, Mundo do Rauner!");
+        textoOlaMundo.setText("Olá, Mundo do @NOME@!");
 
         /**
   * Toast: Uma notificação visual rápida e simples.
@@ -173,61 +169,12 @@ public class MainActivity extends AppCompatActivity {
 }
 ----
 
-**Kotlin:**
-
-[source,kotlin]
-----
-package com.example.meuprimeiroapp
-
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.widget.TextView
-
-class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val textoOlaMundo = findViewById<TextView>(R.id.textoOlaMundo)
-        textoOlaMundo.text = "Olá, Mundo!"
-    }
-}
-----
-
-**React Native:**
-
-[source,jsx]
-----
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-
-const App = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Olá, Mundo!</Text>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
-
-export default App;
-----
-
 === Próximos Passos:
 
 * **Documentação Oficial:**
 * **Java:** https://docs.oracle.com/javase/tutorial/
 * **Kotlin:** https://kotlinlang.org/docs/home.html
-* **React Native:** https://reactnative.dev/docs/getting-started
-* **Crie projetos simples:** Experimente criar aplicativos básicos para se familiarizar com cada linguagem/framework.
+* **Crie projetos simples:** Experimente criar aplicativos básicos para se familiarizar com cada linguagem.
 * **Explore a documentação do Android:** https://developer.android.com/docs
 
 Lembre-se, a prática é fundamental!
